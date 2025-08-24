@@ -1,0 +1,112 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
+
+/* Navbar */
+* {
+  box-sizing: border-box;
+  font-family: "Crimson Text", sans-serif;
+  margin: 0;
+}
+H1 {
+  font-family: "Crimson Text", sans-serif;
+}
+
+.logo {
+  height: 70px;
+  position: absolute; /* fix logo to the left */
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+#logo {
+  height: 80%;
+}
+#logo-text {
+  font-family: "Fredericka the Great", sans-serif;
+  font-size: larger;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+.head-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: black;
+  color: white;
+  justify-content: center;
+}
+.head-nav {
+  height: 70px;
+  font-size: 20px;
+}
+.container-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* center everything horizontally */
+  align-items: center; /* vertical alignment */
+  gap: 50px; /* evenly spaced items */
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.button-contact {
+  border-radius: 20px; /* Rounded corners */
+  border: none;
+  padding: 10px 24px; /* More breathing space */
+  background-color: #d9d9d9; /* Same grey background */
+  font-size: 20px;
+  font-family: "Crimson Text", serif;
+  cursor: pointer;
+}
+.hamburger span { height: 3px; width: 25px; background: #333; margin-bottom: 4px; border-radius: 2px; }
+
+/* Hero */
+.hero { display: flex; justify-content: space-between; align-items: center; padding: 4rem 2rem; flex-wrap: wrap; background: #e0f7fa; }
+.hero-text { flex: 1; min-width: 300px; padding: 1rem; }
+.hero-text h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+.hero-text p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+.hero-image { flex: 1; min-width: 300px; text-align: center; }
+.hero-image img { max-width: 100%; height: auto; }
+.btn { background: #00796b; color: rgb(255, 255, 255); padding: 0.7rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: 600; }
+
+/* About */
+.about-container { display: flex; justify-content: space-between; align-items: center; padding: 3rem 2rem; flex-wrap: wrap; }
+.about-text { flex: 1; min-width: 300px; padding: 1rem; }
+.about-image { flex: 1; min-width: 300px; text-align: center; }
+.about-image img { max-width: 100%; }
+
+/* Events */
+.event-cards { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; padding: 2rem 0; }
+.event-card { background: #f5f5f5; padding: 1rem; border-radius: 10px; width: 250px; text-align: center; transition: transform 0.3s; }
+.event-card:hover { transform: translateY(-5px); }
+.event-card img { width: 100%; border-radius: 10px; margin-bottom: 1rem; }
+
+/* Team */
+.team-cards { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; padding: 2rem 0; }
+.team-card { text-align: center; width: 200px; }
+.team-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+
+/* Recruitment Form */
+.recruit-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: auto; }
+.recruit-form input, .recruit-form textarea { padding: 0.7rem; border-radius: 5px; border: 1px solid #ccc; width: 100%; }
+.recruit-form button { cursor: pointer; }
+
+/* Contact */
+.contact-details { text-align: center; padding: 2rem; }
+.contact-details .socials a { margin: 0 0.5rem; text-decoration: none; color: #00796b; }
+
+/* Footer */
+footer { text-align: center; padding: 1rem; background: #f5f5f5; }
+
+/* Responsive */
+@media(max-width: 768px) {
+    .navbar .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 70px; left: 0; background: #fff; }
+    .navbar .nav-links.active { display: flex; }
+    .hamburger { display: flex; }
+    .hero, .about-container { flex-direction: column; text-align: center; }
+}
