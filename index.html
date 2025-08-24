@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Cell IGDTUW</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>E-Cell - Innovate, Create and Grow</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
@@ -13,10 +12,16 @@
       href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <div id="navbar-placeholder">
+    <header>
       <div class="head-nav">
         <div class="logo">
           <img id="logo" src="logo.jpeg" />
@@ -25,48 +30,46 @@
         <navbar>
           <span id="navbar-overlay">
             <div class="container-nav">
-              <div class="about-us">About Us</div>
-              <div class="our-team">Our Team</div>
-              <div class="past-events">Our Events</div>
-              <div class="contact-us">
+              <div class="navhead about-us" href="#about-text">About Us</div>
+              <div class="navhead our-team">Our Team</div>
+              <div class="navhead past-events">Our Events</div>
+              <div class="navhead blogs">Blogs</div>
+              <div class="navhead contact-us">
                 <button class="button-contact">Contact Us</button>
               </div>
             </div>
           </span>
         </navbar>
       </div>
-    </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="hero-text">
-        <h1>Welcome to E-Cell IGDTUW</h1>
-        <p>Innovating, Connecting, Inspiring Entrepreneurship</p>
-        <a href="#recruitment" class="btn">Join Us</a>
-      </div>
-      <div class="hero-image">
-        <img src="assets/hero.png" alt="Hero Image" />
-      </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section class="about" id="about">
-      <div class="about-container">
-        <div class="about-text">
-          <h2>About Us</h2>
+    <div class="about-text">
+      <img class="aboutpic" src="aboutpic.jpg" />
+      <div class="overlay">
+        <div id="ryetext">E-Cell IGDTUW</div>
+        <div style="font-size: 1.25rem; width: 50%; color: rgb(187, 182, 176)">
           <p>
-            E-Cell IGDTUW fosters entrepreneurship, innovation, and creative
-            thinking among students. We organize events, workshops, and
-            mentoring programs to help students grow and connect with industry
-            experts.
+            The Entrepreneurship Cell of IGDTUW is a student-driven initiative
+            that fosters innovation, creativity, and leadership. It provides a
+            platform for budding entrepreneurs to explore ideas, build ventures,
+            and connect with mentors and industry leaders. With events,
+            workshops, and competitions, E-Cell IGDTUW empowers students to
+            transform vision into impactful action.
           </p>
-        </div>
-        <div class="about-image">
-          <img src="assets/about.png" alt="About E-Cell" />
+          <br />
+          <div>
+            <button
+              class="button-join"
+              href="#recruitment"
+              style="margin-right: 1rem"
+            >
+              Recruitment Form
+            </button>
+            <button class="button-join">Join for Updates</button>
+          </div>
         </div>
       </div>
-    </section>
-
+    </div>
     <!-- Events Section -->
     <section class="events" id="events">
       <h2>Our Events</h2>
@@ -144,3 +147,37 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+<!-- Hero Section
+    <section class="hero" id="hero">
+      <div class="hero-text">
+        <h1>Welcome to E-Cell IGDTUW</h1>
+        <p>Innovating, Connecting, Inspiring Entrepreneurship</p>
+        <a href="#recruitment" class="btn">Join Us</a>
+      </div>
+      <div class="hero-image">
+        <img src="assets/hero.png" alt="Hero Image" />
+      </div>
+    </section> -->
+
+<!-- About Us Section
+    <section class="about" id="about">
+      <div class="about-container">
+        <div class="about-text">
+          <h2>About Us</h2>
+          <p>
+            E-Cell IGDTUW fosters entrepreneurship, innovation, and creative
+            thinking among students. We organize events, workshops, and
+            mentoring programs to help students grow and connect with industry
+            experts.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="assets/about.png" alt="About E-Cell" />
+        </div>
+      </div>
+    </section>
+
+
+  </body>
+</html> -->
