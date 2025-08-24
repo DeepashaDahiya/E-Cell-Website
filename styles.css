@@ -6,7 +6,37 @@
 H1 {
   font-family: "Crimson Text", sans-serif;
 }
+/*  */
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #040000;
+  font-size: 4rem;
+}
 
+.scroll-text {
+  color: white;
+  display: inline-block;
+  padding-right: 2rem;
+  animation: scroll-left 15s linear infinite;
+}
+
+.scroll-wrapper {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/*  */
 .logo {
   height: 70px;
   margin-left: 20px;
@@ -19,6 +49,7 @@ H1 {
 #logo-text {
   font-family: "Fredericka the Great", sans-serif;
   font-size: larger;
+  margin-left: 0.5rem;
   text-align: center;
   vertical-align: middle;
   justify-content: center;
@@ -83,13 +114,11 @@ body {
 
 .aboutpic {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   display: block;
-  border-radius: 12px; /* optional styling */
 }
 
 .overlay {
-  margin-top: 3rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -113,14 +142,27 @@ body {
 .button-join {
   border-radius: 20px; /* Rounded corners */
   border: none;
+  background-color: #25d366;
   padding: 10px 24px; /* More breathing space */
-  background-color: #d9d9d9; /* Same grey background */
+  /* background-color: #d9d9d9; Same grey background */
   font-size: 20px;
   font-family: "Crimson Text", serif;
   cursor: pointer;
   /* color: white; */
 }
+.recruit {
+  border-radius: 20px; /* Rounded corners */
+  border: none;
+  padding: 10px 24px; /* More breathing space */
+  background-color: #d9d9d9; /*Same grey background */
+  font-size: 20px;
+  font-family: "Crimson Text", serif;
+  cursor: pointer;
+}
 
+.button-join:hover {
+  background: #128c7e;
+}
 .navhead {
   cursor: pointer;
 }
@@ -187,8 +229,7 @@ body {
 }
 .about-text {
   flex: 1;
-  min-width: 300px;
-  padding: 1rem;
+  /* min-width: 300px; */
 }
 .about-image {
   flex: 1;
