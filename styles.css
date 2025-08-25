@@ -6,7 +6,37 @@
 H1 {
   font-family: "Crimson Text", sans-serif;
 }
+/*  */
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #040000;
+  font-size: 4rem;
+}
 
+.scroll-text {
+  color: white;
+  display: inline-block;
+  padding-right: 2rem;
+  animation: scroll-left 15s linear infinite;
+}
+
+.scroll-wrapper {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/*  */
 .logo {
   height: 70px;
   margin-left: 20px;
@@ -19,6 +49,7 @@ H1 {
 #logo-text {
   font-family: "Fredericka the Great", sans-serif;
   font-size: larger;
+  margin-left: 0.5rem;
   text-align: center;
   vertical-align: middle;
   justify-content: center;
@@ -46,6 +77,21 @@ H1 {
   gap: 50px; /* evenly spaced items */
 }
 
+<<<<<<< HEAD
+=======
+.our-team {
+  text-decoration: none;   /* removes underline */
+  color: #f5f5f5;          /* off-white color */
+  font-family: 'Crimson Text', serif; /* optional: match page font */
+  font-weight: 600;         /* optional: bold for better visibility */
+}
+
+/* Optional: add hover effect */
+.our-team:hover {
+  color: #ffd166;           /* change color slightly on hover */
+  text-decoration: none;    /* keep underline removed */
+}
+>>>>>>> 1db41af88185b7dfaf13af8387a6caf7db699f69
 
 body {
   width: 100%;
@@ -62,6 +108,13 @@ body {
   font-family: "Crimson Text", serif;
   cursor: pointer;
 }
+
+.button-contact:hover {
+  background: #ffd166;     /* accent color on hover */
+  color: #111;             /* keep text readable */
+  transform: translateY(-1px);  /* slight lift effect */
+}
+
 .navbar-overlay {
   opacity: 50%;
 }
@@ -84,13 +137,11 @@ body {
 
 .aboutpic {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   display: block;
-  border-radius: 12px; /* optional styling */
 }
 
 .overlay {
-  margin-top: 3rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -114,14 +165,27 @@ body {
 .button-join {
   border-radius: 20px; /* Rounded corners */
   border: none;
+  background-color: #25d366;
   padding: 10px 24px; /* More breathing space */
-  background-color: #d9d9d9; /* Same grey background */
+  /* background-color: #d9d9d9; Same grey background */
   font-size: 20px;
   font-family: "Crimson Text", serif;
   cursor: pointer;
   /* color: white; */
 }
+.recruit {
+  border-radius: 20px; /* Rounded corners */
+  border: none;
+  padding: 10px 24px; /* More breathing space */
+  background-color: #d9d9d9; /*Same grey background */
+  font-size: 20px;
+  font-family: "Crimson Text", serif;
+  cursor: pointer;
+}
 
+.button-join:hover {
+  background: #128c7e;
+}
 .navhead {
   cursor: pointer;
 }
@@ -188,8 +252,7 @@ body {
 }
 .about-text {
   flex: 1;
-  min-width: 300px;
-  padding: 1rem;
+  /* min-width: 300px; */
 }
 .about-image {
   flex: 1;
@@ -233,17 +296,7 @@ body {
   justify-content: center;
   padding: 2rem 0;
 }
-.team-card {
-  text-align: center;
-  width: 200px;
-}
-.team-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
+
 
 /* Recruitment Form */
 .recruit-form {
@@ -357,3 +410,5 @@ footer {
     gap: 6px;            /* smaller gap for mobile */
   }
 }
+
+
