@@ -8,6 +8,7 @@
   <!-- Google Font (cute but clean) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
+
   <style>
     :root{
       --bg:#0b0b0b;
@@ -46,15 +47,17 @@
       display:flex; align-items:center; gap:10px;
       font-weight:700; letter-spacing:.3px;
     }
-    .brand img{width:34px; height:34px; border-radius:8px; object-fit:cover}
+    .brand img{width:70px; height:70px; border-radius:8px; margin-top:6px; object-fit:cover}
     .brand span{font-size:1.05rem}
     nav a{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text); text-decoration:none; font-weight:600;
       margin-left:18px; padding:8px 12px; border-radius:12px;
       transition:transform .15s ease, background .15s ease, color .15s ease;
     }
-    nav a:hover{background:rgba(255,255,255,.06); transform:translateY(-1px)}
-    nav a.active{background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#111; }
+    nav a:hover{background:rgba(255,255,255,.06);border-radius: 20px; transform:translateY(-1px)}
+    nav a.active{font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f5f5f5;border-radius: 20px; color:#111;padding: 8px 16px; }
 
     /* ---------- Hero ---------- */
     .hero{
@@ -191,22 +194,22 @@
        Put member photos in /team/ (e.g., team/deepasha.jpg).
        Tip: use square images for best results. */
     const teamMembers = [
-      { name: "Deepasha Dahiya", role: "Web-Dev Lead", img: "team/deepasha.jpg" },
-      { name: "Aarushi Mehta", role: "President", img: "team/aarushi.jpg" },
-      { name: "Rohan Verma", role: "Vice President", img: "team/rohan.jpg" },
-      { name: "Isha Kapoor", role: "Design Lead", img: "team/isha.jpg" },
-      { name: "Priya Singh", role: "Marketing Lead", img: "team/priya.jpg" },
-      { name: "Tanya Gupta", role: "Events Head", img: "team/tanya.jpg" },
-      { name: "Ananya Rao", role: "Content Lead", img: "team/ananya.jpg" },
-      { name: "Harshita Jain", role: "Sponsorships", img: "team/harshita.jpg" },
-      { name: "Simran Kaur", role: "Outreach", img: "team/simran.jpg" },
-      { name: "Nidhi Sharma", role: "Community", img: "team/nidhi.jpg" },
-      { name: "Aditi Bose", role: "PR & Media", img: "team/aditi.jpg" },
-      { name: "Kritika Malhotra", role: "Design", img: "team/kritika.jpg" },
-      { name: "Sana Khan", role: "Tech", img: "team/sana.jpg" },
-      { name: "Ritika Arora", role: "Operations", img: "team/ritika.jpg" },
-      { name: "Mehak Choudhary", role: "Logistics", img: "team/mehak.jpg" },
-      { name: "Shreya Taneja", role: "Finance", img: "team/shreya.jpg" },
+      { name: "Deepasha Dahiya", role: "Web-Dev Lead", img: "team-photos/deepasha.png" },
+      { name: "Aarushi Mehta", role: "President", img: "team-photos/aarushi.jpg" },
+      { name: "Rohan Verma", role: "Vice President", img: "team-photos/rohan.jpg" },
+      { name: "Isha Kapoor", role: "Design Lead", img: "team-photos/isha.jpg" },
+      { name: "Priya Singh", role: "Marketing Lead", img: "team-photos/priya.jpg" },
+      { name: "Tanya Gupta", role: "Events Head", img: "team-photos/tanya.jpg" },
+      { name: "Ananya Rao", role: "Content Lead", img: "team-photos/ananya.jpg" },
+      { name: "Harshita Jain", role: "Sponsorships", img: "team-photos/harshita.jpg" },
+      { name: "Simran Kaur", role: "Outreach", img: "team-photos/simran.jpg" },
+      { name: "Nidhi Sharma", role: "Community", img: "team-photos/nidhi.jpg" },
+      { name: "Aditi Bose", role: "PR & Media", img: "team-photos/aditi.jpg" },
+      { name: "Kritika Malhotra", role: "Design", img: "team-photos/kritika.jpg" },
+      { name: "Sana Khan", role: "Tech", img: "team-photos/sana.jpg" },
+      { name: "Ritika Arora", role: "Operations", img: "team-photos/ritika.jpg" },
+      { name: "Mehak Choudhary", role: "Logistics", img: "team-photos/mehak.jpg" },
+      { name: "Shreya Taneja", role: "Finance", img: "team-photos/shreya.jpg" },
       { name: "Avantika Tyagi", role: "Editorial", img: "team/avantika.jpg" },
       { name: "Neha Yadav", role: "Community", img: "team/neha.jpg" },
       { name: "Ira Bansal", role: "Events", img: "team/ira.jpg" },
