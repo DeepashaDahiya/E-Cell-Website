@@ -76,7 +76,15 @@ H1 {
   white-space: nowrap; /* stops "About Us" from wrapping */
   gap: 50px; /* evenly spaced items */
 }
+a {
+  text-decoration: none; /* removes underline */
+  color: inherit; /* makes text inherit the parent color */
+}
 
+/* optional: if you want a specific color instead of inherit */
+a.navhead {
+  color: white; /* or white, or any color you like */
+}
 .our-team {
   text-decoration: none; /* removes underline */
   color: #f5f5f5; /* off-white color */
