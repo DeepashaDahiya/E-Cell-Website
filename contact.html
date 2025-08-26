@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
     <!-- Font Awesome for Social Icons -->
+     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap" rel="stylesheet" />
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -21,6 +25,17 @@
         height: 100vh;
         background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
       }
+
+      /* Apply index.html fonts to contact page */
+body, input, textarea, button, h1, h2, h3, p, a {
+    font-family: 'Crimson Text', 'Libre Baskerville', serif;
+}
+
+/* Optional: make headings a bit bolder if needed */
+h1, h2, h3 {
+    font-family: 'Fredericka the Great', 'Crimson Text', serif;
+}
+
 
       .contact-container {
         position: relative;
@@ -81,8 +96,25 @@
 
       .social-icons a:hover {
         transform: scale(1.2);
-        color: #00acee; /* highlight on hover */
+        color: #ffd166; /* highlight on hover */
       }
+
+         /* Top-right X button */
+    .contact-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #f5f5f5;
+      transition: transform 0.2s ease, color 0.2s ease;
+      z-index: 10;
+    }
+    .contact-close:hover {
+      color: #ffd166;
+      transform: scale(1.2);
+    }
 
       /* Responsive */
       @media (max-width: 768px) {
@@ -98,19 +130,20 @@
   </head>
   <body>
     <div class="contact-container">
+      <div class="contact-close" onclick="location.href='index.html'">&times;</div>
       <h1>Get in Touch</h1>
       <p>We'd love to hear from you! Connect with us on any platform below:</p>
       <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="mailto:example@email.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.instagram.com/ecell.igdtuw/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/ecelligdtuw/posts/?feedView=all"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&to=Ecell.igdtu@gmail.com" target="_blank">
+  <i class="fas fa-envelope"></i>
+</a>
+
       </div>
       <!-- Message Form -->
       <form
-        action="mailto:ecell@igdtuw.ac.in"
+        action="https://mail.google.com/mail/?view=cm&to=Ecell.igdtu@gmail.com"
         method="post"
         enctype="text/plain"
         style="margin-top: 30px; z-index: 1; position: relative"
@@ -161,7 +194,7 @@
             padding: 10px 20px;
             border: none;
             border-radius: 10px;
-            background: #00acee;
+            background: #ffd166;
             color: #fff;
             cursor: pointer;
             transition: 0.3s;
@@ -175,9 +208,9 @@
       <p style="margin-top: 20px; color: #bbb; z-index: 1; position: relative">
         Or contact our Sponsorship Lead:
         <a
-          href="tel:+911234567890"
-          style="color: #00acee; text-decoration: none"
-          >+91 12345 67890</a
+          href="tel:+919810823235"
+          style="color: #ffd166; text-decoration: none"
+          >+91 98108 23235</a
         >
       </p>
     </div>
