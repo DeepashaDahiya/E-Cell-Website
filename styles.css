@@ -342,6 +342,9 @@ body {
 }
 
 /* Contact */
+.contact {
+  color: white;
+}
 .contact-details {
   text-align: center;
   padding: 2rem;
@@ -357,6 +360,25 @@ footer {
   text-align: center;
   padding: 1rem;
   background: #f5f5f5;
+}
+footer {
+  background: #111;
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+footer a {
+  color: #00796b; /* highlight links */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact {
+  margin-bottom: 0.5rem;
 }
 
 /* Responsive */
@@ -677,8 +699,13 @@ footer {
 
 /* Nav: keep your desktop layout; shrink spacing + allow wrapping on small screens */
 @media (max-width: 1100px) {
-  .head-nav { font-size: 18px; padding: 0 12px; }
-  .container-nav { gap: clamp(12px, 4vw, 30px); }
+  .head-nav {
+    font-size: 18px;
+    padding: 0 12px;
+  }
+  .container-nav {
+    gap: clamp(12px, 4vw, 30px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -687,41 +714,58 @@ footer {
     padding: 10px 12px;
     flex-wrap: wrap;
   }
-  .logo { height: 56px; margin-left: 12px; }
+  .logo {
+    height: 56px;
+    margin-left: 12px;
+  }
   .container-nav {
-    position: static;          /* stop absolute overflow on mobile */
-    transform: none;           /* remove translate hack on mobile */
+    position: static; /* stop absolute overflow on mobile */
+    transform: none; /* remove translate hack on mobile */
     left: auto;
     width: 100%;
     justify-content: center;
-    flex-wrap: wrap;           /* allow links to wrap to new line */
+    flex-wrap: wrap; /* allow links to wrap to new line */
     gap: 14px;
     margin-top: 6px;
   }
-  .button-contact { font-size: 16px; padding: 8px 16px; }
+  .button-contact {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
 }
 
 /* About hero overlay: keep look, just scale safely */
 #ryetext {
-  font-size: clamp(2rem, 8vw, 5rem);  /* was fixed 96px/5rem */
+  font-size: clamp(2rem, 8vw, 5rem); /* was fixed 96px/5rem */
   line-height: 1.05;
 }
-.overlay { padding: clamp(12px, 3vw, 20px); }
+.overlay {
+  padding: clamp(12px, 3vw, 20px);
+}
 
 /* Your overlay paragraph block had inline width:50% in HTML.
    On phones make it full width (override inline via !important). */
 @media (max-width: 768px) {
-  .overlay > div { width: 100% !important; }
+  .overlay > div {
+    width: 100% !important;
+  }
 }
 
 /* Buttons scale nicely */
-.button-join, .recruit, .btn {
+.button-join,
+.recruit,
+.btn {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   padding: clamp(8px, 1.8vw, 12px) clamp(16px, 3.2vw, 24px);
 }
 
 /* Generic image safety */
-img, video { max-width: 100%; height: auto; display: block; }
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* -----------------------------------------
    EVENTS – you had two .event-card patterns.
@@ -729,30 +773,50 @@ img, video { max-width: 100%; height: auto; display: block; }
    ----------------------------------------- */
 
 /* Light events grid (".event-cards") keeps its look */
-.event-cards { padding: 2rem 1rem; }
+.event-cards {
+  padding: 2rem 1rem;
+}
 .event-cards .event-card {
   background: #f5f5f5;
   color: #000;
   width: min(280px, 100%);
 }
-.event-cards .event-card img { border-radius: 10px; }
-.event-cards .event-card:hover { transform: translateY(-5px); }
+.event-cards .event-card img {
+  border-radius: 10px;
+}
+.event-cards .event-card:hover {
+  transform: translateY(-5px);
+}
 
 @media (max-width: 640px) {
-  .event-cards { gap: 1rem; }
-  .event-cards .event-card { width: 100%; }
+  .event-cards {
+    gap: 1rem;
+  }
+  .event-cards .event-card {
+    width: 100%;
+  }
 }
 
 /* Dynamic black cards (".event-grid") — keep effect on desktop, tame on touch */
-@media (hover:hover) {
-  .event-grid:hover .event-card { transform: scale(0.95); }
-  .event-card:hover { width: 450px; transform: scale(1.05); }
+@media (hover: hover) {
+  .event-grid:hover .event-card {
+    transform: scale(0.95);
+  }
+  .event-card:hover {
+    width: 450px;
+    transform: scale(1.05);
+  }
 }
 
 /* On touch devices, disable hover-expansion that causes layout jumps */
-@media (hover:none) {
-  .event-grid:hover .event-card { transform: none; }
-  .event-card:hover { width: 100%; transform: none; }
+@media (hover: none) {
+  .event-grid:hover .event-card {
+    transform: none;
+  }
+  .event-card:hover {
+    width: 100%;
+    transform: none;
+  }
 }
 
 /* Tablet layout for dynamic cards */
@@ -764,7 +828,7 @@ img, video { max-width: 100%; height: auto; display: block; }
   }
   .event-grid .event-card {
     width: calc(50% - 8px);
-    height: 360px;              /* a bit shorter so text fits */
+    height: 360px; /* a bit shorter so text fits */
   }
 }
 
@@ -774,40 +838,67 @@ img, video { max-width: 100%; height: auto; display: block; }
     width: 100%;
     height: 320px;
   }
-  .initial-info { left: 16px; right: 16px; }
+  .initial-info {
+    left: 16px;
+    right: 16px;
+  }
 }
 
 @media (max-width: 420px) {
-  .event-grid .event-card { height: 280px; }
-  .initial-info h3 { font-size: 1.25rem; }
-  .detailed-info h3 { font-size: 1.2rem; }
-  .detailed-info p  { font-size: 0.95rem; }
+  .event-grid .event-card {
+    height: 280px;
+  }
+  .initial-info h3 {
+    font-size: 1.25rem;
+  }
+  .detailed-info h3 {
+    font-size: 1.2rem;
+  }
+  .detailed-info p {
+    font-size: 0.95rem;
+  }
 }
 
 /* Gallery: stack columns on smaller screens */
 @media (max-width: 1024px) {
-  .gallery-flex { flex-direction: column; max-width: 100%; padding: 0 12px; }
+  .gallery-flex {
+    flex-direction: column;
+    max-width: 100%;
+    padding: 0 12px;
+  }
 }
 @media (max-width: 600px) {
-  .gallery-flex .column { gap: 6px; }
-  .gallery-flex .item { aspect-ratio: 3 / 2; }
+  .gallery-flex .column {
+    gap: 6px;
+  }
+  .gallery-flex .item {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 /* Hero & section type tweaks for tiny screens only */
 @media (max-width: 480px) {
-  .hero-text h1 { font-size: 1.6rem; }
-  .hero-text p  { font-size: 1rem; }
-  .events h2    { font-size: 2rem; }
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  .events h2 {
+    font-size: 2rem;
+  }
 }
 
 /* Safety: avoid horizontal scrolling from any wide child */
-body { overflow-x: hidden; }
+body {
+  overflow-x: hidden;
+}
 
 /* Mobile-specific fixes */
 @media (max-width: 768px) {
   /* Push running text below button */
   .running-text {
-    order: 2;       /* comes after button */
+    order: 2; /* comes after button */
     margin-top: 15px;
   }
 
@@ -833,7 +924,7 @@ body { overflow-x: hidden; }
 @media (max-width: 768px) {
   /* Move running text below the buttons */
   .running-text {
-    order: 3;   /* push it below */
+    order: 3; /* push it below */
     margin-top: 1rem;
   }
 
@@ -857,9 +948,9 @@ body { overflow-x: hidden; }
    ========================= */
 
 .about-text {
-  position: relative;        /* already used, but ensure it's relative */
+  position: relative; /* already used, but ensure it's relative */
   width: 100%;
-  overflow: hidden;          /* hide any edges when image scales */
+  overflow: hidden; /* hide any edges when image scales */
   /* container height adapts to viewport but stays reasonable */
   min-height: clamp(300px, 50vh, 800px);
 }
@@ -867,30 +958,32 @@ body { overflow-x: hidden; }
 /* Make the <img class="aboutpic"> cover the container like background-size:cover */
 .aboutpic {
   position: absolute;
-  inset: 0;                  /* top:0; right:0; bottom:0; left:0; */
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* fills container, cropping as needed (natural "zoom" feel) */
-  object-position: center;   /* center the focal area */
+  object-fit: cover; /* fills container, cropping as needed (natural "zoom" feel) */
+  object-position: center; /* center the focal area */
   display: block;
 }
 
 /* Keep the overlay sizing in sync (won't move layout) */
 .overlay {
-  position: absolute;        /* keeps overlay on top of image */
+  position: absolute; /* keeps overlay on top of image */
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* adjust if you want top/center/bottom */
-  align-items: flex-start;   /* keep your desktop alignment */
+  justify-content: center; /* adjust if you want top/center/bottom */
+  align-items: flex-start; /* keep your desktop alignment */
   padding: clamp(12px, 3.5vw, 40px);
 }
 
 /* Mobile tweaks so overlay text doesn't crowd the edges */
 @media (max-width: 768px) {
-  .about-text { min-height: clamp(220px, 45vh, 500px); }
+  .about-text {
+    min-height: clamp(220px, 45vh, 500px);
+  }
   .overlay {
-    align-items: center;     /* center overlay content on narrow screens */
+    align-items: center; /* center overlay content on narrow screens */
     text-align: center;
     padding: 18px;
   }

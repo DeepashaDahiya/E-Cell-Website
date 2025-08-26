@@ -5,12 +5,20 @@ document.querySelector(".button-join").onclick = function () {
 };
 
 // Hamburger toggle
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+// const hamburger = document.querySelector(".hamburger");
+// const navLinks = document.querySelector(".nav-links");
+// hamburger.addEventListener("click", () => {
+//   navLinks.classList.toggle("active");
+// });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const recruit = document.querySelector(".recruit");
+  if (recruit) {
+    recruit.addEventListener("click", () => {
+      window.alert("Not active yet");
+    });
+  }
+});
 // Load navbar from components folder
 
 // Smooth scroll
