@@ -10,12 +10,14 @@ document.querySelector(".button-join").onclick = function () {
 // hamburger.addEventListener("click", () => {
 //   navLinks.classList.toggle("active");
 // });
-
+const form =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfHy1giYR_NxI9f9oWHrUkJ43KoZj_oQaZaX-LTN3iovimyNw/viewform";
 document.addEventListener("DOMContentLoaded", () => {
   const recruit = document.querySelector(".recruit");
   if (recruit) {
     recruit.addEventListener("click", () => {
-      window.alert("Not active yet");
+      window.open(form, "_blank");
+      // window.alert("Not active yet");
     });
   }
 });
