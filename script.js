@@ -5,6 +5,12 @@ document.querySelector(".button-join").onclick = function () {
 };
 
 // Hamburger toggle
+
+  function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("active");
+  }
+
+
 // const hamburger = document.querySelector(".hamburger");
 // const navLinks = document.querySelector(".nav-links");
 // hamburger.addEventListener("click", () => {

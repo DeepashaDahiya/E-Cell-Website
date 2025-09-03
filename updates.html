@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Cell IGDTUW | Updates</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    /* Apply Poppins everywhere */
+    * {
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #000; /* sleek black background */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* Back button */
+    .back-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.5rem;
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 0.8rem;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #f5f5f5;
+      margin-top: 3rem; /* so it doesn’t clash with back arrow */
+      font-weight: 600;
+    }
+
+    .updates {
+      width: 100%;
+      max-width: 700px; /* limit width for readability */
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .update-item {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .update-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+
+    .update-number {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffcc00; /* highlight number */
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .update-title {
+      font-size: 1.25rem;
+      margin: 0.2rem 0;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .update-desc {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .update-title {
+        font-size: 1.1rem;
+      }
+      .update-desc {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">&#8592;</a>
+
+  <h1>Latest Updates</h1>
+
+  <div class="updates">
+    <div class="update-item">
+      <span class="update-number">1.</span>
+      <div class="update-title">Recruitment Results</div>
+      <div class="update-desc">Coming up soon...</div>
+    </div>
+
+    <div class="update-item">
+      <span class="update-number">2.</span>
+      <div class="update-title">Upcoming Workshop</div>
+      <div class="update-desc">Stay tuned for details about our next entrepreneurship workshop.</div>
+    </div>
+
+    <div class="update-item">
+      <span class="update-number">3.</span>
+      <div class="update-title">Collaboration</div>
+      <div class="update-desc">We’re collaborating with industry mentors to bring you exciting events.</div>
+    </div>
+  </div>
+</body>
+</html>

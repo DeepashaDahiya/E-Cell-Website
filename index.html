@@ -35,6 +35,7 @@
               <a class="navhead past-events" href="events.html">Our Events</a>
               <a class="navhead blogs" href="blogs.html">Blogs</a>
               <a class="navhead gallery" href="gallery.html">Gallery</a>
+              <a class="navhead updates" href="updates.html">Updates</a>
 
               <div class="contact-us">
                 <button
@@ -47,6 +48,29 @@
             </div>
           </span>
         </nav>
+        <!-- HAMBURGER (only shows on mobile) -->
+<div class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- SLIDING MENU (hidden initially) -->
+<!-- SLIDING MENU (with back arrow) -->
+<div id="mobileMenu" class="mobile-menu">
+  <!-- Back arrow -->
+  <a href="index.html" class="back-to-home">Home</a>
+
+  <!-- Links -->
+  <a class="navhead" href="index.html">About Us</a>
+  <a class="navhead" href="our-team.html">Our Team</a>
+  <a class="navhead" href="events.html">Our Events</a>
+  <a class="navhead" href="blogs.html">Blogs</a>
+  <a class="navhead" href="gallery.html">Gallery</a>
+  <a class="navhead" href="contact.html">Contact Us</a>
+  <a class="navhead" href="updates.html">Updates</a>
+</div>
+
       </div>
     </header>
 
@@ -65,10 +89,12 @@
           </p>
           <br />
           <div>
-            <button class="recruit" style="margin-right: 1rem">
-              Recruitment Form
-            </button>
-            <button class="button-join">Join for Updates</button>
+            
+              <button class="recruit" style="margin-right: 1rem">
+                Recruitment Form
+              </button>
+              <button class="button-join">Join for Updates</button>
+            
           </div>
         </div>
       </div>

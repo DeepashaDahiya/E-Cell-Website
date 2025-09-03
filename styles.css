@@ -692,10 +692,107 @@ footer a:hover {
    Append to the very end of your CSS file
    ========================================= */
 
-/* Scale marquee text on small screens */
-.scroll-container {
-  font-size: clamp(1.25rem, 6vw, 4rem);
+   /* Hamburger */
+.hamburger {
+  display: none; /* default hidden */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+  margin-right: 16px;
 }
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Mobile Sidebar */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* hidden */
+  width: 250px;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+.mobile-menu a,
+.mobile-menu button {
+  font-size: 18px;
+  color: white;
+  text-align: left;
+  text-decoration: none;
+}
+.mobile-menu.active {
+  right: 0;
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .container-nav {
+    display: none; /* hide desktop nav */
+  }
+}
+
+@media (max-width: 900px) {
+  .about-text {
+    margin-top: 0.1px; /* adjust this number to match your navbar height */
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-container {
+    display: block;
+    margin-top: 180px;   /* pushes it below buttons */
+    position: relative; /* ensures it respects the flow */
+    z-index: 1;
+    font-size: clamp(1.25rem, 6vw, 4rem);
+  }
+}
+
+
+
+/* Mobile: stack properly */
+@media (max-width: 768px) {
+  .recruitment-btns {
+    margin-bottom: 6rem; /* space between buttons & text */
+    text-align: center; /* center buttons */
+  }
+
+}
+
+@media (max-width: 768px) {
+  .overlay #ryetext {
+    margin-top: 90px; /* adjust until it clears the navbar */
+  }
+}
+
+@media (max-width: 768px) {
+  .button-block {
+    text-align: center;
+    margin-top: 8rem;
+    margin-bottom: 8rem; /* ensures gap before scroll text */
+  }
+
+  .scroll-container {
+    margin-top: 0; /* no extra pushing needed */
+     position: relative !important;
+  }
+}
+
+
+
 
 /* Nav: keep your desktop layout; shrink spacing + allow wrapping on small screens */
 @media (max-width: 1100px) {
