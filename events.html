@@ -1,54 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Cell - Innovate, Create and Grow</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <div class="head-nav">
-        <div class="logo">
-          <img id="logo" src="logo.jpeg" />
-          <div id="logo-text">E-Cell</div>
-        </div>
-        <nav>
-          <span id="navbar-overlay">
-            <div class="container-nav">
-              <a class="navhead about-us" href="index.html">About Us</a>
-              <a class="navhead our-team" href="our-team.html">Our Team</a>
-              <a class="navhead past-events" href="events.html">Our Events</a>
-              <a class="navhead blogs" href="blogs.html">Blogs</a>
-              <a class="navhead gallery" href="gallery.html">Gallery</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Cell - Orientation'25</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:wght@400;600&family=Crimson+Text:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-              <div class="contact-us">
-                <button
-                  class="button-contact"
-                  onclick="location.href='contact.html'"
-                >
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </span>
-        </nav>
+    /* E-Cell text font now matches Gallery page */
+    #logo-text {
+      font-family: "Fredericka the Great", cursive;
+      font-size: 1.8rem;
+      font-weight: normal;
+      color: white;
+    }
+
+    .events-container {
+      max-width: 1200px;
+      margin: 80px auto 40px;
+      padding: 20px;
+    }
+
+    .events-container h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      font-family: "Crimson Text", serif;
+      letter-spacing: 2px;
+      color: #f1f1f1;
+    }
+
+    .event-folder {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 15, 15, 0.95), rgba(35, 35, 35, 0.95));
+      padding: 70px 20px;
+      min-height: 380px;
+      max-width: 900px;
+      margin: 0 auto 24px;
+      text-align: center;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.28s, box-shadow 0.28s;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-folder::before {
+      content: "";
+      background: url("https://i.postimg.cc/9F0h1dsC/IMG-9223.avif") center/cover no-repeat;
+      opacity: 0.22;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 15px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .event-folder span {
+      position: relative;
+      z-index: 1;
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 4px 16px rgba(0,0,0,0.75);
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.25);
+    }
+
+    .event-folder:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75);
+    }
+
+    .event-content {
+      display: none;
+      margin-top: 25px;
+      text-align: center;
+    }
+    .event-content.open { display: block; }
+
+    .event-description {
+      font-family: "Crimson Text", serif;
+      font-size: 1.25rem;
+      line-height: 1.9;
+      color: #e6e6e6;
+      margin-bottom: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .event-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
+    .event-images img {
+      width: 360px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .event-images img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85);
+    }
+
+    @media (max-width: 768px) {
+      .event-folder {
+        min-height: 280px;
+        max-width: 100%;
+        padding: 50px 15px;
+      }
+      .event-folder span { font-size: 1.4rem; }
+      .event-images img { width: 100%; height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="head-nav">
+      <div class="logo">
+        <img id="logo" src="logo.jpeg" />
+        <div id="logo-text">E-Cell</div>
       </div>
-    </header>
-    <h1 style="color: white; text-align: center">Coming soon!</h1>
-  </body>
+      <nav>
+        <span id="navbar-overlay">
+          <div class="container-nav">
+            <a class="navhead about-us" href="index.html">About Us</a>
+            <a class="navhead our-team" href="our-team.html">Our Team</a>
+            <a class="navhead past-events" href="events.html">Our Events</a>
+            <a class="navhead blogs" href="blogs.html">Blogs</a>
+            <a class="navhead gallery" href="gallery.html">Gallery</a>
+            <div class="contact-us">
+              <button class="button-contact" onclick="location.href='contact.html'">Contact Us</button>
+            </div>
+          </div>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Events Section -->
+  <div class="events-container">
+    <h1>✨ Our Events ✨</h1>
+
+    <div class="event-box">
+      <div class="event-folder" onclick="toggleEvent('orientation')">
+        <span>🥷 Orientation'25</span>
+      </div>
+
+      <div class="event-content" id="orientation">
+        <p class="event-description">
+          We kicked off the new session with our Orientation Program, welcoming
+          fresh minds into the E-Cell family. The event began with an
+          introduction to our club, its vision, and the opportunities it offers
+          for budding entrepreneurs.
+        </p>
+        <p class="event-description">
+          To make the session engaging, we hosted an interactive
+          entrepreneurship game that encouraged creativity, problem-solving,
+          and teamwork. The atmosphere was filled with enthusiasm, curiosity,
+          and the spirit of innovation, setting the perfect tone for the year
+          ahead.
+        </p>
+        <div class="event-images">
+          <img src="https://i.postimg.cc/9F0h1dsC/IMG-9223.avif" alt="Orientation 1" />
+          <img src="https://i.postimg.cc/3wsqjpmr/Scanned-20250828-1901-04.jpg" alt="Orientation 2" />
+          <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="Orientation 3" />
+          <img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="Orientation 4" />
+          <img src="https://i.postimg.cc/hjHShKJP/IMG-9205.avif" alt="Orientation 5" />
+          <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" alt="Orientation 6" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleEvent(id) {
+      const section = document.getElementById(id);
+      section.classList.toggle('open');
+    }
+  </script>
+</body>
 </html>
