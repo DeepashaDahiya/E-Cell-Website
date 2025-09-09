@@ -1,0 +1,544 @@
+  body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            overflow-x: hidden;
+            color: #f3f4f6;
+        }
+
+        
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loader-word {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px #f3f4f6;
+            opacity: 0;
+            position: absolute;
+        }
+
+        .loader-final {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #f3f4f6;
+            opacity: 0;
+            position: absolute;
+        }
+/*  */
+
+.logo {
+  height: 50px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+#logo {
+  height: 80%;
+}
+#logo-text {
+  font-family: "Fredericka the Great", sans-serif;
+  font-size: larger;
+  margin-left: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+/* <!-- ✅ Navbar stays fixed & transparent --> */
+  .head-nav {
+    display: flex;
+    position: fixed; /* was relative */
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    background-color: transparent; /* was black */
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    font-size: 20px;
+    font-family: "Crimson Text", serif;
+    z-index: 1000;
+  }
+  body {
+    padding-top: 70px; /* prevent content hiding under navbar */
+  }
+
+.head-nav {
+  background-color: #000; /* initial black */
+  transition: background-color 0.3s ease;
+  position: fixed; /* keep navbar fixed on top */
+  width: 100%;
+  z-index: 50;
+}
+
+.head-nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.3); /* translucent black */
+  backdrop-filter: blur(8px); /* optional blur effect for modern look */
+}
+
+.container-nav {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translate(-50%, -50%); /* centers both X and Y */
+  white-space: nowrap; /* stops "About Us" from wrapping */
+  gap: 50px; /* evenly spaced items */
+}
+a {
+  text-decoration: none; /* removes underline */
+  color: inherit; /* makes text inherit the parent color */
+}
+
+/* optional: if you want a specific color instead of inherit */
+a.navhead {
+  color: white; /* or white, or any color you like */
+}
+
+.our-team {
+  text-decoration: none; /* removes underline */
+  color: #f5f5f5; /* off-white color */
+  font-family: "Crimson Text", serif; /* optional: match page font */
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  /* font-family: "Crimson Text", serif; */
+}
+
+.button-contact {
+  text-decoration: none;
+  border-radius: 20px; /* Rounded corners */
+  border: none;
+  padding: 10px 24px; /* More breathing space */
+  background-color: #d9d9d9; /* Same grey background */
+  font-size: 20px;
+  font-family: "Crimson Text", serif;
+  cursor: pointer;
+  color: #111;
+}
+
+.button-contact:hover {
+  /* background: #787162; accent color on hover */
+  text-decoration: none;
+  color: #111; /* keep text readable */
+  transform: translateY(-1px); /* slight lift effect */
+}
+
+.navbar-overlay {
+  opacity: 50%;
+}
+/* Base style for navbar links */
+.navhead {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 5px; /* space for the underline */
+}
+
+/* Create the underline */
+.navhead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: white;
+  transition: width 0.3s ease-in-out;
+}
+
+/* On hover, expand the underline */
+.navhead:hover::after {
+  width: 100%;
+}
+
+#ryetext {
+  font-family: "Rye", sans-serif;
+  font-size: 96px;
+  color: white;
+}
+
+.about-text {
+  position: relative;
+  font-family: "Crimson Text", serif;
+}
+
+ /* GSAP Animations */
+.gsap-fade-in {
+opacity: 0;
+transform: translateY(20px);
+}
+.about-text-anim {
+filter: url(#liquify);
+opacity: 0;}
+
+.aboutpic {
+  width: 100%;
+  /* height: auto; */
+  display: block;
+}
+
+/* Mobile Sidebar */
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;          /* hidden by default */
+    width: 70%;            /* adjust width */
+    height: 100vh;
+    background-color: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 60;
+}
+
+.mobile-menu.open {
+    right: 0;              /* slide in */
+}
+
+.mobile-menu a {
+    color: white;
+    margin: 1rem 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
+
+
+/* Show hamburger only on small screens */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .container-nav {
+    display: none; /* hide desktop nav */
+  }
+}
+
+@media (max-width: 900px) {
+  .about-text {
+    margin-top: 0.1px; /* adjust this number to match your navbar height */
+  }
+}
+.sub-text {
+  font-family: 'Playfair Display', serif;
+}
+@media (max-width: 768px) {
+  .scroll-container {
+    display: block;
+    margin-top: 180px;   /* pushes it below buttons */
+    position: relative; /* ensures it respects the flow */
+    z-index: 1;
+    font-size: clamp(1.25rem, 6vw, 4rem);
+  }
+}
+
+
+
+/* Mobile: stack properly */
+@media (max-width: 768px) {
+  .recruitment-btns {
+    margin-bottom: 6rem; /* space between buttons & text */
+    text-align: center; /* center buttons */
+  }
+
+}
+
+@media (max-width: 768px) {
+  .overlay #ryetext {
+    margin-top: 90px; /* adjust until it clears the navbar */
+  }
+}
+
+
+         /* Hero Section */
+        #hero {
+            background-color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .hero-text-anim {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+         #gradient-bg {
+    transition: background 0.2s ease;
+}
+
+/* small styling for the ribbon counters */
+#stats-ribbon .stat-num {
+  will-change: transform, opacity;
+}
+@media (max-width: 640px) {
+  #stats-ribbon .stat-num { font-size: 2.25rem; }
+}
+
+
+        /* Team Section Styles */
+        #team {
+            background-color: #121212;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .team-image-container {
+            position: relative;
+            width: 200%;
+            height: fit-content;
+            max-width: 1000px;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .team-image-bw {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+            border-radius: 1rem;
+        }
+
+        .team-image-color {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .team-image-container:hover .team-image-bw {
+            opacity: 0;
+        }
+
+        .event-card {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+
+        /* Recruitment Form */
+.recruit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+}
+.recruit-form input,
+.recruit-form textarea {
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+.recruit-form button {
+  cursor: pointer;
+}
+
+/* Hero text adjustments */
+.hero-svg-text {
+  font-size: clamp(2rem, 6vw, 6rem);
+}
+
+/* Mobile view override */
+@media (max-width: 768px) {
+  .hero-svg-text {
+    font-size: 7.5rem; /* minimum readable size */
+  }
+}
+  @keyframes drawText {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+        
+        /* Sponsors Section */
+        #sponsors {
+            padding: 4rem 0;
+            background-color: #0a0a0a;
+            overflow: hidden;
+        }
+        
+        /* Ribbon heading */
+.sponsor-ribbon h2 {
+  position: relative;
+}
+
+.ribbon-underline {
+  background-color: #ec4899; /* pink color */
+  height: 4px;
+  width: 0;
+  bottom: -5px;
+  left: 0;
+  position: absolute;
+}
+
+/* Animate underline sliding in from left */
+.sponsor-ribbon h2 span {
+  position: relative;
+  z-index: 10;
+}
+
+.ribbon-animate {
+  animation: ribbonSlide 1s forwards;
+}
+
+@keyframes ribbonSlide {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+#sponsors {
+  background-color: #0a0a0a;
+}
+
+.sponsor-grid img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.sponsor-grid img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.sponsors-animation-container {
+  position: relative;
+  width: 100%;
+  height: 24rem; /* adjust as needed */
+  overflow: hidden;
+}
+
+.sponsor-logo-circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sponsor-logo-circle img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .floating {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .floating-delayed {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .floating-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-fast {
+    animation: float 3s ease-in-out infinite;
+  }
+
+        /* Get In Touch Section */
+        #contact {
+            min-height: 100vh;
+            background-color: #111111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-content {
+            z-index: 10;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+        }
+
+        .social-link {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+
+        /* GSAP Animations */
+        .gsap-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }

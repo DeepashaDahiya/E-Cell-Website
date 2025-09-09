@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Cell - Innovate, Create and Grow</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="head-nav">
+        <div class="logo">
+          <img id="logo" src="logo.jpeg" />
+          <div id="logo-text">E-Cell</div>
+        </div>
+        <nav>
+          <span id="navbar-overlay">
+            <div class="container-nav">
+              <a class="navhead about-us" href="index.html">About Us</a>
+              <a class="navhead our-team" href="our-team.html">Our Team</a>
+              <a class="navhead past-events" href="events.html">Our Events</a>
+              <a class="navhead blogs" href="blogs.html">Blogs</a>
+              <a class="navhead gallery" href="gallery.html">Gallery</a>
+              <a class="navhead updates" href="updates.html">Updates</a>
+
+              <div class="contact-us">
+                <button
+                  class="button-contact"
+                  onclick="location.href='contact.html'"
+                >
+                  Contact Us
+                </button>
+              </div>
+            </div>
+          </span>
+        </nav>
+        <!-- HAMBURGER (only shows on mobile) -->
+<div class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- SLIDING MENU (hidden initially) -->
+<div id="mobileMenu" class="mobile-menu">
+  <!-- Back arrow -->
+  <a href="index.html" class="back-to-home">Home</a>
+
+  <!-- Links -->
+  <a class="navhead" href="index.html">About Us</a>
+  <a class="navhead" href="our-team.html">Our Team</a>
+  <a class="navhead" href="events.html">Our Events</a>
+  <a class="navhead" href="blogs.html">Blogs</a>
+  <a class="navhead" href="gallery.html">Gallery</a>
+  <a class="navhead" href="contact.html">Contact Us</a>
+  <a class="navhead" href="updates.html">Updates</a>
+</div>
+
+      </div>
+    </header>
+
+    <div class="about-text">
+      <img class="aboutpic" src="aboutpic.jpg" />
+      <div class="overlay">
+        <div id="ryetext">E-Cell IGDTUW</div>
+        <div style="font-size: 1.25rem; width: 50%; color: rgb(187, 182, 176)">
+          <p>
+            The Entrepreneurship Cell of IGDTUW is a student-driven initiative
+            that fosters innovation, creativity, and leadership. It provides a
+            platform for budding entrepreneurs to explore ideas, build ventures,
+            and connect with mentors and industry leaders. With events,
+            workshops, and competitions, E-Cell IGDTUW empowers students to
+            transform vision into impactful action.
+          </p>
+          <br />
+          <div>
+            
+              <button class="recruit" style="margin-right: 1rem">
+                Recruitment Form
+              </button>
+              <button class="button-join">Join for Updates</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-container">
+      <div class="scroll-wrapper">
+        <span class="scroll-text">Innovate • Create • Grow • </span>
+        <span class="scroll-text">Innovate • Create • Grow • </span>
+        <span class="scroll-text">Innovate • Create • Grow • </span>
+      </div>
+    </div>
+
+<!-- Team Photo Section -->
+        <section id="team" class="relative">
+            <div class="team-image-container">
+                <img src="ecell_team.jpg" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/FFF?text=Team+Photo';" alt="E-Cell IGDTUW Team" class="team-image-color">
+                <img src="ecell_team.jpg" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/FFF?text=Team+Photo+BW';" alt="E-Cell IGDTUW Team Black & White" class="team-image-bw">
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-300 gsap-fade-in">Our Sponsors</h2>
+            </div>
+            <!-- Duplicated sponsor rows for a seamless loop -->
+            <div class="sponsor-logos-container">
+                <div class="sponsor-logos-row">
+                    <!-- Row 1 -->
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+1" alt="Sponsor Logo 1"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+2" alt="Sponsor Logo 2"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+3" alt="Sponsor Logo 3"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+4" alt="Sponsor Logo 4"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+5" alt="Sponsor Logo 5"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+6" alt="Sponsor Logo 6"></div>
+                    <!-- Duplicate for infinite scroll -->
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+1" alt="Sponsor Logo 1"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+2" alt="Sponsor Logo 2"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+3" alt="Sponsor Logo 3"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+4" alt="Sponsor Logo 4"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+5" alt="Sponsor Logo 5"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+6" alt="Sponsor Logo 6"></div>
+                </div>
+                <div class="sponsor-logos-row mt-4">
+                    <!-- Row 2 -->
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+7" alt="Sponsor Logo 7"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+8" alt="Sponsor Logo 8"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+9" alt="Sponsor Logo 9"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+10" alt="Sponsor Logo 10"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+11" alt="Sponsor Logo 11"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+12" alt="Sponsor Logo 12"></div>
+                    <!-- Duplicate for infinite scroll -->
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+7" alt="Sponsor Logo 7"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+8" alt="Sponsor Logo 8"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+9" alt="Sponsor Logo 9"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+10" alt="Sponsor Logo 10"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+11" alt="Sponsor Logo 11"></div>
+                    <div class="sponsor-logo-circle"><img src="https://placehold.co/120x120/333/FFF?text=Sponsor+12" alt="Sponsor Logo 12"></div>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+      <h2>Moment of Glimpses</h2>
+      <h3>Past Events</h3>
+      <div class="event-grid">
+        <div class="event-card">
+          <div class="event-image-container">
+            <img src="case-conq.png" alt="Case Conqueror 2025" />
+          </div>
+          <div class="initial-info">
+            <h3>Code Conqueror 2025</h3>
+            <p>Case Study Competition</p>
+          </div>
+          <div class="detailed-info">
+            <h3>Code Conqueror 2025</h3>
+            <p>
+              Case-Uncase is not just another case study competition—it’s a
+              battlefield of wits, strategy, and innovation! Hosted by ECELL
+              IGDTUW and powered by Unstop, this high-intensity inter-college
+              showdown challenges undergraduate students (any year) to take on
+              real-world business problems and craft bold, game-changing
+              solutions.
+            </p>
+            <a href="events.html" class="cta-button">Learn More</a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-image-container">
+            <img src="ideastorm.png" alt="Ideastorm" />
+          </div>
+          <div class="initial-info">
+            <h3>Ideastorm</h3>
+            <p>Competition</p>
+          </div>
+          <div class="detailed-info">
+            <h3>Ideastorm</h3>
+            <p>
+              We organized an Ideathon which ignited a flurry of creativity and
+              innovation! Participants brainstormed and collaborated on
+              cutting-edge ideas, sparking dynamic discussions and crafting bold
+              solutions. The energy was electric as we explored new
+              possibilities and pushed boundaries.
+            </p>
+            <a href="events.html" class="cta-button">Learn More</a>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-image-container">
+            <img src="drishti.png" alt="Drishti Voyage" />
+          </div>
+          <div class="initial-info">
+            <h3>Drishti Voyage</h3>
+            <p>Speaker Session</p>
+          </div>
+          <div class="detailed-info">
+            <h3>Drishti Voyage</h3>
+            <p>
+              Our Speaker Session with Drishti IAS was a burst of inspiration
+              and insight! Mr. Prashant Sharma's wisdom and innovative approach,
+              alongside Abhishek Mishra's deep expertise in guiding UPSC
+              aspirants, fueled an electrifying atmosphere. The event was a
+              whirlwind of dynamic discussions and actionable strategies
+            </p>
+            <a href="events.html" class="cta-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="events-cta">
+        <a href="events.html" class="all-events-button">View All Events</a>
+      </div>
+    </section>
+
+ 
+    <br />
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-contact">
+        <span
+          >Email:
+          <a href="mailto:Ecell.igdtu@gmail.com">Ecell.igdtu@gmail.com</a></span
+        >
+        | <span>Phone: <a href="tel:+919811911639">+91-98119 11639</a></span> |
+        <span>
+          <a href="https://www.instagram.com/ecell.igdtuw/" target="_blank"
+            >Instagram</a
+          >
+          |
+          <a
+            href="https://www.linkedin.com/company/ecelligdtuw/?originalSubdomain=in"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </span>
+      </div>
+      <p>&copy; 2025 E-Cell IGDTUW. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
