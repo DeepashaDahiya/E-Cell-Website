@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
-  
 
   // 🍔 Hamburger menu
   const hamburger = document.querySelector('.hamburger');
@@ -9,22 +8,45 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('open');
   });
 
-  // 🎬 Preloader animation
+  // 🎬 Preloader animation - Load only once
   const preloader = document.getElementById('preloader');
   const mainContent = document.getElementById('main-content');
-  const tl = gsap.timeline();
-  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
-    .to(preloader, { opacity: 0, duration: 1, delay: 1, ease: "power2.inOut", onComplete: () => {
+
+  function runPreloader() {
+    if (!preloader || !mainContent) return;
+
+    const hasVisited = localStorage.getItem("preloaderShown");
+
+    if (!hasVisited) {
+      mainContent.classList.add('hidden'); // hide main content initially
+      preloader.style.display = 'flex';
+
+      const tl = gsap.timeline();
+      tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+        .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+        .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+        .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+        .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+        .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+        .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+        .to(preloader, { 
+          opacity: 0, duration: 1, delay: 1, ease: "power2.inOut", 
+          onComplete: () => {
+            preloader.style.display = 'none';
+            mainContent.classList.remove('hidden');
+            document.body.style.backgroundColor = '#1a1a1a';
+          }
+        });
+
+      localStorage.setItem("preloaderShown", "true");
+    } else {
       preloader.style.display = 'none';
       mainContent.classList.remove('hidden');
-      document.body.style.backgroundColor = '#1a1a1a';
-    }});
+    }
+  }
+
+  // Use pageshow event so it runs only on first visit
+  window.addEventListener("pageshow", runPreloader);
 
   // 👀 Fade-ins
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
@@ -39,35 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Animate Event Cards on Scroll
-gsap.utils.toArray(".event-card").forEach((card, i) => {
-  gsap.to(card, {
-    scrollTrigger: {
-      trigger: card,
-      start: "top 85%",
-    },
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    delay: i * 0.2,
-    ease: "power3.out"
+  gsap.utils.toArray(".event-card").forEach((card, i) => {
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: i * 0.2,
+      ease: "power3.out"
+    });
   });
-});
 
-// Animate Sponsors Grid
-gsap.utils.toArray('.sponsor-grid img').forEach((logo, i) => {
-  gsap.to(logo, {
-    scrollTrigger: {
-      trigger: logo,
-      start: "top 85%",
-      toggleActions: "play none none none"
-    },
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    delay: i * 0.2,
-    ease: "power3.out"
+  // Animate Sponsors Grid
+  gsap.utils.toArray('.sponsor-grid img').forEach((logo, i) => {
+    gsap.to(logo, {
+      scrollTrigger: {
+        trigger: logo,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: i * 0.2,
+      ease: "power3.out"
+    });
   });
-});
 
   // 🎨 Cursor gradient effect
   const gradientBg = document.getElementById("gradient-bg");
@@ -86,7 +108,7 @@ gsap.utils.toArray('.sponsor-grid img').forEach((logo, i) => {
     `;
   });
 
-  // 🔢 Counters (now correctly placed OUTSIDE mousemove!)
+  // 🔢 Counters
   const counters = document.querySelectorAll('.counter');
   const speed = 100;
   const animateCounters = () => {
@@ -124,7 +146,7 @@ gsap.utils.toArray('.sponsor-grid img').forEach((logo, i) => {
     }
   });
 
-    // ✍️ Typing effect
+  // ✍️ Typing effect
   const typed = new Typed("#typed-text", {
     strings: ["Learning", "Growth", "Knowledge", "Innovation", "Future"],
     typeSpeed: 80,
