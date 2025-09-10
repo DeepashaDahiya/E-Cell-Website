@@ -8,28 +8,37 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('open');
   });
 
-  // 🎬 Preloader animation
+  // 🎬 Preloader animation (only once)
   const preloader = document.getElementById('preloader');
   const mainContent = document.getElementById('main-content');
-  const tl = gsap.timeline();
-  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
-    .to(preloader, {
-      opacity: 0,
-      duration: 1,
-      delay: 1,
-      ease: "power2.inOut",
-      onComplete: () => {
-        preloader.style.display = 'none';
-        mainContent.classList.remove('hidden');
-        document.body.style.backgroundColor = '#1a1a1a';
-      }
-    });
+
+  if (!sessionStorage.getItem("preloaderShown")) {
+    const tl = gsap.timeline();
+    tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+      .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+      .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+      .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+      .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+      .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+      .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+      .to(preloader, {
+        opacity: 0,
+        duration: 1,
+        delay: 1,
+        ease: "power2.inOut",
+        onComplete: () => {
+          preloader.style.display = 'none';
+          mainContent.classList.remove('hidden');
+          document.body.style.backgroundColor = '#1a1a1a';
+          sessionStorage.setItem("preloaderShown", "true"); // ✅ Save flag
+        }
+      });
+  } else {
+    // Skip preloader and show content immediately
+    preloader.style.display = 'none';
+    mainContent.classList.remove('hidden');
+    document.body.style.backgroundColor = '#1a1a1a';
+  }
 
   // 👀 Fade-ins
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
