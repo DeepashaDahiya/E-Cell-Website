@@ -8,45 +8,28 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('open');
   });
 
-  // 🎬 Preloader animation - Load only once
+  // 🎬 Preloader animation
   const preloader = document.getElementById('preloader');
   const mainContent = document.getElementById('main-content');
-
-  function runPreloader() {
-    if (!preloader || !mainContent) return;
-
-    const hasVisited = localStorage.getItem("preloaderShown");
-
-    if (!hasVisited) {
-      mainContent.classList.add('hidden'); // hide main content initially
-      preloader.style.display = 'flex';
-
-      const tl = gsap.timeline();
-      tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-        .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-        .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-        .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-        .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-        .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-        .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
-        .to(preloader, { 
-          opacity: 0, duration: 1, delay: 1, ease: "power2.inOut", 
-          onComplete: () => {
-            preloader.style.display = 'none';
-            mainContent.classList.remove('hidden');
-            document.body.style.backgroundColor = '#1a1a1a';
-          }
-        });
-
-      localStorage.setItem("preloaderShown", "true");
-    } else {
-      preloader.style.display = 'none';
-      mainContent.classList.remove('hidden');
-    }
-  }
-
-  // Use pageshow event so it runs only on first visit
-  window.addEventListener("pageshow", runPreloader);
+  const tl = gsap.timeline();
+  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+    .to(preloader, {
+      opacity: 0,
+      duration: 1,
+      delay: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        preloader.style.display = 'none';
+        mainContent.classList.remove('hidden');
+        document.body.style.backgroundColor = '#1a1a1a';
+      }
+    });
 
   // 👀 Fade-ins
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
@@ -108,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   });
 
-  // 🔢 Counters
+  // 🔢 Counters (now correctly placed OUTSIDE mousemove!)
   const counters = document.querySelectorAll('.counter');
   const speed = 100;
   const animateCounters = () => {
