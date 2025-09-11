@@ -408,48 +408,69 @@ opacity: 0;}
       stroke-dashoffset: 0;
     }
   }
-    /* SPONSERSHIP  */   
+  /* SPONSORSHIP */
+.sponsors-section .section-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sponsors-section .white-text {
+  color: #ffffff;
+}
+
+.sponsors-section .pink-text {
+  color: #f8b6d8; /* pastel light pink */
+}
+
 .sponsor-columns-container {
   display: flex;
-  justify-content: center;
-  gap: 50px;
-  height: 400px;   /* visible height */
+  justify-content: space-between; /* spread 3 columns evenly */
+  width: 100%;
+  height: 500px;                 /* taller section */
   overflow: hidden;
-  align-items: flex-start;
   background-color: #0a0a0a;
-  padding: 2rem 0;
+  padding: 2rem 5vw;
+  box-sizing: border-box;
 }
 
 /* Column wrapper for animation */
 .sponsor-column {
+  flex: 1; /* each column takes equal width */
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  overflow: hidden;
 }
 
 /* Inner wrapper for continuous scroll */
 .sponsor-column-inner {
   display: flex;
   flex-direction: column;
+  gap: 40px;
 }
 
-/* Logos inside columns */
+/* Logos inside columns (BIG SQUARES) */
 .sponsor-logo {
-  width: 140px;   /* increased size */
-  height: 140px;  /* increased size */
-  margin: 12px 0;
+  width: 200px;   
+  height: 200px;  
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 20px;  /* slightly rounded square */
   background-color: #222;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .sponsor-logo img {
-  width: 100%;      /* enlarged to fill circle */
-  height: 100%;     /* enlarged to fill circle */
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  opacity: 1;       /* fully bright */
+  opacity: 1;
 }
 
 /* Side columns scroll UP */
@@ -473,6 +494,32 @@ opacity: 0;}
   0% { transform: translateY(-50%); }
   100% { transform: translateY(0); }
 }
+.sponsor-logo {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 40px;  /* more rounded corners */
+  background-color: #222;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05); /* soft outer glow */
+  backdrop-filter: blur(2px);  /* subtle blur behind for smooth blending */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9; /* slightly softer */
+}
+
+.sponsor-logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.1);
+}
+
 
         /* Get In Touch Section */
         #contact {
