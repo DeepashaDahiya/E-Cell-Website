@@ -1,137 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Cell IGDTUW | Updates</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updates - E-Cell IGDTUW</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-    /* Apply Poppins everywhere */
-    * {
-      font-family: 'Poppins', sans-serif;
-      box-sizing: border-box;
+    body {
+      font-family: 'Crimson Text', serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
 
-    body {
-      margin: 0;
-      background-color: #000; /* sleek black background */
-      color: #fff;
+    /* Recruitment Button - animated square with text */
+    .recruit-btn {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1rem;
-    }
-
-    /* Back button */
-    .back-btn {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
+      justify-content: flex-end;
+      width: 300px;
+      height: 300px;
+      margin: 80px auto;
+      border: none;
+      cursor: pointer;
+      background-image: url('images/recruitment.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
+      color: #fff;
+      font-weight: 700;
       font-size: 1.5rem;
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.1);
-      padding: 0.5rem 0.8rem;
-      border-radius: 50%;
-      transition: background 0.3s;
+      text-shadow: 2px 2px 5px #000;
     }
 
-    .back-btn:hover {
-      background: rgba(255,255,255,0.3);
+    .recruit-btn span {
+      margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+    .recruit-btn:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 12px 30px rgba(255,255,255,0.7);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
+      50% { transform: scale(1.03); box-shadow: 0 10px 25px rgba(255,255,255,0.5); }
+      100% { transform: scale(1); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
+    }
+
+    /* Hidden recruit section */
+    #recruit-section {
+      display: none;
+      margin-top: 60px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #recruit-section h2 {
       text-align: center;
-      color: #f5f5f5;
-      margin-top: 3rem; /* so it doesn’t clash with back arrow */
-      font-weight: 600;
+      font-size: 3rem;
+      margin-bottom: 50px;
+      color: #fff;
+      animation: slideDown 0.8s ease forwards;
     }
 
-    .updates {
-      width: 100%;
-      max-width: 700px; /* limit width for readability */
+    .gallery-flex {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      align-items: center;
+      gap: 50px;
     }
 
-    .update-item {
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .team-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px;
     }
 
-    .update-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    .team-group {
+      text-align: center;
     }
 
-    .update-number {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #ffcc00; /* highlight number */
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .update-title {
-      font-size: 1.25rem;
-      margin: 0.2rem 0;
-      font-weight: 600;
+    .team-name {
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 2rem;
       color: #fff;
     }
 
-    .update-desc {
-      font-size: 1rem;
-      color: #ccc;
-      line-height: 1.5;
-      font-weight: 300;
+    .team-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      .update-title {
-        font-size: 1.1rem;
-      }
-      .update-desc {
-        font-size: 0.95rem;
-      }
+    .team-images img {
+      width: 450px;
+      height: 450px;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .team-images img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.5);
+    }
+
+    /* Animations */
+    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes slideDown { 0% { opacity: 0; transform: translateY(-50px);} 100% { opacity: 1; transform: translateY(0);} }
   </style>
 </head>
 <body>
-  <!-- Back Button -->
-  <a href="index.html" class="back-btn">&#8592;</a>
 
-  <h1>Latest Updates</h1>
-
-  <div class="updates">
-    <div class="update-item">
-      <span class="update-number">1.</span>
-      <div class="update-title">Recruitment Results</div>
-      <div class="update-desc">Coming up soon...</div>
+  <!-- Navbar -->
+  <div class="head-nav">
+    <div class="logo">
+      <img id="logo" src="logo.jpeg" />
+      <div id="logo-text">E-Cell</div>
     </div>
-
-    <div class="update-item">
-      <span class="update-number">2.</span>
-      <div class="update-title">Upcoming Workshop</div>
-      <div class="update-desc">Stay tuned for details about our next entrepreneurship workshop.</div>
-    </div>
-
-    <div class="update-item">
-      <span class="update-number">3.</span>
-      <div class="update-title">Collaboration</div>
-      <div class="update-desc">We’re collaborating with industry mentors to bring you exciting events.</div>
-    </div>
+    <nav>
+      <span id="navbar-overlay">
+        <div class="container-nav">
+          <a class="navhead about-us" href="index.html">About Us</a>
+          <a class="navhead our-team" href="our-team.html">Our Team</a>
+          <a class="navhead past-events" href="events.html">Our Events</a>
+          <a class="navhead blogs" href="blogs.html">Blogs</a>
+          <a class="navhead gallery" href="gallery.html">Gallery</a>
+          <a class="navhead updates" href="updates.html">Updates</a>
+          <div class="contact-us">
+            <button class="button-contact" onclick="location.href='contact.html'">Contact Us</button>
+          </div>
+        </div>
+      </span>
+    </nav>
   </div>
+
+  <!-- Recruitment Button with text -->
+  <button class="recruit-btn" onclick="showRecruits()">
+    <span>Recruitment Result</span>
+  </button>
+
+  <!-- Hidden Recruit Section -->
+  <section id="recruit-section">
+    <h2>New Recruits</h2>
+    <div class="gallery-flex">
+
+      <!-- First row: Content + WebDev side by side -->
+      <div class="team-row">
+        <!-- Content Team -->
+        <div class="team-group">
+          <div class="team-name">Content Team</div>
+          <div class="team-images">
+            <img src="images/Content.jpg" alt="Content Team Member" />
+          </div>
+        </div>
+        <!-- WebDev Team -->
+        <div class="team-group">
+          <div class="team-name">WebDev Team</div>
+          <div class="team-images">
+            <img src="images/Web-dev.jpg" alt="WebDev Team Member" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Other teams -->
+      <div class="team-group">
+        <div class="team-name">Creative Team</div>
+        <div class="team-images">
+          <img src="images/Creative.jpg" alt="Creative Team Member 1" />
+          <img src="images/Creative2.jpg" alt="Creative Team Member 2" />
+        </div>
+      </div>
+
+      <div class="team-group">
+        <div class="team-name">Marketing Team</div>
+        <div class="team-images">
+          <img src="images/Marketing.jpg" alt="Marketing Team Member 1" />
+          <img src="images/Marketing.2jpg.jpg" alt="Marketing Team Member 2" />
+        </div>
+      </div>
+
+      <div class="team-group">
+        <div class="team-name">Media Team</div>
+        <div class="team-images">
+          <img src="images/Media.jpg" alt="Media Team Member 1" />
+          <img src="images/Media2.jpg" alt="Media Team Member 2" />
+        </div>
+      </div>
+
+      <div class="team-group">
+        <div class="team-name">Operations Team</div>
+        <div class="team-images">
+          <img src="images/Operation.jpg" alt="Operations Team Member 1" />
+          <img src="images/Operation2.jpg" alt="Operations Team Member 2" />
+        </div>
+      </div>
+
+      <div class="team-group">
+        <div class="team-name">R&D Team</div>
+        <div class="team-images">
+          <img src="images/R&D.jpg" alt="R&D Team Member 1" />
+          <img src="images/R&D2.jpg" alt="R&D Team Member 2" />
+        </div>
+      </div>
+
+      <div class="team-group">
+        <div class="team-name">Sponsorship Team</div>
+        <div class="team-images">
+          <img src="images/Sponsorship1.jpg" alt="Sponsorship Team Member 1" />
+          <img src="images/Sponsorship.jpg" alt="Sponsorship Team Member 2" />
+        </div>
+      </div>
+  </section>
+
+  <script>
+    function showRecruits() {
+      // hide button
+      document.querySelector('.recruit-btn').style.display = 'none';
+      // show recruit section
+      const section = document.getElementById('recruit-section');
+      section.style.display = 'block';
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
 </body>
 </html>
