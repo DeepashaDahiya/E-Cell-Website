@@ -1,16 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // 🍔 Hamburger menu
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
+
+  // // 🍔 Hamburger menu
+  // const hamburger = document.querySelector('.hamburger');
+  // const mobileMenu = document.getElementById('mobileMenu');
+  // hamburger.addEventListener('click', () => {
+  //   mobileMenu.classList.toggle('open');
+  // });
 
   // 🎬 Preloader animation (only once)
   const preloader = document.getElementById('preloader');
   const mainContent = document.getElementById('main-content');
+<<<<<<< HEAD
 
   if (!sessionStorage.getItem("preloaderShown")) {
     const tl = gsap.timeline();
@@ -39,6 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
     mainContent.classList.remove('hidden');
     document.body.style.backgroundColor = '#1a1a1a';
   }
+=======
+  const tl = gsap.timeline();
+  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+    .to(preloader, {
+      // opacity: 0, duration: 1, delay: 1, ease: "power2.inOut",
+      onComplete: () => {
+        // preloader.style.display = 'none';
+        loaderAnimation();
+        // mainContent.classList.remove('hidden');
+        // document.body.style.backgroundColor = '#1a1a1a';
+      }
+    });
+
+>>>>>>> 89d870f (Updated Loader, Homepage and Navbar)
 
   // 👀 Fade-ins
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
@@ -51,6 +73,87 @@ document.addEventListener('DOMContentLoaded', () => {
       stagger: 0.2
     });
   });
+
+<<<<<<< HEAD
+  // Animate Event Cards on Scroll
+  gsap.utils.toArray(".event-card").forEach((card, i) => {
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: i * 0.2,
+      ease: "power3.out"
+    });
+  });
+
+=======
+  //White-Loader
+  function loaderAnimation() {
+    var t2 = gsap.timeline();
+    t2
+      .to("#preloader", {
+            height: 0,
+            delay:0,
+            duration: 1.5,
+            ease: Circ.easeInOut
+        })
+      .to("#final-text",{
+        opacity:0,
+        delay:-1.5
+      })
+      .to(".white", {
+        height: "100%",
+        duration: 2,
+        delay: -2.5,
+        top: 0,
+        ease: Circ.easeInOut
+      })
+      .to(".white", {
+        // bottom: 0,
+        height: "0%",
+        duration: 1,
+        delay: -.5,
+        ease: Circ.easeInOut,
+      })
+
+  }
+
+  
+    // Drawer
+    const drawer = document.getElementById('drawer');
+    const menuBtn = document.getElementById('menuBtn');
+    const closeDrawer = document.getElementById('closeDrawer');
+
+    function openDrawer(){
+      drawer.classList.add('active');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden','false');
+    }
+    function hideDrawer(){
+      drawer.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden','true');
+    }
+
+    menuBtn.addEventListener('click', openDrawer);
+    closeDrawer.addEventListener('click', hideDrawer);
+    drawer.addEventListener('click', (e)=>{ if(e.target === drawer) hideDrawer(); });
+
+    // Smooth scroll for in-page links (desktop nav & drawer)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault(); hideDrawer();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    })
+
 
   // Animate Event Cards on Scroll
   gsap.utils.toArray(".event-card").forEach((card, i) => {
@@ -67,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+>>>>>>> 89d870f (Updated Loader, Homepage and Navbar)
   // Animate Sponsors Grid
   gsap.utils.toArray('.sponsor-grid img').forEach((logo, i) => {
     gsap.to(logo, {
@@ -100,43 +204,56 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   });
 
-  // 🔢 Counters (now correctly placed OUTSIDE mousemove!)
-  const counters = document.querySelectorAll('.counter');
-  const speed = 100;
-  const animateCounters = () => {
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = Math.ceil(target / speed);
-        if (count < target) {
-          counter.innerText = count + increment;
-          setTimeout(updateCount, 30);
-        } else {
-          counter.innerText = target + "+";
-        }
-      };
-      updateCount();
+
+  // Apply Now → Google Form (replace with your live form link)
+    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfHy1giYR_NxI9f9oWHrUkJ43KoZj_oQaZaX-LTN3iovimyNw/viewform";
+    document.getElementById('applyBtn').addEventListener('click', (e)=>{
+      e.preventDefault(); window.open(formURL, '_blank');
     });
-  };
-  let started = false;
-  window.addEventListener('scroll', () => {
-    const ribbon = document.querySelector('section.bg-gray-900');
-    if (!started && ribbon.getBoundingClientRect().top < window.innerHeight) {
-      animateCounters();
-      started = true;
-    }
+    
+  // 🔢 Counters (now correctly placed OUTSIDE mousemove!)
+const counters = document.querySelectorAll('.counter');
+const speed = 100;
+
+function animateCounters() {
+  counters.forEach(counter => {
+    counter.innerText = "0"; // reset
+    const target = +counter.getAttribute("data-target");
+
+    const updateCount = () => {
+      const count = +counter.innerText; // always numeric
+      const increment = Math.ceil(target / speed);
+
+      if (count < target) {
+        counter.innerText = count + increment;
+        setTimeout(updateCount, 30);
+      } else {
+        counter.innerText = target + "+"; // ✅ only once, at the very end
+      }
+    };
+
+    updateCount();
   });
+}
+
+let started = false;
+window.addEventListener("scroll", () => {
+  const ribbon = document.querySelector("#stats-ribbon");
+  if (!started && ribbon.getBoundingClientRect().top < window.innerHeight) {
+    animateCounters();
+    started = true;
+  }
+});
 
   // 🟣 Navbar scroll effect
-  window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.head-nav');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
+  // window.addEventListener('scroll', () => {
+  //   const navbar = document.querySelector('.head-nav');
+  //   if (window.scrollY > 50) {
+  //     navbar.classList.add('scrolled');
+  //   } else {
+  //     navbar.classList.remove('scrolled');
+  //   }
+  // });
 
   // ✍️ Typing effect
   const typed = new Typed("#typed-text", {
@@ -147,3 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true
   });
 });
+<<<<<<< HEAD
+=======
+
+
+// window.addEventListener("load", ()=>{
+//   loaderAnimation();
+// });
+>>>>>>> 89d870f (Updated Loader, Homepage and Navbar)

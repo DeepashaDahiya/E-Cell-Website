@@ -21,34 +21,49 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <div class="head-nav">
-        <div class="logo">
-          <img id="logo" src="logo.jpeg" />
-          <div id="logo-text">E-Cell</div>
-        </div>
-        <nav>
-          <span id="navbar-overlay">
-            <div class="container-nav">
-              <a class="navhead about-us" href="index.html">About Us</a>
-              <a class="navhead our-team" href="our-team.html">Our Team</a>
-              <a class="navhead past-events" href="events.html">Our Events</a>
-              <a class="navhead blogs" href="blogs.html">Blogs</a>
-              <a class="navhead gallery" href="gallery.html">Gallery</a>
+        <!-- Header -->
+    <header role="banner">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#home">
+          <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
+          <div>
+            <div class="title" href="index.html">E-Cell IGDTUW</div>
+            <div class="subtitle text-sm">Innovate • Create • Grow</div>
+          </div>
+        </a>
 
-              <div class="contact-us">
-                <button
-                  class="button-contact"
-                  onclick="location.href='contact.html'"
-                >
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </span>
-        </nav>
-      </div>
+        <div class="links" id="navLinks">
+          <a href="#about" class="nav-text">About</a>
+          <a href="events.html" class="nav-text">Events</a>
+          <a href="our-team.html" class="nav-text">Team</a>
+          <a href="blogs.html" class="nav-text">Blogs</a>
+          <a href="gallery.html" class="nav-text">Gallery</a>
+          <a href="updates.html" class="nav-text">Updates</a>
+          <a class="cta" href="contact.html">Contact Us</a>
+        </div>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
     </header>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
+        <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
+        <a href="#about" class="nav-text dlink">About</a>
+        <a href="events.html" class="nav-text dlink">Events</a>
+        <a href="our-team.html" class="nav-text dlink">Team</a>
+        <a href="blogs.html" class="nav-text dlink">Blogs</a>
+        <a href="gallery.html" class="nav-text dlink">Gallery</a>
+        <a href="updates.html" class="nav-text dlink">Updates</a>
+        <a href="contact.html" class="dlink">Contact Us</a>
+      </div>
+    </div>
+
     <h1 style="color: white; text-align: center">Coming soon!</h1>
   </body>
 </html>

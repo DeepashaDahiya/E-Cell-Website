@@ -1,49 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Cell IGDTUW</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font from Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Cell IGDTUW</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
-      rel="stylesheet"
-    />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap"
+    rel="stylesheet" />
 
-    <!-- GSAP for advanced animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
+  <div class="main">
     <!-- Preloader Screen -->
     <div id="preloader">
-        <span id="innovate" class="loader-word">Innovate</span>
-        <span id="create" class="loader-word">Create</span>
-        <span id="grow" class="loader-word">Grow</span>
-        <h1 id="final-text" class="loader-final">E-Cell IGDTUW!</h1>
+      <span id="innovate" class="loader-word">Innovate</span>
+      <span id="create" class="loader-word">Create</span>
+      <span id="grow" class="loader-word">Grow</span>
+      <h1 id="final-text" class="loader-final">E-Cell IGDTUW!</h1>
     </div>
 
-    <div class="head-nav">
+    <!-- Loader -->
+    <div class="loader">
+      <div class="white"></div>
+    </div>
+
+    <!-- Header -->
+    <header role="banner">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#home">
+          <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
+          <div>
+            <div class="title">E-Cell IGDTUW</div>
+            <div class="subtitle">Innovate • Create • Grow</div>
+          </div>
+        </a>
+
+        <div class="links" id="navLinks">
+          <a href="index.html" class="nav-text">About</a>
+          <a href="events.html" class="nav-text">Events</a>
+          <a href="our-team.html" class="nav-text">Team</a>
+          <a href="blogs.html" class="nav-text">Blogs</a>
+          <a href="gallery.html" class="nav-text">Gallery</a>
+          <a href="updates.html" class="nav-text">Updates</a>
+          <a class="cta" href="contact.html">Contact Us</a>
+        </div>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
+        <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
+        <a href="#hero" class="nav-text dlink">About</a>
+        <a href="#events" class="nav-text dlink">Events</a>
+        <a href="#team" class="nav-text dlink">Team</a>
+        <a href="#blogs" class="nav-text dlink">Blogs</a>
+        <a href="#gallery" class="nav-text dlink">Gallery</a>
+        <a href="#updates" class="nav-text dlink">Updates</a>
+        <a href="contact.html" class="dlink">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <main id="home">
+      <section class="hero relative">
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+          <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+        </video>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-10"></div>
+
+        <!-- Content -->
+        <div class="hero-content relative z-20 text-left px-6">
+          <div class="badge text-lg p-3 px-6 font-semibold mb-4">Welcome to the Entrepreneurship Cell • IGDTUW
+          </div>
+
+          <h1 class="headline text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg leading-tight">
+            Where ideas <span class="text-pink-400">spark</span> and founders <span class="text-purple-400">grow</span>.
+          </h1>
+
+          <p class="sub mt-6 text-lg md:text-xl text-gray-200 max-w-3xl  drop-shadow text-left">
+            We are the Entrepreneurship Cell of Indira Gandhi Delhi Technical University for Women. Our mission is to
+            foster
+            a culture of innovation and entrepreneurship among students. We believe in turning ideas into reality,
+            empowering
+            young minds to become future leaders and changemakers.
+          </p>
+
+          <div class="hero-buttons mt-8 flex justify-center space-x-6">
+            <a class="btn primary px-6 py-3 rounded-full bg-pink-500 text-white font-bold hover:bg-pink-600 transition"
+              href="events.html">
+              Explore Events
+            </a>
+            <a class="btn px-6 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-black transition"
+              href="#footer">
+              Connect with us
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- About -->
+      <section id="about">
+        <h2 class="section-title">About E-Cell</h2>
+        <p class="muted">E-Cell IGDTUW fosters an entrepreneurial mindset through speaker sessions,
+          hackathons, bootcamps, and startup collaborations. We’re open to all disciplines—if you’re
+          curious and love building, you belong here.</p>
+        <div class="cards" style="margin-top:18px">
+          <article class="card">
+            <div class="chip">Our Aim</div>
+            <h3>To empower individuals with knowledge, innovation, and opportunities.</h3>
+            <!-- <p>Project-first initiatives that help you prototype, validate, and iterate.</p> -->
+          </article>
+          <article class="card">
+            <div class="chip">Our Vision</div>
+            <h3>To build a future where technology and creativity drive positive change.</h3>
+            <!-- <p>Meet founders, engineers, designers, and mentors who’ve been there.</p> -->
+          </article>
+          <article class="card">
+            <div class="chip">Our Goal</div>
+            <h3>To transform ideas into impactful actions that inspire growth.”</h3>
+            <!-- <p>Showcase your work in college-wide demos, fests, and partner events.</p> -->
+          </article>
+        </div>
+      </section>
+
+  </div>
+
+
+
+
+
+  <!-- <div class="head-nav">
         <div class="logo">
           <img id="logo" src="logo.jpeg" />
           <div id="logo-text">E-Cell</div>
@@ -68,125 +189,137 @@
               </div>
             </div>
           </span>
-        </nav>
-        <!-- HAMBURGER (only shows on mobile) -->
-<div class="hamburger" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+        </nav> -->
+  <!-- HAMBURGER (only shows on mobile) -->
+  <!-- <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div> -->
 
-<!-- SLIDING MENU (hidden initially) -->
-<div id="mobileMenu" class="mobile-menu">
-  <!-- Back home -->
-  <a href="nav.html" class="back-to-home">Home</a>
+  <!-- SLIDING MENU (hidden initially) -->
+  <!-- <div id="mobileMenu" class="mobile-menu"> 
+    Back home
+    <a href="nav.html" class="back-to-home">Home</a>
 
-  <!-- Links -->
-  <a class="navhead" href="nav.html">About Us</a>
-  <a class="navhead" href="our-team.html">Our Team</a>
-  <a class="navhead" href="events.html">Our Events</a>
-  <a class="navhead" href="blogs.html">Blogs</a>
-  <a class="navhead" href="gallery.html">Gallery</a>
-  <a class="navhead" href="contact.html">Contact Us</a>
-  <a class="navhead" href="updates.html">Updates</a>
-</div>
+    Links
+    <a class="navhead" href="nav.html">About Us</a>
+    <a class="navhead" href="our-team.html">Our Team</a>
+    <a class="navhead" href="events.html">Our Events</a>
+    <a class="navhead" href="blogs.html">Blogs</a>
+    <a class="navhead" href="gallery.html">Gallery</a>
+    <a class="navhead" href="contact.html">Contact Us</a>
+    <a class="navhead" href="updates.html">Updates</a>
+  </div> -->
 
-      </div>
-    </header>
+  <!-- </div> -->
+  <!-- </header> -->
 
-    <!-- Main Content -->
-    <div id="main-content">
+  <!-- Main Content -->
+  <!-- <div id="main-content"> -->
 
-        <!-- Hero Section -->
-        <section id="hero" class="relative flex items-start justify-center min-h-screen overflow-hidden bg-[#1a1a1a] pt-24">
-     <!-- Background Video -->
-  <video autoplay muted loop playsinline 
-         class="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
-         poster="/images/hero-fallback.jpg">
-    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
-     <!-- Fallback image if video tag is not supported -->
-  <img src="/images/hero-fallback.jpg" 
-       alt="Background" 
-       class="w-full h-full object-cover">
-  </video>
+  <!-- Hero Section -->
+  <!-- <section id="hero" class="relative flex items-start justify-center min-h-screen overflow-hidden bg-[#1a1a1a] pt-24"> -->
+  <!-- Background Video -->
+  <!-- <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
+        poster="/images/hero-fallback.jpg">
+        <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4"> -->
+  <!-- Fallback image if video tag is not supported -->
+  <!-- <img src="/images/hero-fallback.jpg" alt="Background" class="w-full h-full object-cover">
+      </video> -->
 
   <!-- Gradient Background -->
-  <div id="gradient-bg" class="absolute inset-0 z-0 transition-all duration-200"></div>
+  <!-- <div id="gradient-bg" class="absolute inset-0 z-0 transition-all duration-200"></div> -->
 
   <!-- Centered Content -->
-  <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl">
-    <!-- Main SVG Heading -->
-    <svg viewBox="0 0 1800 200" class="w-full mb-6">
-      <text x="50%" y="50%" text-anchor="middle"
-            class="hero-svg-text"
-            fill="none" stroke="white" stroke-width="2"
-            font-size="8vw"
-            font-family="Rye, serif">
-        Welcome to E-Cell IGDTUW
-      </text>
-    </svg>
+  <!-- <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl"> -->
+  <!-- Main SVG Heading -->
+  <!-- <svg viewBox="0 0 1800 200" class="w-full mb-6">
+          <text x="50%" y="50%" text-anchor="middle" class="hero-svg-text" fill="none" stroke="white" stroke-width="2"
+            font-size="8vw" font-family="Rye, serif">
+            Welcome to E-Cell IGDTUW
+          </text>
+        </svg> -->
 
-    <!-- Subheading / Paragraph -->
-    <p class="sub-text mt-6 text-gray-300 text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed font-sans">
-      We are the Entrepreneurship Cell of Indira Gandhi Delhi Technical University for Women.
-      Our mission is to foster a culture of innovation and entrepreneurship among students.
-      We believe in turning ideas into reality, empowering young minds to become future leaders and changemakers.
-    </p>
+  <!-- Subheading / Paragraph -->
+  <!-- <p class="sub-text mt-6 text-gray-300 text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed font-sans">
+          We are the Entrepreneurship Cell of Indira Gandhi Delhi Technical University for Women.
+          Our mission is to foster a culture of innovation and entrepreneurship among students.
+          We believe in turning ideas into reality, empowering young minds to become future leaders and changemakers.
+        </p> -->
 
-    <!-- Buttons -->
-    <div class="mt-8 flex justify-center space-x-6 gsap-fade-in">
-      <a href="#contact" class="px-8 py-4 rounded-full bg-slate-200 text-slate-900 font-semibold hover:bg-slate-50 transition-colors">
-        Contact Us
-      </a>
-      <a href="#team" class="px-8 py-4 rounded-full border border-slate-200 text-slate-200 font-semibold hover:bg-slate-200 hover:text-slate-900 transition-colors">
-        Be a Part
-      </a>
+  <!-- Buttons -->
+  <!-- <div class="mt-8 flex justify-center space-x-6 gsap-fade-in">
+          <a href="#contact"
+            class="px-8 py-4 rounded-full bg-slate-200 text-slate-900 font-semibold hover:bg-slate-50 transition-colors">
+            Contact Us
+          </a>
+          <a href="#team"
+            class="px-8 py-4 rounded-full border border-slate-200 text-slate-200 font-semibold hover:bg-slate-200 hover:text-slate-900 transition-colors">
+            Be a Part
+          </a>
+        </div>
+      </div> -->
+  </section>
+
+  <!-- Ribbon Section -->
+  <section id="stats-ribbon" class="bg-gray-900 py-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+
+      <!-- Stat 1 -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-white counter" data-target="1200">0</h2>
+        <p class="text-gray-300 mt-2 text-lg">Instagram Followers</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-white counter" data-target="20">0</h2>
+        <p class="text-gray-300 mt-2 text-lg">Events Organized</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div>
+        <h2 class="text-4xl font-extrabold text-white counter" data-target="50">0</h2>
+        <p class="text-gray-300 mt-2 text-lg">Active Members</p>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Ribbon Section -->
-<section class="bg-gray-900 py-10">
-  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-    
-    <!-- Stat 1 -->
-    <div>
-      <h2 class="text-4xl font-extrabold text-white counter" data-target="1200">0</h2>
-      <p class="text-gray-300 mt-2 text-lg">Instagram Followers</p>
+  <!-- Typing Effect Section -->
+  <section class="py-16 bg-black text-center">
+    <h2 class="text-3xl md:text-5xl font-extrabold text-white">
+      Skyrocket your <span id="typed-text" class="text-pink-400"></span>
+    </h2>
+  </section>
+
+
+
+  <!-- Team Photo Section -->
+  <section id="team" class="relative">
+    <div class="team-image-container">
+      <img src="ecell_team.jpg"
+        onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/FFF?text=Team+Photo';"
+        alt="E-Cell IGDTUW Team" class="team-image-color">
+      <img src="ecell_team.jpg"
+        onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/FFF?text=Team+Photo+BW';"
+        alt="E-Cell IGDTUW Team Black & White" class="team-image-bw">
     </div>
+  </section>
 
-    <!-- Stat 2 -->
-    <div>
-      <h2 class="text-4xl font-extrabold text-white counter" data-target="20">0</h2>
-      <p class="text-gray-300 mt-2 text-lg">Events Organized</p>
+  <!-- Sponsors Section -->
+  <section id="sponsors" class="py-16 bg-black relative">
+    <!-- Ribbon Heading -->
+    <div class="sponsor-ribbon text-center mb-12 relative">
+      <h2 class="inline-block text-4xl md:text-5xl font-extrabold text-white relative overflow-hidden">
+        <span class="text-pink-400">Our Sponsors & Partners</span>
+        <span class="ribbon-underline absolute left-0 bottom-0 h-1 bg-pink-400 w-0"></span>
+      </h2>
+      <p class="mt-4 text-gray-400 text-lg">
+        Grateful to the amazing partners who power our journey ✨
+      </p>
     </div>
-
-    <!-- Stat 3 -->
-    <div>
-      <h2 class="text-4xl font-extrabold text-white counter" data-target="50">0</h2>
-      <p class="text-gray-300 mt-2 text-lg">Active Members</p>
-    </div>
-    
-  </div>
-</section>
-
-<!-- Typing Effect Section -->
-<section class="py-16 bg-black text-center">
-  <h2 class="text-3xl md:text-5xl font-extrabold text-white">
-    Skyrocket your <span id="typed-text" class="text-pink-400"></span>
-  </h2>
-</section>
-
-
-
-        <!-- Team Photo Section -->
-        <section id="team" class="relative">
-            <div class="team-image-container">
-                <img src="ecell_team.jpg" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/FFF?text=Team+Photo';" alt="E-Cell IGDTUW Team" class="team-image-color">
-                <img src="ecell_team.jpg" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/FFF?text=Team+Photo+BW';" alt="E-Cell IGDTUW Team Black & White" class="team-image-bw">
-            </div>
-        </section>
-
 <!-- Sponsors Section -->
  <section class="sponsors-section">
   <h2 class="section-heading">
@@ -208,6 +341,17 @@
     </div>
   </div>
 
+    <!-- Logos container -->
+    <div class="sponsor-logos-container flex flex-wrap justify-center gap-12">
+      <img src="images/unstop.png" alt="Sponsor 1" class="h-24 object-contain floating">
+      <img src="/images/codegeeks.png" alt="Sponsor 2" class="h-24 object-contain floating-delayed">
+      <img src="/images/drishtiias.png" alt="Sponsor 3" class="h-24 object-contain floating-slow">
+      <img src="/images/kmc.png" alt="Sponsor 4" class="h-24 object-contain floating-fast">
+      <img src="/images/ECell NSUT.png" alt="Sponsor 5" class="h-24 object-contain floating-delayed">
+      <img src="/images/sibilize.png" alt="Sponsor 6" class="h-24 object-contain floating">
+    </div>
+    </div>
+  </section>
   <!-- Middle Column -->
   <div class="sponsor-column middle-column">
     <div class="sponsor-column-inner">
@@ -243,120 +387,124 @@
 
 
 
-        <!-- Events Section -->
-<section id="events" class="relative py-20 bg-[#111] text-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <!-- Section Heading -->
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold tracking-wide mb-4">
-        Our <span class="text-purple-400">Events</span>
-      </h2>
-      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-        From idea-stage hackathons to inspiring guest talks — our events bring together 
-        innovators, creators, and entrepreneurs.
-      </p>
-    </div>
+  <!-- Events Section -->
+  <section id="events" class="relative py-20 bg-[#111] text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <!-- Section Heading -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold tracking-wide mb-4">
+          Our <span class="text-purple-400">Events</span>
+        </h2>
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+          From idea-stage hackathons to inspiring guest talks — our events bring together
+          innovators, creators, and entrepreneurs.
+        </p>
+      </div>
 
-    <!-- Events Grid -->
-    <div class="grid md:grid-cols-3 gap-10">
-      <!-- Event Card -->
-      <div class="event-card bg-[#1a1a1a] rounded-2xl shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-purple-500/30">
-        <img src="ideastorm.png" alt="Event 1" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold mb-3">Hackathon 2025</h3>
-          <p class="text-gray-400 text-sm mb-4">
-            A 48-hour innovation sprint where brilliant minds came together to solve real-world problems.
-          </p>
-          <a href="#" class="text-purple-400 font-semibold hover:underline">Read More →</a>
+      <!-- Events Grid -->
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Event Card -->
+        <div
+          class="event-card bg-[#1a1a1a] rounded-2xl shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-purple-500/30">
+          <img src="ideastorm.png" alt="Event 1" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-3">Hackathon 2025</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              A 48-hour innovation sprint where brilliant minds came together to solve real-world problems.
+            </p>
+            <a href="#" class="text-purple-400 font-semibold hover:underline">Read More →</a>
+          </div>
+        </div>
+
+        <!-- Event Card -->
+        <div
+          class="event-card bg-[#1a1a1a] rounded-2xl shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-purple-500/30">
+          <img src="case-conq.png" alt="Event 2" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-3">Entrepreneurship Bootcamp</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              A week-long bootcamp packed with workshops, mentoring sessions, and startup pitch practice.
+            </p>
+            <a href="#" class="text-purple-400 font-semibold hover:underline">Read More →</a>
+          </div>
+        </div>
+
+        <!-- Event Card -->
+        <div
+          class="event-card bg-[#1a1a1a] rounded-2xl shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-purple-500/30">
+          <img src="drishti.png" alt="Event 3" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-3">Guest Lecture Series</h3>
+            <p class="text-gray-400 text-sm mb-4">
+              Inspiring sessions from startup founders and industry leaders sharing their journeys and insights.
+            </p>
+            <a href="#" class="text-purple-400 font-semibold hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Section -->
+  <footer class="bg-[#0a1a12] text-gray-200 py-12 relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Location</h3>
+        <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
+        </br>
+        <p>+91 98765 43210</p>
+        </br>
+        <p><span class="gmail com">ecelligdtuw@gmail.com</span></p>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-pink-400 transition">About Us</a></li>
+          <li><a href="#" class="hover:text-pink-400 transition">Careers</a></li>
+          <li><a href="#" class="hover:text-pink-400 transition">Blog</a></li>
+          <li><a href="#" class="hover:text-pink-400 transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+          <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+          <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+          <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+        <div class="flex space-x-4 mb-4">
+          <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+        </div>
+        <div class="mt-4">
+          <p>Reviewed on <strong>XYZ</strong> ⭐⭐⭐⭐⭐ 5.0 Rating</p>
         </div>
       </div>
 
-      <!-- Event Card -->
-      <div class="event-card bg-[#1a1a1a] rounded-2xl shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-purple-500/30">
-        <img src="case-conq.png" alt="Event 2" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold mb-3">Entrepreneurship Bootcamp</h3>
-          <p class="text-gray-400 text-sm mb-4">
-            A week-long bootcamp packed with workshops, mentoring sessions, and startup pitch practice.
-          </p>
-          <a href="#" class="text-purple-400 font-semibold hover:underline">Read More →</a>
-        </div>
-      </div>
-
-      <!-- Event Card -->
-      <div class="event-card bg-[#1a1a1a] rounded-2xl shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-purple-500/30">
-        <img src="drishti.png" alt="Event 3" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold mb-3">Guest Lecture Series</h3>
-          <p class="text-gray-400 text-sm mb-4">
-            Inspiring sessions from startup founders and industry leaders sharing their journeys and insights.
-          </p>
-          <a href="#" class="text-purple-400 font-semibold hover:underline">Read More →</a>
-        </div>
-      </div>
     </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+      © 2025 ECell IGDTUW. All rights reserved.
+    </div>
+  </footer>
   </div>
-</section>
-<!-- Footer Section -->
-<footer class="bg-[#0a1a12] text-gray-200 py-12 relative">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-
-    <!-- Contact -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Location</h3>
-      <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
-    </br>
-      <p>+91 98765 43210</p>
-    </br>
-      <p><span class="gmail com">ecelligdtuw@gmail.com</span></p>
-    </div>
-
-    <!-- Company -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:text-pink-400 transition">About Us</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Careers</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Blog</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Services -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Services</h3>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
-      </ul>
-    </div>
-
-    <!-- Social -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-      <div class="flex space-x-4 mb-4">
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
-      </div>
-      <div class="mt-4">
-        <p>Reviewed on <strong>XYZ</strong> ⭐⭐⭐⭐⭐ 5.0 Rating</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Footer Bottom -->
-  <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-    © 2025 ECell IGDTUW. All rights reserved.
-  </div>
-</footer>
-    </div>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-   <script src="index.js"></script>
+  <script src="index.js"></script>
 
 </body>
+
 </html>

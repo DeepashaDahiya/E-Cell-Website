@@ -3,6 +3,9 @@
   font-family: "Crimson Text", sans-serif;
   margin: 0;
 }
+body{
+  background-color: #000;
+}
 H1 {
   font-family: "Crimson Text", sans-serif;
 }
@@ -37,113 +40,179 @@ H1 {
 }
 
 /*  */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: saturate(140%) blur(8px);
+    background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
 
-.logo {
-  height: 50px;
-  margin-left: 20px;
+.nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+.brand {
   display: flex;
   align-items: center;
-}
-#logo {
-  height: 80%;
-}
-#logo-text {
-  font-family: "Fredericka the Great", sans-serif;
-  font-size: larger;
-  margin-left: 0.5rem;
-  text-align: center;
-  vertical-align: middle;
-  justify-content: center;
-}
-.head-nav {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  background-color: black;
-  color: white;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  font-size: 20px;
-}
-
-.container-nav {
-  position: absolute;
-  left: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  transform: translate(-50%, -50%); /* centers both X and Y */
-  white-space: nowrap; /* stops "About Us" from wrapping */
-  gap: 50px; /* evenly spaced items */
-}
-a {
-  text-decoration: none; /* removes underline */
-  color: inherit; /* makes text inherit the parent color */
-}
-
-/* optional: if you want a specific color instead of inherit */
-a.navhead {
-  color: white; /* or white, or any color you like */
-}
-
-.our-team {
-  text-decoration: none; /* removes underline */
-  color: #f5f5f5; /* off-white color */
-  font-family: "Crimson Text", serif; /* optional: match page font */
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-}
-
-.button-contact {
+  gap: 12px;
   text-decoration: none;
-  border-radius: 20px; /* Rounded corners */
-  border: none;
-  padding: 10px 24px; /* More breathing space */
-  background-color: #d9d9d9; /* Same grey background */
-  font-size: 20px;
-  font-family: "Crimson Text", serif;
+  color: #f5f5f5;
+}
+
+.brand img {
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+.brand .title {
+  font-weight: 800;
+  letter-spacing: .4px
+}
+
+.brand .subtitle {
+  font-family: "Great Vibes", cursive;
+  font-size: 14px;
+  color: #999;
+  margin-top: -4px;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.links .nav-text {
   cursor: pointer;
-}
-
-.button-contact:hover {
-  /* background: #787162; accent color on hover */
-  text-decoration: none;
-  color: #111; /* keep text readable */
-  transform: translateY(-1px); /* slight lift effect */
-}
-
-.navbar-overlay {
-  opacity: 50%;
-}
-/* Base style for navbar links */
-.navhead {
   position: relative;
-  color: white;
   text-decoration: none;
-  cursor: pointer;
-  padding-bottom: 5px; /* space for the underline */
+  color: #f5f5f5;
+  font-weight: 600;
 }
 
-/* Create the underline */
-.navhead::after {
+.links .nav-text::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -6px;
   height: 2px;
   width: 0;
-  background-color: white;
-  transition: width 0.3s ease-in-out;
+  background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+  transition: width .25s ease
 }
 
-/* On hover, expand the underline */
-.navhead:hover::after {
-  width: 100%;
+.links .nav-text:hover::after {
+  width: 100%
+}
+
+.cta {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+  cursor: pointer;
+  color: #f5f5f5;
+  font-weight: 700
+}
+
+.cta:hover {
+  transform: translateY(-1px)
+}
+
+/* Mobile */
+.menu-btn {
+  display: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 8px
+}
+
+.menu-btn span {
+  display: block;
+  height: 2px;
+  width: 26px;
+  background-color: #f5f5f5;
+  margin: 6px 0;
+  border-radius: 2px
+}
+
+@media (max-width: 980px) {
+  .links {
+    display: none
+  }
+
+  .menu-btn {
+    display: block
+  }
+}
+
+/* ---------- Mobile Drawer ---------- */
+.drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 999
+}
+
+.drawer.active {
+  opacity: 1;
+  pointer-events: auto
+}
+
+.drawer-panel {
+  position: absolute;
+  right: -320px;
+  top: 0;
+  height: 100%;
+  width: 320px;
+  background: #0f0f0f;
+  border-left: 1px solid rgba(255, 255, 255, .08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: right .25s ease
+}
+
+.drawer.active .drawer-panel {
+  right: 0
+}
+
+.drawer a {
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 8px;
+  border-radius: 10px
+}
+
+.drawer a:hover {
+  background: rgba(255, 255, 255, .06)
+}
+
+.drawer .close {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .15);
+  color: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer
 }
 .aboutpic {
   width: 100%;
@@ -212,22 +281,6 @@ body {
 .button-join:hover {
   background: #128c7e;
 }
-.navhead {
-  cursor: pointer;
-}
-
-.navbar-overlay {
-  opacity: 50%;
-}
-
-.hamburger span {
-  height: 3px;
-  width: 25px;
-  background: #333;
-  margin-bottom: 4px;
-  border-radius: 2px;
-}
-
 /* Hero */
 .hero {
   display: flex;
