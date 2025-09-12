@@ -18,10 +18,10 @@ body {
   background-color: #0d0d0d;
   color: #f3f4f6;
   font-family: 'Inter', sans-serif;
-  /* line-height: 1.5; */
   overflow-x: hidden;
-  padding-top: 10px;
-  /* prevent content hiding under navbar */
+  padding: 0;
+  width: 100%;
+  padding-bottom: 0;
 }
 
 .main {
@@ -81,18 +81,20 @@ header {
     z-index: 1000;
     backdrop-filter: saturate(140%) blur(8px);
     background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 0px solid rgba(255, 255, 255, .08);
+    flex-direction: row;
 }
 
 .nav {
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     height: 72px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 18px;
     z-index: 1000;
+    padding: 0 18px;
+    width : 100%;
 }
 
 .brand {
@@ -275,7 +277,7 @@ header {
   }
 
   /* <!-- ✅ Navbar stays fixed & transparent --> */
-/* header {
+ /* header {
   display: flex;
   position: fixed;
   top: 0;
@@ -288,13 +290,9 @@ header {
   justify-content: space-between;
   height: 70px;
   font-size: 20px;
-  font-family: "Crimson Text", serif;
-  z-index: 1000;
-} */
-
-
-
-
+  /* font-family: "Crimson Text", serif; */
+  /* z-index: 1000;
+}  */ */
 
 .about-text {
   position: relative;
@@ -321,9 +319,10 @@ header {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 96px 18px 48px
+  width: 100vw;
+  margin: 0;
+  padding: 96px 18px 48px;
+  
 }
 
 .badge {
@@ -366,6 +365,17 @@ header {
   flex-wrap: wrap
 }
 
+.hero-content {
+  padding-left: 0 ;
+  padding-right: 0 ;
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100%;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -394,8 +404,8 @@ header {
 
 /* ---------- Sections ---------- */
 section {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 72px 18px
 }
 
@@ -442,7 +452,7 @@ section {
 
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(82, 255, 168, .45)
+  border-color: rgba(163, 82, 255, 0.45)
 }
 
 .chip {
@@ -454,7 +464,7 @@ section {
   gap: 8px;
   font-size: 25px;
   font-weight: 700;
-  color: #8be6bf;
+  color: #bf8be6;
 }
 
 .card h3 {
