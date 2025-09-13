@@ -1,21 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Cell - Orientation'25</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:wght@400;600&family=Crimson+Text:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="styles.css" />
+    rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
   <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
     body {
       background-color: #0a0a0a;
       color: white;
       font-family: "Poppins", sans-serif;
       margin: 0;
       padding: 0;
+      width: 100%;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+      border-bottom: 0px solid rgba(255, 255, 255, .08);
+      flex-direction: row;
+    }
+
+    .nav {
+      margin: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      z-index: 1000;
+      padding: 0 18px;
+      width: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #f5f5f5;
+    }
+
+    .brand img {
+      height: 42px;
+      width: 42px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    .brand .title {
+      font-weight: 800;
+      letter-spacing: .4px
+    }
+
+    .brand .subtitle {
+      font-family: "Great Vibes", cursive;
+      font-size: 14px;
+      color: #999;
+      margin-top: -4px;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .links .nav-text {
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 600;
+    }
+
+    .links .nav-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+      transition: width .25s ease
+    }
+
+    .links .nav-text:hover::after {
+      width: 100%
+    }
+
+    .cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+      cursor: pointer;
+      color: #f5f5f5;
+      font-weight: 700
+    }
+
+    .cta:hover {
+      transform: translateY(-1px)
+    }
+
+    /* Mobile */
+    .menu-btn {
+      display: none;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      padding: 8px
+    }
+
+    .menu-btn span {
+      display: block;
+      height: 2px;
+      width: 26px;
+      background-color: #f5f5f5;
+      margin: 6px 0;
+      border-radius: 2px
+    }
+
+    @media (max-width: 980px) {
+      .links {
+        display: none
+      }
+
+      .menu-btn {
+        display: block
+      }
+    }
+
+    /* ---------- Mobile Drawer ---------- */
+    .drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 999
+    }
+
+    .drawer.active {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .drawer-panel {
+      position: absolute;
+      right: -320px;
+      top: 0;
+      height: 100%;
+      width: 320px;
+      background: #0f0f0f;
+      border-left: 1px solid rgba(255, 255, 255, .08);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transition: right .25s ease
+    }
+
+    .drawer.active .drawer-panel {
+      right: 0
+    }
+
+    .drawer a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 8px;
+      border-radius: 10px
+    }
+
+    .drawer a:hover {
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .drawer .close {
+      align-self: flex-end;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #f5f5f5;
+      padding: 6px 10px;
+      border-radius: 10px;
+      cursor: pointer
     }
 
     /* E-Cell text font now matches Gallery page */
@@ -66,8 +259,10 @@
       background: url("https://i.postimg.cc/9F0h1dsC/IMG-9223.avif") center/cover no-repeat;
       opacity: 0.22;
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border-radius: 15px;
       z-index: 0;
       pointer-events: none;
@@ -78,10 +273,10 @@
       z-index: 1;
       font-size: 2rem;
       color: #fff;
-      text-shadow: 2px 4px 16px rgba(0,0,0,0.75);
+      text-shadow: 2px 4px 16px rgba(0, 0, 0, 0.75);
       padding: 10px 18px;
       border-radius: 10px;
-      background: rgba(0,0,0,0.25);
+      background: rgba(0, 0, 0, 0.25);
     }
 
     .event-folder:hover {
@@ -94,7 +289,10 @@
       margin-top: 25px;
       text-align: center;
     }
-    .event-content.open { display: block; }
+
+    .event-content.open {
+      display: block;
+    }
 
     .event-description {
       font-family: "Crimson Text", serif;
@@ -135,55 +333,63 @@
         max-width: 100%;
         padding: 50px 15px;
       }
-      .event-folder span { font-size: 1.4rem; }
-      .event-images img { width: 100%; height: auto; }
+
+      .event-folder span {
+        font-size: 1.4rem;
+      }
+
+      .event-images img {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Navbar -->
-      <!-- Header -->
-    <header role="banner">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#home">
-          <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
-          <div>
-            <div class="title" href="index.html">E-Cell IGDTUW</div>
-            <div class="subtitle text-sm">Innovate • Create • Grow</div>
-          </div>
-        </a>
-
-        <div class="links" id="navLinks">
-          <a href="#about" class="nav-text">About</a>
-          <a href="events.html" class="nav-text">Events</a>
-          <a href="our-team.html" class="nav-text">Team</a>
-          <a href="blogs.html" class="nav-text">Blogs</a>
-          <a href="gallery.html" class="nav-text">Gallery</a>
-          <a href="updates.html" class="nav-text">Updates</a>
-          <a class="cta" href="contact.html">Contact Us</a>
+  <!-- Header -->
+  <header role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#home">
+        <img src="logo.jpeg" href="index.html" alt="E-Cell IGDTUW logo" />
+        <div>
+          <div class="title" href="index.html">E-Cell IGDTUW</div>
+          <div class="subtitle" href="index.html">Innovate • Create • Grow</div>
         </div>
+      </a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
-    </header>
-
-    <!-- Mobile Drawer -->
-    <div class="drawer" id="drawer" aria-hidden="true">
-      <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
-        <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
-        <a href="#about" class="nav-text dlink">About</a>
-        <a href="events.html" class="nav-text dlink">Events</a>
-        <a href="our-team.html" class="nav-text dlink">Team</a>
-        <a href="blogs.html" class="nav-text dlink">Blogs</a>
-        <a href="gallery.html" class="nav-text dlink">Gallery</a>
-        <a href="updates.html" class="nav-text dlink">Updates</a>
-        <a href="contact.html" class="dlink">Contact Us</a>
+      <div class="links" id="navLinks">
+        <a href="index.html" class="nav-text">About</a>
+        <a href="events.html" class="nav-text">Events</a>
+        <a href="our-team.html" class="nav-text">Team</a>
+        <a href="blogs.html" class="nav-text">Blogs</a>
+        <a href="gallery.html" class="nav-text">Gallery</a>
+        <a href="updates.html" class="nav-text">Updates</a>
+        <a class="cta" href="contact.html">Contact Us</a>
       </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
+      <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
+      <a href="#about" class="nav-text dlink">About</a>
+      <a href="events.html" class="nav-text dlink">Events</a>
+      <a href="our-team.html" class="nav-text dlink">Team</a>
+      <a href="blogs.html" class="nav-text dlink">Blogs</a>
+      <a href="gallery.html" class="nav-text dlink">Gallery</a>
+      <a href="updates.html" class="nav-text dlink">Updates</a>
+      <a href="contact.html" class="dlink">Contact Us</a>
     </div>
+  </div>
 
   <!-- Events Section -->
   <div class="events-container">
@@ -227,4 +433,5 @@
     }
   </script>
 </body>
+
 </html>
