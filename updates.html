@@ -4,449 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Updates - E-Cell IGDTUW</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Crimson Text', serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: saturate(140%) blur(8px);
-    background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
-    border-bottom: 0px solid rgba(255, 255, 255, .08);
-    flex-direction: row;
-}
-
-.nav {
-    margin: 0;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 18px;
-    z-index: 1000;
-    padding: 0 18px;
-    width : 100%;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #f5f5f5;
-}
-
-.brand img {
-  height: 42px;
-  width: 42px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
-}
-
-.brand .title {
-  font-weight: 800;
-  letter-spacing: .4px
-}
-
-.brand .subtitle {
-  font-family: "Great Vibes", cursive;
-  font-size: 14px;
-  color: #999;
-  margin-top: -4px;
-}
-
-.links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  z-index: 1000;
-}
-
-.links .nav-text {
-  cursor: pointer;
-  position: relative;
-  text-decoration: none;
-  color: #f5f5f5;
-  font-weight: 600;
-}
-
-.links .nav-text::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  height: 2px;
-  width: 0;
-  background: linear-gradient(90deg, #f3f4f6, #8a2be2);
-  transition: width .25s ease
-}
-
-.links .nav-text:hover::after {
-  width: 100%
-}
-
-.cta {
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, .15);
-  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
-  cursor: pointer;
-  color: #f5f5f5;
-  font-weight: 700
-}
-
-.cta:hover {
-  transform: translateY(-1px)
-}
-
-/* Mobile */
-.menu-btn {
-  display: none;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  padding: 8px
-}
-
-.menu-btn span {
-  display: block;
-  height: 2px;
-  width: 26px;
-  background-color: #f5f5f5;
-  margin: 6px 0;
-  border-radius: 2px
-}
-
-@media (max-width: 980px) {
-  .links {
-    display: none
-  }
-
-  .menu-btn {
-    display: block
-  }
-}
-
-/* ---------- Mobile Drawer ---------- */
-.drawer {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, .55);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .2s ease;
-  z-index: 999
-}
-
-.drawer.active {
-  opacity: 1;
-  pointer-events: auto
-}
-
-.drawer-panel {
-  position: absolute;
-  right: -320px;
-  top: 0;
-  height: 100%;
-  width: 320px;
-  background: #0f0f0f;
-  border-left: 1px solid rgba(255, 255, 255, .08);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  transition: right .25s ease
-}
-
-.drawer.active .drawer-panel {
-  right: 0
-}
-
-.drawer a {
-  color: #f5f5f5;
-  text-decoration: none;
-  font-weight: 700;
-  padding: 10px 8px;
-  border-radius: 10px
-}
-
-.drawer a:hover {
-  background: rgba(255, 255, 255, .06)
-}
-
-.drawer .close {
-  align-self: flex-end;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, .15);
-  color: #f5f5f5;
-  padding: 6px 10px;
-  border-radius: 10px;
-  cursor: pointer
-}
-
-    /* Recruitment Button - animated square with text */
-    .recruit-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      width: 300px;
-      height: 300px;
-      margin: 80px auto;
-      border: none;
-      cursor: pointer;
-      background-image: url('images/recruitment.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(255,255,255,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: pulse 2s infinite;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.5rem;
-      text-shadow: 2px 2px 5px #000;
-    }
-
-    .recruit-btn span {
-      margin-bottom: 20px;
-    }
-
-    .recruit-btn:hover {
-      transform: scale(1.08) rotate(-2deg);
-      box-shadow: 0 12px 30px rgba(255,255,255,0.7);
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
-      50% { transform: scale(1.03); box-shadow: 0 10px 25px rgba(255,255,255,0.5); }
-      100% { transform: scale(1); box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
-    }
-
-    /* Hidden recruit section */
-    #recruit-section {
-      display: none;
-      margin-top: 60px;
-      animation: fadeIn 1s ease forwards;
-    }
-
-    #recruit-section h2 {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 50px;
-      color: #fff;
-      animation: slideDown 0.8s ease forwards;
-    }
-
-    .gallery-flex {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .team-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 50px;
-    }
-
-    .team-group {
-      text-align: center;
-    }
-
-    .team-name {
-      margin-bottom: 20px;
-      font-weight: 700;
-      font-size: 2rem;
+      background: #000;
       color: #fff;
     }
-
-    .team-images {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
+    .timeline-line {
+      background: linear-gradient(to bottom, #9333ea, #a855f7, #9333ea);
+      width: 4px;
     }
-
-    .team-images img {
-      width: 450px;
-      height: 450px;
-      object-fit: contain;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(255,255,255,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .timeline-dot {
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
     }
-
-    .team-images img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(255,255,255,0.5);
+    .timeline-card {
+      background: rgba(147, 51, 234, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
-    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-    @keyframes slideDown { 0% { opacity: 0; transform: translateY(-50px);} 100% { opacity: 1; transform: translateY(0);} }
-
-    /* Navbar adjustments */
-    header nav a, header nav .cta {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: 600;
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
     }
-    header nav .cta {
-      background-color: #1e40af;
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-    header nav .cta:hover { background-color: #2563eb; }
   </style>
 </head>
 <body>
 
-  <!-- Navbar from index.html -->
-  <header role="banner">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#home">
-          <img src="logo.jpeg" href="index.html" alt="E-Cell IGDTUW logo" />
-          <div>
-            <div class="title" href="index.html">E-Cell IGDTUW</div>
-            <div class="subtitle" href="index.html">Innovate • Create • Grow</div>
-          </div>
-        </a>
-
-        <div class="links" id="navLinks">
-          <a href="index.html" class="nav-text">About</a>
-          <a href="events.html" class="nav-text">Events</a>
-          <a href="our-team.html" class="nav-text">Team</a>
-          <a href="blogs.html" class="nav-text">Blogs</a>
-          <a href="gallery.html" class="nav-text">Gallery</a>
-          <a href="updates.html" class="nav-text">Updates</a>
-          <a class="cta" href="contact.html">Contact Us</a>
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-black/70">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <!-- Brand -->
+      <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg">
+        <img src="logo.jpeg" alt="E-Cell IGDTUW Logo" class="h-10 w-10 rounded-lg">
+        <div>
+          <div class="font-extrabold">E-Cell IGDTUW</div>
+          <div class="text-sm text-gray-400">Innovate • Create • Grow</div>
         </div>
+      </a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
-    </header>
-
-    <!-- Mobile Drawer -->
-    <div class="drawer" id="drawer" aria-hidden="true">
-      <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
-        <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
-        <a href="#about" class="nav-text dlink">About</a>
-        <a href="events.html" class="nav-text dlink">Events</a>
-        <a href="our-team.html" class="nav-text dlink">Team</a>
-        <a href="blogs.html" class="nav-text dlink">Blogs</a>
-        <a href="gallery.html" class="nav-text dlink">Gallery</a>
-        <a href="updates.html" class="nav-text dlink">Updates</a>
-        <a href="contact.html" class="dlink">Contact Us</a>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-white hover:text-purple-400">About</a>
+        <a href="events.html" class="text-white hover:text-purple-400">Events</a>
+        <a href="our-team.html" class="text-white hover:text-purple-400">Team</a>
+        <a href="blogs.html" class="text-white hover:text-purple-400">Blogs</a>
+        <a href="gallery.html" class="text-white hover:text-purple-400">Gallery</a>
+        <a href="updates.html" class="text-white hover:text-purple-400">Updates</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full border border-white/20 bg-white/10 hover:bg-purple-600 transition">Contact Us</a>
       </div>
+
+      <!-- Hamburger -->
+      <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        ☰
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-3 px-4 pb-4 bg-black/90">
+      <a href="index.html" class="text-white hover:text-purple-400">About</a>
+      <a href="events.html" class="text-white hover:text-purple-400">Events</a>
+      <a href="our-team.html" class="text-white hover:text-purple-400">Team</a>
+      <a href="blogs.html" class="text-white hover:text-purple-400">Blogs</a>
+      <a href="gallery.html" class="text-white hover:text-purple-400">Gallery</a>
+      <a href="updates.html" class="text-white hover:text-purple-400">Updates</a>
+      <a href="contact.html" class="text-white hover:text-purple-400">Contact Us</a>
     </div>
+  </header>
+  
+  <!-- Timeline Section -->
+  <section class="py-16 px-6">
+    <h2 class="text-4xl font-extrabold text-center text-white mb-16">✨ Latest Updates ✨</h2>
+    
+    <div class="relative max-w-5xl mx-auto">
+      <!-- Center Line -->
+      <div class="timeline-line absolute top-0 left-1/2 transform -translate-x-1/2 h-full"></div>
 
-  <!-- Recruitment Button -->
-  <button class="recruit-btn" onclick="showRecruits()">
-    <span>Recruitment Result</span>
-  </button>
-
-  <!-- Hidden Recruit Section -->
-  <section id="recruit-section">
-    <h2>New Recruits</h2>
-    <div class="gallery-flex">
-
-      <!-- First row: Content + WebDev -->
-      <div class="team-row">
-        <div class="team-group">
-          <div class="team-name">Content Team</div>
-          <div class="team-images">
-            <img src="images/Content.jpg" alt="Content Team Member" />
+      <!-- Event: Farewell -->
+      <div class="mb-6 flex justify-start">
+        <div class="w-1/2 pr-8 text-right">
+          <div class="timeline-card">
+            <time class="block mb-1 text-sm font-semibold text-purple-400">Coming Soon</time>
+            <h3 class="text-xl font-bold">Farewell</h3>
+            <p class="text-gray-300">A heartfelt goodbye to our graduating members.</p>
           </div>
         </div>
-        <div class="team-group">
-          <div class="team-name">WebDev Team</div>
-          <div class="team-images">
-            <img src="images/Web-dev.jpg" alt="WebDev Team Member" />
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+        </div>
+      </div>
+
+      <!-- Event: Coordinators Reveal -->
+      <div class="mb-6 flex justify-end">
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+        </div>
+        <div class="w-1/2 pl-8">
+          <div class="timeline-card">
+            <time class="block mb-1 text-sm font-semibold text-purple-400">10 Sep 2025</time>
+            <h3 class="text-xl font-bold">Coordinators Reveal</h3>
+            <p class="text-gray-300">Unveiling the team of coordinators for 2025!</p>
           </div>
         </div>
       </div>
 
-      <!-- Other teams -->
-      <div class="team-group">
-        <div class="team-name">Creative Team</div>
-        <div class="team-images">
-          <img src="images/Creative.jpg" alt="Creative Team Member 1" />
-          <img src="images/Creative2.jpg" alt="Creative Team Member 2" />
+      <!-- Event: Recruitment Form -->
+      <div class="mb-6 flex justify-start">
+        <div class="w-1/2 pr-8 text-right">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpifaJHZW6_W5Ki3o5mF6xTlq7OUm2icaYdWu1g9YN4nmVLA/closedform" target="_blank" class="block">
+            <div class="timeline-card">
+              <time class="block mb-1 text-sm font-semibold text-purple-400">28 Aug – 3 Sep 2025</time>
+              <h3 class="text-xl font-bold">Recruitment Form</h3>
+              <p class="text-gray-300">Forms opened on 28th Aug and closed on 3rd Sept 2025.</p>
+            </div>
+          </a>
+        </div>
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
         </div>
       </div>
 
-      <div class="team-group">
-        <div class="team-name">Marketing Team</div>
-        <div class="team-images">
-          <img src="images/Marketing.jpg" alt="Marketing Team Member 1" />
-          <img src="images/Marketing.2jpg.jpg" alt="Marketing Team Member 2" />
+      <!-- Event: Orientation -->
+      <div class="mb-6 flex justify-end">
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+        </div>
+        <div class="w-1/2 pl-8">
+          <div class="timeline-card">
+            <time class="block mb-1 text-sm font-semibold text-purple-400">28 Aug 2025</time>
+            <h3 class="text-xl font-bold">Orientation</h3>
+            <p class="text-gray-300">Welcoming new members with an interactive session.</p>
+          </div>
         </div>
       </div>
 
-      <div class="team-group">
-        <div class="team-name">Media Team</div>
-        <div class="team-images">
-          <img src="images/Media.jpg" alt="Media Team Member 1" />
-          <img src="images/Media2.jpg" alt="Media Team Member 2" />
+      <!-- Event: New Team Announcement -->
+      <div class="mb-6 flex justify-start">
+        <div class="w-1/2 pr-8 text-right">
+          <div class="timeline-card">
+            <time class="block mb-1 text-sm font-semibold text-purple-400">23 Aug 2025</time>
+            <h3 class="text-xl font-bold">New Team Announcement (Core & Leads)</h3>
+            <p class="text-gray-300">Meet the fresh faces leading the way!</p>
+          </div>
+        </div>
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
         </div>
       </div>
 
-      <div class="team-group">
-        <div class="team-name">Operations Team</div>
-        <div class="team-images">
-          <img src="images/Operation.jpg" alt="Operations Team Member 1" />
-          <img src="images/Operation2.jpg" alt="Operations Team Member 2" />
+      <!-- Event: Merch Reveal -->
+      <div class="mb-6 flex justify-end">
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+        </div>
+        <div class="w-1/2 pl-8">
+          <div class="timeline-card">
+            <time class="block mb-1 text-sm font-semibold text-purple-400">21 Aug 2025</time>
+            <h3 class="text-xl font-bold">Merch Reveal</h3>
+            <p class="text-gray-300">Exciting new merch dropped for the community!</p>
+          </div>
         </div>
       </div>
 
-      <div class="team-group">
-        <div class="team-name">R&D Team</div>
-        <div class="team-images">
-          <img src="images/R&D.jpg" alt="R&D Team Member 1" />
-          <img src="images/R&D2.jpg" alt="R&D Team Member 2" />
+      <!-- Event: Drishti IAS -->
+      <div class="mb-6 flex justify-start">
+        <div class="w-1/2 pr-8 text-right">
+          <div class="timeline-card">
+            <time class="block mb-1 text-sm font-semibold text-purple-400">17 Feb 2025</time>
+            <h3 class="text-xl font-bold">Drishti IAS</h3>
+            <p class="text-gray-300">Special collaboration session with Drishti IAS.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="team-group">
-        <div class="team-name">Sponsorship Team</div>
-        <div class="team-images">
-          <img src="images/Sponsorship1.jpg" alt="Sponsorship Team Member 1" />
-          <img src="images/Sponsorship.jpg" alt="Sponsorship Team Member 2" />
+        <div class="w-0 relative">
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
         </div>
       </div>
 
     </div>
   </section>
-
-  <script>
-    function showRecruits() {
-      document.querySelector('.recruit-btn').style.display = 'none';
-      const section = document.getElementById('recruit-section');
-      section.style.display = 'block';
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
-
+  
 </body>
 </html>

@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Cell - Orientation'25</title>
+  <title>E-Cell - Events</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:wght@400;600&family=Crimson+Text:wght@400;700&display=swap"
     rel="stylesheet" />
-  <!-- <link rel="stylesheet" href="styles.css" /> -->
   <style>
     html,
     body {
@@ -27,31 +26,23 @@
       background-color: #0a0a0a;
       color: white;
       font-family: "Poppins", sans-serif;
-      margin: 0;
-      padding: 0;
-      width: 100%;
     }
 
+    /* Navbar */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       backdrop-filter: saturate(140%) blur(8px);
       background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
-      border-bottom: 0px solid rgba(255, 255, 255, .08);
-      flex-direction: row;
     }
 
     .nav {
-      margin: 0;
       height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 18px;
-      z-index: 1000;
-      padding: 0 18px;
-      width: 100%;
     }
 
     .brand {
@@ -65,28 +56,22 @@
     .brand img {
       height: 42px;
       width: 42px;
-      object-fit: cover;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
     }
 
     .brand .title {
       font-weight: 800;
-      letter-spacing: .4px
     }
 
     .brand .subtitle {
-      font-family: "Great Vibes", cursive;
       font-size: 14px;
       color: #999;
-      margin-top: -4px;
     }
 
     .links {
       display: flex;
       gap: 28px;
       align-items: center;
-      z-index: 1000;
     }
 
     .links .nav-text {
@@ -122,103 +107,80 @@
       font-weight: 700
     }
 
-    .cta:hover {
-      transform: translateY(-1px)
-    }
-
-    /* Mobile */
+    /* ✅ Hamburger button */
     .menu-btn {
       display: none;
-      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
       border: none;
-      background: transparent;
-      padding: 8px
+      cursor: pointer;
     }
 
     .menu-btn span {
       display: block;
-      height: 2px;
       width: 26px;
-      background-color: #f5f5f5;
-      margin: 6px 0;
-      border-radius: 2px
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
     }
 
-    @media (max-width: 980px) {
-      .links {
-        display: none
-      }
-
-      .menu-btn {
-        display: block
-      }
-    }
-
-    /* ---------- Mobile Drawer ---------- */
+    /* ✅ Drawer menu */
     .drawer {
       position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .55);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease;
-      z-index: 999
-    }
-
-    .drawer.active {
-      opacity: 1;
-      pointer-events: auto
-    }
-
-    .drawer-panel {
-      position: absolute;
-      right: -320px;
       top: 0;
+      right: -100%;
+      width: 250px;
       height: 100%;
-      width: 320px;
-      background: #0f0f0f;
-      border-left: 1px solid rgba(255, 255, 255, .08);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      transition: right .25s ease
+      background: #111;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+      transition: right 0.3s ease;
+      z-index: 2000;
+      padding: 20px;
     }
 
-    .drawer.active .drawer-panel {
-      right: 0
+    .drawer.open {
+      right: 0;
     }
 
     .drawer a {
-      color: #f5f5f5;
+      display: block;
+      margin: 15px 0;
       text-decoration: none;
-      font-weight: 700;
-      padding: 10px 8px;
-      border-radius: 10px
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     .drawer a:hover {
-      background: rgba(255, 255, 255, .06)
+      color: #a855f7;
     }
 
     .drawer .close {
-      align-self: flex-end;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, .15);
-      color: #f5f5f5;
-      padding: 6px 10px;
-      border-radius: 10px;
-      cursor: pointer
+      font-size: 22px;
+      cursor: pointer;
+      color: #aaa;
+      margin-left: auto;
+      margin-bottom: 20px;
+      display: block;
+      width: fit-content;
     }
 
-    /* E-Cell text font now matches Gallery page */
-    #logo-text {
-      font-family: "Fredericka the Great", cursive;
-      font-size: 1.8rem;
-      font-weight: normal;
-      color: white;
+    .drawer .close:hover {
+      color: #fff;
     }
 
+    @media (max-width: 768px) {
+      .links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+    }
+
+    /* Events (unchanged) */
     .events-container {
       max-width: 1200px;
       margin: 80px auto 40px;
@@ -234,132 +196,131 @@
       color: #f1f1f1;
     }
 
-    .event-folder {
-      position: relative;
-      background: linear-gradient(135deg, rgba(15, 15, 15, 0.95), rgba(35, 35, 35, 0.95));
-      padding: 70px 20px;
-      min-height: 380px;
-      max-width: 900px;
-      margin: 0 auto 24px;
-      text-align: center;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: transform 0.28s, box-shadow 0.28s;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
     }
 
-    .event-folder::before {
-      content: "";
-      background: url("https://i.postimg.cc/9F0h1dsC/IMG-9223.avif") center/cover no-repeat;
-      opacity: 0.22;
-      position: absolute;
-      top: 0;
+    .event-card {
+      background: linear-gradient(135deg, rgba(15, 15, 15, 0.95), rgba(35, 35, 35, 0.95));
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.28s, box-shadow 0.28s, border 0.28s;
+      position: relative;
+      border: 1px solid transparent;
+    }
+
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4);
+      border: 1px solid rgba(168, 85, 247, 0.6);
+    }
+
+    .event-thumb {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .event-info {
+      padding: 20px;
+    }
+
+    .event-info h2 {
+      font-size: 1.4rem;
+      margin: 0 0 10px;
+    }
+
+    .event-info p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    /* Modal (unchanged) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
       left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
-      border-radius: 15px;
-      z-index: 0;
-      pointer-events: none;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 40px 20px;
     }
 
-    .event-folder span {
-      position: relative;
-      z-index: 1;
-      font-size: 2rem;
-      color: #fff;
-      text-shadow: 2px 4px 16px rgba(0, 0, 0, 0.75);
-      padding: 10px 18px;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.25);
-    }
-
-    .event-folder:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75);
-    }
-
-    .event-content {
-      display: none;
-      margin-top: 25px;
-      text-align: center;
-    }
-
-    .event-content.open {
-      display: block;
-    }
-
-    .event-description {
-      font-family: "Crimson Text", serif;
-      font-size: 1.25rem;
-      line-height: 1.9;
-      color: #e6e6e6;
-      margin-bottom: 20px;
+    .modal-content {
+      background: #111;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
     }
 
-    .event-images {
+    .modal h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #a855f7;
+    }
+
+    .modal p {
+      margin: 15px 0;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #eee;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 1.6rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .modal-images {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 12px;
+      margin-top: 20px;
       justify-content: center;
-      margin-top: 18px;
     }
 
-    .event-images img {
-      width: 360px;
-      height: 260px;
+    .modal-images img {
+      width: 260px;
+      height: 180px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 8px;
       transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
     }
 
-    .event-images img:hover {
+    .modal-images img:hover {
       transform: scale(1.06);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.85);
-    }
-
-    @media (max-width: 768px) {
-      .event-folder {
-        min-height: 280px;
-        max-width: 100%;
-        padding: 50px 15px;
-      }
-
-      .event-folder span {
-        font-size: 1.4rem;
-      }
-
-      .event-images img {
-        width: 100%;
-        height: auto;
-      }
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.6);
     }
   </style>
 </head>
 
 <body>
   <!-- Navbar -->
-  <!-- Header -->
   <header role="banner">
-    <nav class="nav" aria-label="Primary">
-      <a class="brand" href="#home">
-        <img src="logo.jpeg" href="index.html" alt="E-Cell IGDTUW logo" />
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
         <div>
-          <div class="title" href="index.html">E-Cell IGDTUW</div>
-          <div class="subtitle" href="index.html">Innovate • Create • Grow</div>
+          <div class="title">E-Cell IGDTUW</div>
+          <div class="subtitle">Innovate • Create • Grow</div>
         </div>
       </a>
-
-      <div class="links" id="navLinks">
+      <div class="links">
         <a href="index.html" class="nav-text">About</a>
         <a href="events.html" class="nav-text">Events</a>
         <a href="our-team.html" class="nav-text">Team</a>
@@ -369,7 +330,8 @@
         <a class="cta" href="contact.html">Contact Us</a>
       </div>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <!-- ✅ Hamburger -->
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         <span></span>
         <span></span>
         <span></span>
@@ -377,60 +339,171 @@
     </nav>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
-      <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
-      <a href="#about" class="nav-text dlink">About</a>
-      <a href="events.html" class="nav-text dlink">Events</a>
-      <a href="our-team.html" class="nav-text dlink">Team</a>
-      <a href="blogs.html" class="nav-text dlink">Blogs</a>
-      <a href="gallery.html" class="nav-text dlink">Gallery</a>
-      <a href="updates.html" class="nav-text dlink">Updates</a>
-      <a href="contact.html" class="dlink">Contact Us</a>
+  <!-- ✅ Drawer -->
+  <div class="drawer" id="drawer">
+    <span class="close" id="closeDrawer">&times;</span>
+    <a href="index.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="our-team.html">Team</a>
+    <a href="blogs.html">Blogs</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="updates.html">Updates</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Events Section (unchanged) -->
+  <div class="events-container">
+    <h1>✨ Our Events ✨</h1>
+    <div class="events-grid">
+
+      <!-- Event 1 -->
+      <div class="event-card" onclick="openModal('modal-orientation')">
+        <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" class="event-thumb" alt="Orientation">
+        <div class="event-info">
+          <h2>Orientation’25</h2>
+          <p>Kicking off the new tenure with 100+ enthusiastic attendees</p>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card" onclick="openModal('modal-case')">
+        <img src="https://i.postimg.cc/hjHShKJP/IMG-9205.avif" class="event-thumb" alt="Case Conqueror">
+        <div class="event-info">
+          <h2>The Case Conqueror</h2>
+          <p>Nationwide Case Study Challenge powered by Unstop</p>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card" onclick="openModal('modal-drishti')">
+        <img src="https://i.postimg.cc/9F0h1dsC/IMG-9223.avif" class="event-thumb" alt="Drishti IAS Event">
+        <div class="event-info">
+          <h2>E-Cell x Drishti IAS</h2>
+          <p>From Engineering Dreams to Cracking Civil Services</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- Events Section -->
-  <div class="events-container">
-    <h1>✨ Our Events ✨</h1>
-
-    <div class="event-box">
-      <div class="event-folder" onclick="toggleEvent('orientation')">
-        <span>🥷 Orientation'25</span>
+  <!-- Modals (unchanged) -->
+  <div id="modal-drishti" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-drishti')">&times;</span>
+      <h2>E-Cell x Drishti IAS</h2>
+      <div class="modal-images">
+        <img src="https://i.postimg.cc/3wsqjpmr/Scanned-20250828-1901-04.jpg" alt="">
+        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
+        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
       </div>
+      <p>E-Cell x Drishti IAS: From Engineering Dreams to Cracking Civil Services 
 
-      <div class="event-content" id="orientation">
-        <p class="event-description">
-          We kicked off the new session with our Orientation Program, welcoming
-          fresh minds into the E-Cell family. The event began with an
-          introduction to our club, its vision, and the opportunities it offers
-          for budding entrepreneurs.
-        </p>
-        <p class="event-description">
-          To make the session engaging, we hosted an interactive
-          entrepreneurship game that encouraged creativity, problem-solving,
-          and teamwork. The atmosphere was filled with enthusiasm, curiosity,
-          and the spirit of innovation, setting the perfect tone for the year
-          ahead.
-        </p>
-        <div class="event-images">
-          <img src="https://i.postimg.cc/9F0h1dsC/IMG-9223.avif" alt="Orientation 1" />
-          <img src="https://i.postimg.cc/3wsqjpmr/Scanned-20250828-1901-04.jpg" alt="Orientation 2" />
-          <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="Orientation 3" />
-          <img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="Orientation 4" />
-          <img src="https://i.postimg.cc/hjHShKJP/IMG-9205.avif" alt="Orientation 5" />
-          <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" alt="Orientation 6" />
-        </div>
+On 17th February 2025, E-Cell in collaboration with Drishti IAS hosted an engaging and insightful speaker session in the college auditorium, with a turnout of over 200 enthusiastic participants.
+
+The session was led by Mr. Prashant Sharma, a renowned educator with 20+ years of experience, recipient of three national awards, and mentor to thousands of aspirants. Known for his expertise in training and soft skills, Mr. Sharma shared invaluable insights on:
+	•	UPSC Preparation – practical strategies and the roadmap to cracking Civil Services
+	•	Balancing College with Aspirations – managing academics while preparing for competitive exams
+	•	Soft Skills Enhancement – building confidence, communication, and personality for success
+
+The event not only inspired students to aim higher but also equipped them with a blueprint for success—whether in Civil Services or other professional pursuits. It was a powerful reminder that with the right guidance, determination, and preparation, engineers too can dream big and achieve beyond conventional career paths.
+
+One mentor. One session. One opportunity. This event left a lasting impact on everyone who attended.</p>
+      
+    </div>
+  </div>
+
+  <div id="modal-case" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-case')">&times;</span>
+      <h2>The Case Conqueror</h2>
+      <div class="modal-images">
+        <img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="">
+        <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" alt="">
+        <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" alt="">
       </div>
+      <p>Event Overview
+The Case Conqueror, hosted by E-Cell IGDTUW and powered by Unstop, was not just another case study competition—it turned into a battlefield of wits, strategy, and innovation. With 350+ participants from multiple colleges and disciplines, the event challenged undergraduate students to take on real-world business problems and craft bold, game-changing solutions. Participants competed against some of the sharpest minds, tested their analytical genius, and proved their ability to think like top strategists.
+
+The judging focused on clarity of problem understanding, creativity of ideas, practicality and scalability of solutions, logical presentation, and analytical depth. This ensured that the most well-rounded and impactful solutions stood out.
+
+Event Format
+
+Team Size: 2–4 members per team (unchangeable after registration)
+
+Round 1 (Online): A real-world case study was released, and teams submitted their solutions in a 7-slide PPT (including title slide).
+
+Round 2 (Online): Shortlisted teams prepared a 2-slide deck and a 3-minute video presentation based on their solutions.
+
+Rewards & Prizes
+
+Winner: Team Bulbasaur – ₹5,000 + Certificate
+
+First Runner-Up: Team Vyapari – ₹3,000 + Certificate
+
+Second Runner-Up: Team Case Crusaders – ₹2,000 + Certificate
+
+All Participants: Certificates of participation
+
+✨ The Case Conqueror concluded with great enthusiasm, showcasing the spirit of innovation, teamwork, and problem-solving among undergraduate students nationwide.</p>
+      
+    </div>
+  </div>
+
+  <div id="modal-orientation" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-orientation')">&times;</span>
+      <h2>Orientation’25</h2>
+      <div class="modal-images">
+        <img src="https://i.postimg.cc/9F0h1dsC/IMG-9223.avif" alt="">
+        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
+        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
+
+      </div>
+      <p>The Orientation Session of E-Cell IGDTUW was held on 28th August, marking the beginning of an exciting new tenure of entrepreneurial activities on campus. With 100+ enthusiastic attendees, the event provided students with an opportunity to immerse themselves in the culture of innovation, leadership, and collaboration that E-Cell stands for. The session aimed to familiarize students with the Cell’s vision, showcase the opportunities available, and inspire them to step into the world of entrepreneurship.
+
+Highlights
+The session opened with the introduction of the core team and leads, setting the stage for students to get to know the people who would be driving initiatives throughout the tenure. This was followed by a comprehensive introduction to the various functional teams—including Web Development, Creative, Content, Sponsorship, Media, Research & Development, Operations, and Marketing. Each team’s responsibilities were highlighted, from building digital platforms and designing creatives to managing sponsorships, curating content, driving research, handling events, and promoting E-Cell’s initiatives. This helped the attendees gain a clear picture of how E-Cell operates as a unit and the diverse opportunities available for them to contribute.
+
+To make the session more engaging, the official merchandise for the tenure was unveiled, creating excitement and a sense of belonging among the participants. Adding a fun twist, the team conducted an interactive quiz on guestimates, which not only tested logical thinking but also encouraged collaboration and lively participation.
+
+Towards the end, the event moved into a Q&A session, where attendees interacted directly with the team to clarify their doubts about E-Cell’s functioning, the recruitment process, and ways to contribute. The session concluded with the roll-out of the recruitment form, opening the doors for new members to join the community and actively participate in upcoming projects and initiatives.
+
+✨ The Orientation concluded on a high note, filled with energy, enthusiasm, and curiosity. It set the perfect tone for a tenure dedicated to innovation, teamwork, and impactful initiatives, while laying the foundation for a stronger and more vibrant entrepreneurial community at IGDTUW.</p>
+      
     </div>
   </div>
 
   <script>
-    function toggleEvent(id) {
-      const section = document.getElementById(id);
-      section.classList.toggle('open');
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
     }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    // Close modal if clicked outside content
+    window.onclick = function (event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+
+    // ✅ Drawer JS
+    const menuBtn = document.getElementById("menuBtn");
+    const drawer = document.getElementById("drawer");
+    const closeDrawer = document.getElementById("closeDrawer");
+
+    menuBtn.addEventListener("click", () => {
+      drawer.classList.add("open");
+    });
+
+    closeDrawer.addEventListener("click", () => {
+      drawer.classList.remove("open");
+    });
   </script>
 </body>
 
