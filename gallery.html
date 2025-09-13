@@ -6,266 +6,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery - E-Cell IGDTUW</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
+  <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css" />
 
-  <style>
-    /* Global */
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #0a0a0a;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
+  <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+  
+<style>
+/* ===========================
+   Navbar Styling for E-Cell
+=========================== */
 
-    /* Navbar Styling */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: saturate(140%) blur(8px);
-      background: linear-gradient(to bottom, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.55));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-      padding: 0 18px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-      color: #f5f5f5;
-    }
-
-    .brand img {
-      height: 46px;
-      width: 46px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-    }
-
-    .brand .title {
-      font-size: 19px;
-      font-weight: 800;
-    }
-
-    .brand .subtitle {
-      font-size: 13px;
-      color: #aaa;
-      margin-top: 2px;
-    }
-
-    .links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .links .nav-text {
-      position: relative;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 700;
-      font-size: 15.5px;
-    }
-
-    .links .nav-text::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      height: 2px;
-      width: 0;
-      background: linear-gradient(90deg, #f3f4f6, #8a2be2);
-      transition: width 0.3s ease;
-    }
-
-    .links .nav-text:hover::after {
-      width: 100%;
-    }
-
-    .cta {
-      padding: 9px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      background: transparent;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .cta:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-1px);
-    }
-
-    /* Hamburger menu */
-    .menu-btn {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-    }
-
-    .menu-btn span {
-      width: 24px;
-      height: 2.5px;
-      background-color: #fff;
-      border-radius: 2px;
-    }
-
-    /* Mobile Drawer */
-    .drawer {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 250px;
-      height: 100%;
-      background: #111;
-      transition: right 0.3s ease;
-      z-index: 2000;
-      padding: 20px;
-    }
-
-    .drawer.open {
-      right: 0;
-    }
-
-    .drawer a {
-      display: block;
-      margin: 15px 0;
-      text-decoration: none;
-      color: #fff;
-      font-size: 17px;
-      font-weight: 600;
-    }
-
-    .drawer a:hover {
-      color: #a855f7;
-    }
-
-    .drawer .close {
-      display: block;
-      margin-left: auto;
-      margin-bottom: 20px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 6px 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      color: #fff;
-    }
-
-    @media (max-width: 768px) {
-      .links { display: none; }
-      .menu-btn { display: flex; }
-    }
-
-    /* Main Gallery Heading */
-.main-heading {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 40px;
-  color: #c084fc; /* Light purple */
+/* General body and font */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Section Headings */
-.gallery-heading {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 25px;
-  color: #a855f7; /* Vibrant purple */
+/* Navbar Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: saturate(140%) blur(8px);
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.55));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Navbar container */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, links right */
+  height: 72px; /* slightly bigger than before */
+  padding-left: 16px;  /* logo a bit further from left */
+  padding-right: 70px; /* links slightly further right */
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Brand (logo + title) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* slightly bigger gap between logo and text */
+  text-decoration: none;
+  color: #f5f5f5;
+}
+
+.brand img {
+  height: 46px; /* slightly bigger logo */
+  width: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.brand .title {
+  font-size: 19px; /* slightly bigger font */
+  font-weight: 800;
+  color: #fff;
+}
+
+.brand .subtitle {
+  font-size: 13px; /* slightly bigger subtitle */
+  color: #aaa;
+  margin-top: 2px;
+}
+
+/* Navbar links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px; /* slightly bigger spacing */
+}
+
+.links .nav-text {
+  cursor: pointer;
   position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15.5px; /* slightly bigger font */
 }
 
-/* Decorative underline for section headings */
-.gallery-heading::after {
+.links .nav-text::after {
   content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+  transition: width 0.3s ease;
+}
+
+.links .nav-text:hover::after {
+  width: 100%;
+}
+
+/* CTA button */
+.cta {
+  padding: 9px 18px; /* slightly bigger button */
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background: transparent;
+  font-weight: 700;
+  font-size: 15px; /* slightly bigger font */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Hamburger menu for mobile */
+.menu-btn {
+  display: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.menu-btn span {
   display: block;
-  width: 80px;
-  height: 3px;
-  background: #9333ea;
-  margin: 8px auto 0;
+  height: 2.5px; /* slightly thicker */
+  width: 24px;   /* slightly wider */
+  background-color: #fff;
   border-radius: 2px;
 }
 
-/* Masonry layout */
-.masonry {
-  column-count: 3;
-  column-gap: 20px;
-  padding: 0 20px;
+/* Mobile drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background: #111;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.4);
+  transition: right 0.3s ease;
+  z-index: 2000;
+  padding: 20px;
 }
 
-.masonry .item {
-  break-inside: avoid;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.drawer.open {
+  right: 0;
 }
 
-.masonry .item img {
-  width: 100%;
+.drawer a {
   display: block;
-  border-radius: 12px;
-  object-fit: cover;
+  margin: 13px 0; /* slightly bigger spacing in drawer */
+  text-decoration: none;
+  color: #fff;
+  font-size: 17.5px;
+  font-weight: 600;
 }
 
-.masonry .item:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+.drawer a:hover {
+  color: #a855f7;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .masonry {
-    column-count: 2;
-  }
+.drawer .close {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .15);
+  color: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .masonry {
-    column-count: 1;
+  .links {
+    display: none;
   }
+
+  .menu-btn {
+    display: flex;
+  }
+  .links {
+  display: flex;
+  align-items: center;
+  gap: 28px;       /* spacing between nav items */
+  margin-left: 20px; /* shift all headings slightly to the right */
 }
 
+/* rest remains the same as previous */
+.links .nav-text {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15.5px;
+}
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      color: #aaa;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
-    }
-  </style>
+.links .nav-text::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+  transition: width 0.3s ease;
+}
+
+.links .nav-text:hover::after {
+  width: 100%;
+}
+
+/* CTA button */
+.cta {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background: transparent;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+}
+</style>
 </head>
-
 <body>
 
   <!-- Navbar -->
+  <div class="site-navbar">
   <header role="banner">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="index.html">
@@ -276,7 +263,7 @@
         </div>
       </a>
 
-      <div class="links">
+      <div class="links" id="navLinks">
         <a href="index.html" class="nav-text">About</a>
         <a href="events.html" class="nav-text">Events</a>
         <a href="blogs.html" class="nav-text">Blogs</a>
@@ -286,7 +273,7 @@
         <a class="cta" href="contact.html">Contact Us</a>
       </div>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -294,79 +281,138 @@
     </nav>
   </header>
 
-  <!-- Drawer -->
-  <div class="drawer" id="drawer">
-    <button class="close" id="closeDrawer">Close</button>
-    <a href="index.html">About</a>
-    <a href="events.html">Events</a>
-    <a href="blogs.html">Blogs</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="updates.html">Updates</a>
-    <a href="our-team.html">Team</a>
-    <a href="contact.html">Contact Us</a>
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-label="Mobile menu">
+      <button class="close" id="closeDrawer" aria-label="Close menu">Close</button>
+      <a href="index.html" class="nav-text dlink">About</a>
+      <a href="events.html" class="nav-text dlink">Events</a>
+      <a href="blogs.html" class="nav-text dlink">Blogs</a>
+      <a href="gallery.html" class="nav-text dlink">Gallery</a>
+      <a href="updates.html" class="nav-text dlink">Updates</a>
+      <a href="our-team.html" class="nav-text dlink">Team</a>
+      <a href="contact.html" class="dlink">Contact Us</a>
+    </div>
   </div>
+  </div> <!-- end of .site-navbar -->
 
+  <!-- Gallery Section -->
   <section class="gallery">
-  <h2 class="main-heading">Gallery</h2>
+    <div class="gallery-flex">
+      <div class="column left">
+        <div class="item"><img src="https://i.postimg.cc/Gpwd4vHP/15.jpg" alt="" /></div>
+        <div class="item"><img src="images/drishtiias/1000074475.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/W3Q91yq7/9.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/PJJ2Kjsh/11.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/prd0HLPx/17.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/sDhYZh6q/19.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="" /></div>
+        <div class="item"><img src="images/gallery/gallery1.jpg" alt="" /></div>
+        <div class="item"><img src="images/gallery/gallery2.jpg" alt="" /></div>
+      </div>
 
-  <!-- Orientation Photos -->
-  <div class="gallery-section">
-    <h3 class="gallery-heading">Orientation Photos</h3>
-    <div class="masonry">
-      <div class="item"><img src="https://i.postimg.cc/zG1qBCqs/1.jpg" alt="Orientation 1"></div>
-      <div class="item"><img src="https://i.postimg.cc/J4qtf7VV/4.jpg" alt="Orientation 2"></div>
-      <div class="item"><img src="https://i.postimg.cc/W3Q91yq7/9.jpg" alt="Orientation 3"></div>
-      <div class="item"><img src="https://i.postimg.cc/PJJ2Kjsh/11.jpg" alt="Orientation 4"></div>
-      <div class="item"><img src="https://i.postimg.cc/prd0HLPx/17.jpg" alt="Orientation 5"></div>
-      <div class="item"><img src="https://i.postimg.cc/sDhYZh6q/19.jpg" alt="Orientation 6"></div>
+      <div class="column middle">
+        <div class="item"><img src="https://i.postimg.cc/L63xqwxs/Scanned-20250828-1901-08.jpg" alt="" /></div>
+        <div class="item"><img src="images/caseconq/caseconq1.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/m2CdbMWW/14.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/3w4YRn8x/12.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/Qd00TCWC/10.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/QdvvJ1h7/16.jpg" alt="" /></div>
+        
+      </div>
+
+      <div class="column right">
+        <div class="item"><img src="https://i.postimg.cc/4x20FcWK/5.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/8cPpmWyy/7.jpg" alt="" /></div>
+        <div class="item"><img src="images/drishtiias/1000074428.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/GpxFNxpd/3.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/ydpm0Xz4/18.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/QxT8ggRw/IMG-20250828-WA0052.jpg" alt="" /></div>
+        <div class="item"><img src="https://i.postimg.cc/9F0h1dsC/IMG-9223.avif" alt="" /></div>
+        <div class="item"><img src="images/gallery/gallery3.jpg" alt="" /></div>
+        <div class="item"><img src="images/gallery/gallery4.jpg" alt="" /></div>
+      </div>
     </div>
+  </section>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+   <!-- Footer Section -->
+<footer class="bg-gray-900 text-gray-500 py-12 relative">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- Location with Map -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Location</h3>
+      <div class="flex flex-col space-y-4">
+        <!-- Map Embed -->
+        <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Address + Contact -->
+        <div>
+          <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
+      <ul class="space-y-2">
+       <li><a href="index.html" class="hover:text-pink-400 transition">About Us</a></li>
+     <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
+    <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
+    <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+      <div class="flex space-x-4 mb-4">
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="mt-4">
+          <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
+          <br>
+          <br>
+        <p>+91 98765 43210</p>
+          <br>
+          <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
+        
+      </div>
+    </div>
+
   </div>
 
-  <!-- Merch Photoshoots -->
-  <div class="gallery-section">
-    <h3 class="gallery-heading">Merch Photoshoots</h3>
-    <div class="masonry">
-      <div class="item"><img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="Merch 1"></div>
-      <div class="item"><img src="https://i.postimg.cc/m2CdbMWW/14.jpg" alt="Merch 2"></div>
-      <div class="item"><img src="https://i.postimg.cc/Qd00TCWC/10.jpg" alt="Merch 3"></div>
-      <div class="item"><img src="https://i.postimg.cc/zG1qBCqs/1.jpg" alt="Merch 4"></div>
-      <div class="item"><img src="https://i.postimg.cc/J4qtf7VV/4.jpg" alt="Merch 5"></div>
-    </div>
+  <!-- Footer Bottom -->
+  <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    © 2025 ECell IGDTUW. All rights reserved.
   </div>
-
-  <!-- Other Events -->
-  <div class="gallery-section">
-    <h3 class="gallery-heading">Other Events</h3>
-    <div class="masonry">
-      <div class="item"><img src="https://i.postimg.cc/W3Q91yq7/9.jpg" alt="Event 1"></div>
-      <div class="item"><img src="https://i.postimg.cc/PJJ2Kjsh/11.jpg" alt="Event 2"></div>
-      <div class="item"><img src="https://i.postimg.cc/prd0HLPx/17.jpg" alt="Event 3"></div>
-      <div class="item"><img src="https://i.postimg.cc/sDhYZh6q/19.jpg" alt="Event 4"></div>
-      <div class="item"><img src="https://i.postimg.cc/m2CdbMWW/14.jpg" alt="Event 5"></div>
-      <div class="item"><img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="Event 6"></div>
-    </div>
-  </div>
-</section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 E-Cell IGDTUW. All rights reserved.</p>
-  </footer>
-
-  <!-- JS for drawer -->
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const drawer = document.getElementById("drawer");
-    const closeDrawer = document.getElementById("closeDrawer");
-
-    menuBtn.addEventListener("click", () => {
-      drawer.classList.add("open");
-    });
-
-    closeDrawer.addEventListener("click", () => {
-      drawer.classList.remove("open");
-    });
-  </script>
+</footer>
 </body>
-
 </html>
