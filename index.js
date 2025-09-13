@@ -1,73 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // 🎬 Preloader animation
-  const preloader = document.getElementById('preloader');
-  const tl = gsap.timeline();
-  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
-    .to(preloader, {
-      // Keep current animation properties as is
-      onComplete: () => {
-        loaderAnimation();
-        // IMPORTANT: Refresh ScrollTrigger after loader to ensure all positions are correct.
-        ScrollTrigger.refresh();
-      }
-    });
+  // Check if loader has been shown already in this session
+  if (sessionStorage.getItem('loaderShown') === 'true') {
+    // Immediately hide preloader and loader elements (no animation)
+    document.getElementById('preloader').style.display = 'none';
+    document.querySelector('.loader').style.display = 'none';
+    document.getElementById('innovate').style.display = 'none';
+    document.getElementById('create').style.display = 'none';
+    document.getElementById('grow').style.display = 'none';
+    document.getElementById('final-text').style.display = 'none';
 
-  //White-Loader
-  function loaderAnimation() {
-    var t2 = gsap.timeline({
-      onComplete: () => {
-        const ribbon = document.querySelector("#stats-ribbon");
-        if (ribbon && ribbon.getBoundingClientRect().top < window.innerHeight) {
-          animateCounters();
-        }
+    // Run hero animations right away
+    runHeroAnimations();
 
-        // Hide loader/preloader and their text elements here
-        document.getElementById('preloader').style.display = 'none';
-        document.querySelector('.loader').style.display = 'none';
-        document.getElementById('innovate').style.display = 'none';
-        document.getElementById('create').style.display = 'none';
-        document.getElementById('grow').style.display = 'none';
-        document.getElementById('final-text').style.display = 'none';
-      }
-    });
+    ScrollTrigger.refresh();
+    animateCounters();
 
-    t2
-      .to("#preloader", {
-        height: 0,
-        delay: 0,
-        duration: 1.5,
-        ease: "circ.inOut"
-      })
-      .to("#final-text", {
-        opacity: 0,
-        delay: -1.5,
-        ease: "circ.inOut"
-      })
-      .to(".white", {
-        height: "100%",
-        duration: 2,
-        delay: -2.5,
-        top: 0,
-        ease: "circ.inOut"
-      })
-      .to(".white", {
-        height: "0%",
-        duration: 1,
-        delay: -0.5,
-        ease: "circ.inOut",
-      });
+  } else {
+    // Loader not shown before, run preloader animation
+    runPreloaderAnimation();
   }
 
-  // ... rest of your JS code unchanged ...
-  
   // 👀 Fade-ins
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
     gsap.from(element, {
@@ -80,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Drawer
+  // Drawer functionality
   const drawer = document.getElementById('drawer');
   const menuBtn = document.getElementById('menuBtn');
   const closeDrawer = document.getElementById('closeDrawer');
@@ -114,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   });
 
-
   // Animate Event Cards on Scroll
   gsap.utils.toArray(".event-card").forEach((card, i) => {
     gsap.to(card, {
@@ -130,12 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Animate Sponsors Grid (You only have images here, not a grid, so the selector needs to be adjusted)
-  // Changed '.sponsor-grid img' to '.sponsor-logos-container img'
+  // Animate Sponsors Grid (selector adjusted)
   gsap.utils.toArray('.sponsor-logos-container img').forEach((logo, i) => {
     gsap.to(logo, {
       scrollTrigger: {
-        trigger: logo, // Trigger on each logo individually
+        trigger: logo,
         start: "top 85%",
         toggleActions: "play none none none"
       },
@@ -147,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 🎨 Cursor gradient effect
+  // Cursor gradient effect
   const gradientBg = document.getElementById("gradient-bg");
-  if (gradientBg) { // Check if element exists before adding listener
+  if (gradientBg) {
     document.addEventListener("mousemove", (e) => {
       const { innerWidth, innerHeight } = window;
       const x = (e.clientX / innerWidth) * 100;
@@ -166,50 +118,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
-  // Apply Now → Google Form (replace with your live form link)
-  // There is no element with ID 'applyBtn' in your HTML for this to attach to.
-  // I'm commenting it out to prevent an error, or you can add an ID to one of your buttons.
-  // const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfHy1giYR_NxI9f9oWHrUkJ43KoZj_oQaZaX-LTN3iovimyNw/viewform";
-  // document.getElementById('applyBtn').addEventListener('click', (e)=>{
-  //   e.preventDefault(); window.open(formURL, '_blank');
-  // });
-
-  // 🔢 Counters using GSAP ScrollTrigger
+  // Counters using GSAP ScrollTrigger
   const counters = document.querySelectorAll('.counter');
-  const speed = 100; // You can adjust this for faster/slower counting
 
   function animateCounters() {
     counters.forEach(counter => {
-      counter.innerText = "0"; // Reset before animating
+      counter.innerText = "0";
       const target = +counter.getAttribute("data-target");
-
-      // Use GSAP's built-in animtion capabilities for smoother counting
       gsap.to(counter, {
         innerText: target,
-        duration: 2, // Animation duration for counting
+        duration: 2,
         ease: "power1.out",
-        snap: { innerText: 1 }, // Snap to whole numbers
+        snap: { innerText: 1 },
         onUpdate: function() {
-          counter.innerText = Math.ceil(this.targets()[0].innerText); // Update text with current number
+          counter.innerText = Math.ceil(this.targets()[0].innerText);
         },
         onComplete: function() {
-          counter.innerText = target + "+"; // Add '+' after completion
+          counter.innerText = target + "+";
         }
       });
     });
   }
 
-  // Trigger counters when the #stats-ribbon enters the viewport
   ScrollTrigger.create({
     trigger: "#stats-ribbon",
-    start: "top 80%", // When the top of the ribbon is 80% down the viewport
-    onEnter: animateCounters, // Run the function when it enters
-    once: true // Only run once
+    start: "top 80%",
+    onEnter: animateCounters,
+    once: true
   });
 
-
-  // ✍️ Typing effect
+  // Typing effect
   const typed = new Typed("#typed-text", {
     strings: ["Learning", "Growth", "Knowledge", "Innovation", "Future"],
     typeSpeed: 80,
@@ -218,10 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true
   });
 
-  // Ribbon underline animation for Sponsors section
   ScrollTrigger.create({
     trigger: ".sponsor-ribbon h2",
-    start: "top 80%", // When the heading enters view
+    start: "top 80%",
     onEnter: () => {
       gsap.to(".ribbon-underline", {
         width: "100%",
@@ -229,91 +166,98 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: "power2.out"
       });
     },
-    once: true // Only animate once
+    once: true
   });
 
 });
 
+// Function to run preloader animation with loader and preloader hiding
+function runPreloaderAnimation() {
+  const preloader = document.getElementById('preloader');
 
+  const tl = gsap.timeline();
+  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+    .to(preloader, {
+      onComplete: () => {
+        loaderAnimation();
+        ScrollTrigger.refresh();
+        // Mark loader as shown to prevent replay
+        sessionStorage.setItem('loaderShown', 'true');
+      }
+    });
+}
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   gsap.registerPlugin(ScrollTrigger);
+function loaderAnimation() {
+  var t2 = gsap.timeline({
+    onComplete: () => {
+      const ribbon = document.querySelector("#stats-ribbon");
+      if (ribbon && ribbon.getBoundingClientRect().top < window.innerHeight) {
+        animateCounters();
+      }
 
-//   // 🎬 Preloader animation
-//   const preloader = document.getElementById('preloader');
-//   const tl = gsap.timeline();
-//   tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-//     .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-//     .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-//     .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-//     .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-//     .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-//     .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
-//     .to(preloader, {
-//       // opacity: 0, duration: 1, delay: 1, ease: "power2.inOut",
-//       onComplete: () => {
-//         loaderAnimation();
-//         // IMPORTANT: Refresh ScrollTrigger after loader to ensure all positions are correct.
-//         // This is a good practice and might indirectly help with layout issues.
-//         ScrollTrigger.refresh();
-//       }
-//     });
+      // Hide loader/preloader and their text elements
+      document.getElementById('preloader').style.display = 'none';
+      document.querySelector('.loader').style.display = 'none';
+      document.getElementById('innovate').style.display = 'none';
+      document.getElementById('create').style.display = 'none';
+      document.getElementById('grow').style.display = 'none';
+      document.getElementById('final-text').style.display = 'none';
 
-//   //White-Loader
-//   function loaderAnimation() {
-//     var t2 = gsap.timeline({
-//         onComplete: () => {
+      // Run hero animations after loader is hidden
+      runHeroAnimations();
+    }
+  });
 
-//             const ribbon = document.querySelector("#stats-ribbon");
-//             if (ribbon && ribbon.getBoundingClientRect().top < window.innerHeight) {
+  t2
+    .to("#preloader", {
+      height: 0,
+      delay: 0,
+      duration: 1.5,
+      ease: "circ.inOut"
+    })
+    .to("#final-text", {
+      opacity: 0,
+      delay: -1.5,
+      ease: "circ.inOut"
+    })
+    .to(".white", {
+      height: "100%",
+      duration: 2,
+      delay: -2.5,
+      top: 0,
+      ease: "circ.inOut"
+    })
+    .to(".white", {
+      height: "0%",
+      duration: 1,
+      delay: -0.5,
+      ease: "circ.inOut",
+    });
+}
 
-//                 animateCounters();
-//             }
-//         }
-//     });
-//     t2
-//       .to("#preloader", {
-//             height: 0,
-//             delay:0,
-//             duration: 1.5,
-//             ease: "circ.inOut" 
-//         })
-//       .to("#final-text",{
-//         opacity:0,
-//         delay:-1.5,
-//         ease: "circ.inOut"
-//       })
-//       .to(".white", {
-//         height: "100%",
-//         duration: 2,
-//         delay: -2.5,
-//         top: 0,
-//         ease: "circ.inOut"
-//       })
-//       .to(".white", {
-//         height: "0%",
-//         duration: 1,
-//         delay: -0.5, 
-//         ease: "circ.inOut",
-//       })
-//   }
-
-  
-  // Moved these hero animations inside DOMContentLoaded to ensure they run after all elements are loaded
+// Hero animations separately so we can call immediately when skipping loader
+function runHeroAnimations() {
   gsap.from(".headline", {
     y: 50,
     opacity: 0,
     rotationX: -90,
     duration: 1.2,
     ease: "power3.out",
-    delay: 8 // Delay slightly after the page loads/preloader finishes
+    delay: 0 // Run immediately, no delay when skipping loader
   });
 
-  // Hero Sub-text Fade-in and slight Y-translate
   gsap.from(".hero-content .sub", {
     y: 20,
     opacity: 0,
     duration: 1.5,
     ease: "power2.out",
-    delay: 8.5 // After headline
+    delay: 0
   });
+}
+
