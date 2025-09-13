@@ -5,32 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Updates - E-Cell IGDTUW</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Crimson Text', serif;
-      background: #000;
-      color: #fff;
-    }
-    .timeline-line {
-      background: linear-gradient(to bottom, #9333ea, #a855f7, #9333ea);
-      width: 4px;
-    }
-    .timeline-dot {
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
-    }
-    .timeline-card {
-      background: rgba(147, 51, 234, 0.1);
-      border: 1px solid rgba(168, 85, 247, 0.4);
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .timeline-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  
+<style>
+/* Navbar container */
+.nav {
+  display: flex;
+  justify-content: space-between; /* Logo left, links right */
+  align-items: center;
+  padding: 0 30px; /* Adjust spacing from edges */
+  height: 64px; /* slightly smaller navbar */
+}
+
+/* Logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand img {
+  height: 42px;
+  width: 42px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Logo text */
+.brand .title,
+.brand .subtitle {
+  font-weight: 800; /* Bold */
+  color: #fff;
+}
+
+/* Navbar links */
+.links {
+  display: flex;
+  gap: 24px; /* spacing between links */
+  align-items: center;
+}
+
+.links .nav-text,
+.links .cta {
+  font-weight: 700; /* Bold navbar text */
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover effect for links */
+.links .nav-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+  transition: width 0.25s ease;
+}
+
+.links .nav-text:hover::after {
+  width: 100%;
+}
+
+/* CTA hover */
+.links .cta:hover {
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+}
+</style>
+
 </head>
 <body>
 
