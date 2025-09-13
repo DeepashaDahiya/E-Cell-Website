@@ -1,31 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Check if loader has been shown already in this session
+  // -----------------------------
+  // RESET ANIMATIONS ON LOAD
+  // -----------------------------
+  resetAnimations();
+
+  // -----------------------------
+  // Preloader Logic
+  // -----------------------------
   if (sessionStorage.getItem('loaderShown') === 'true') {
-    // Immediately hide preloader and loader elements (no animation)
-    document.getElementById('preloader').style.display = 'none';
-    document.querySelector('.loader').style.display = 'none';
-    document.getElementById('innovate').style.display = 'none';
-    document.getElementById('create').style.display = 'none';
-    document.getElementById('grow').style.display = 'none';
-    document.getElementById('final-text').style.display = 'none';
+    // Immediately hide preloader/loader
+    hidePreloaderElements();
 
     // Run hero animations right away
     runHeroAnimations();
 
+    // Refresh triggers & start counters if visible
     ScrollTrigger.refresh();
     animateCounters();
+    initTyped();
 
   } else {
     // Loader not shown before, run preloader animation
     runPreloaderAnimation();
   }
 
-  // 👀 Fade-ins
+  // -----------------------------
+  // Fade-ins
+  // -----------------------------
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
     gsap.from(element, {
-      scrollTrigger: { trigger: element, start: "top 80%", toggleActions: "play none none none" },
+      scrollTrigger: { trigger: element, start: "top 80%" },
       opacity: 0,
       y: 20,
       duration: 1,
@@ -34,47 +40,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // -----------------------------
   // Drawer functionality
+  // -----------------------------
   const drawer = document.getElementById('drawer');
   const menuBtn = document.getElementById('menuBtn');
   const closeDrawer = document.getElementById('closeDrawer');
 
-  function openDrawer(){
+  function openDrawer() {
     drawer.classList.add('active');
     menuBtn.setAttribute('aria-expanded', 'true');
-    drawer.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when drawer is open
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
   }
-  function hideDrawer(){
+  function hideDrawer() {
     drawer.classList.remove('active');
     menuBtn.setAttribute('aria-expanded', 'false');
-    drawer.setAttribute('aria-hidden','true');
-    document.body.style.overflow = ''; // Re-enable scrolling
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
   }
 
   menuBtn.addEventListener('click', openDrawer);
   closeDrawer.addEventListener('click', hideDrawer);
-  drawer.addEventListener('click', (e)=>{ if(e.target === drawer) hideDrawer(); });
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) hideDrawer(); });
 
-  // Smooth scroll for in-page links (desktop nav & drawer)
+  // -----------------------------
+  // Smooth scroll for in-page links
+  // -----------------------------
   document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e)=>{
+    a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
-      if(id.length > 1){
+      if (id.length > 1) {
         e.preventDefault();
-        hideDrawer(); // Close drawer for mobile links
-        document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+        hideDrawer();
+        document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    })
+    });
   });
 
-  // Animate Event Cards on Scroll
+  // -----------------------------
+  // Animate Event Cards
+  // -----------------------------
   gsap.utils.toArray(".event-card").forEach((card, i) => {
     gsap.to(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-      },
+      scrollTrigger: { trigger: card, start: "top 85%" },
       opacity: 1,
       y: 0,
       duration: 1,
@@ -83,14 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Animate Sponsors Grid (selector adjusted)
+  // -----------------------------
+  // Animate Sponsors Grid
+  // -----------------------------
   gsap.utils.toArray('.sponsor-logos-container img').forEach((logo, i) => {
     gsap.to(logo, {
-      scrollTrigger: {
-        trigger: logo,
-        start: "top 85%",
-        toggleActions: "play none none none"
-      },
+      scrollTrigger: { trigger: logo, start: "top 85%" },
       opacity: 1,
       y: 0,
       duration: 1,
@@ -99,7 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // -----------------------------
   // Cursor gradient effect
+  // -----------------------------
   const gradientBg = document.getElementById("gradient-bg");
   if (gradientBg) {
     document.addEventListener("mousemove", (e) => {
@@ -118,44 +127,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Counters using GSAP ScrollTrigger
-  const counters = document.querySelectorAll('.counter');
-
-  function animateCounters() {
-    counters.forEach(counter => {
-      counter.innerText = "0";
-      const target = +counter.getAttribute("data-target");
-      gsap.to(counter, {
-        innerText: target,
-        duration: 2,
-        ease: "power1.out",
-        snap: { innerText: 1 },
-        onUpdate: function() {
-          counter.innerText = Math.ceil(this.targets()[0].innerText);
-        },
-        onComplete: function() {
-          counter.innerText = target + "+";
-        }
-      });
-    });
-  }
-
+  // -----------------------------
+  // Counters with ScrollTrigger
+  // -----------------------------
   ScrollTrigger.create({
     trigger: "#stats-ribbon",
     start: "top 80%",
     onEnter: animateCounters,
-    once: true
+    once: true // only once per load
   });
 
-  // Typing effect
-  const typed = new Typed("#typed-text", {
-    strings: ["Learning", "Growth", "Knowledge", "Innovation", "Future"],
-    typeSpeed: 80,
-    backSpeed: 50,
-    backDelay: 1200,
-    loop: true
-  });
-
+  // -----------------------------
+  // Ribbon underline animation
+  // -----------------------------
   ScrollTrigger.create({
     trigger: ".sponsor-ribbon h2",
     start: "top 80%",
@@ -169,25 +153,82 @@ document.addEventListener('DOMContentLoaded', () => {
     once: true
   });
 
+  // Refresh all triggers
+  ScrollTrigger.refresh();
 });
 
-// Function to run preloader animation with loader and preloader hiding
+// -----------------------------
+// FUNCTIONS
+// -----------------------------
+
+function resetAnimations() {
+  // Reset counters to 0
+  document.querySelectorAll(".counter").forEach(c => c.textContent = "0");
+
+  // Kill old Typed instance if any
+  if (window.typedInstance) {
+    window.typedInstance.destroy();
+    window.typedInstance = null;
+  }
+}
+
+function hidePreloaderElements() {
+  document.getElementById('preloader').style.display = 'none';
+  document.querySelector('.loader').style.display = 'none';
+  document.getElementById('innovate').style.display = 'none';
+  document.getElementById('create').style.display = 'none';
+  document.getElementById('grow').style.display = 'none';
+  document.getElementById('final-text').style.display = 'none';
+}
+
+function animateCounters() {
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    counter.innerText = "0";
+    const target = +counter.getAttribute("data-target");
+    gsap.to(counter, {
+      innerText: target,
+      duration: 2,
+      ease: "power1.out",
+      snap: { innerText: 1 },
+      onUpdate: function () {
+        counter.innerText = Math.ceil(this.targets()[0].innerText);
+      },
+      onComplete: function () {
+        counter.innerText = target + "+";
+      }
+    });
+  });
+}
+
+function initTyped() {
+  window.typedInstance = new Typed("#typed-text", {
+    strings: ["Learning", "Growth", "Knowledge", "Innovation", "Future"],
+    typeSpeed: 80,
+    backSpeed: 50,
+    backDelay: 1200,
+    loop: true
+  });
+}
+
+// -----------------------------
+// Preloader Animations
+// -----------------------------
 function runPreloaderAnimation() {
   const preloader = document.getElementById('preloader');
-
   const tl = gsap.timeline();
-  tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
-    .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
-    .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+
+  tl.to("#innovate", { opacity: 1, duration: 0.5 })
+    .to("#innovate", { opacity: 0, duration: 0.5, delay: 0.5 })
+    .to("#create", { opacity: 1, duration: 0.5 })
+    .to("#create", { opacity: 0, duration: 0.5, delay: 0.5 })
+    .to("#grow", { opacity: 1, duration: 0.5 })
+    .to("#grow", { opacity: 0, duration: 0.5, delay: 0.5 })
+    .to("#final-text", { opacity: 1, duration: 1 })
     .to(preloader, {
       onComplete: () => {
         loaderAnimation();
         ScrollTrigger.refresh();
-        // Mark loader as shown to prevent replay
         sessionStorage.setItem('loaderShown', 'true');
       }
     });
@@ -201,63 +242,34 @@ function loaderAnimation() {
         animateCounters();
       }
 
-      // Hide loader/preloader and their text elements
-      document.getElementById('preloader').style.display = 'none';
-      document.querySelector('.loader').style.display = 'none';
-      document.getElementById('innovate').style.display = 'none';
-      document.getElementById('create').style.display = 'none';
-      document.getElementById('grow').style.display = 'none';
-      document.getElementById('final-text').style.display = 'none';
-
-      // Run hero animations after loader is hidden
+      hidePreloaderElements();
       runHeroAnimations();
+      initTyped();
     }
   });
 
-  t2
-    .to("#preloader", {
-      height: 0,
-      delay: 0,
-      duration: 1.5,
-      ease: "circ.inOut"
-    })
-    .to("#final-text", {
-      opacity: 0,
-      delay: -1.5,
-      ease: "circ.inOut"
-    })
-    .to(".white", {
-      height: "100%",
-      duration: 2,
-      delay: -2.5,
-      top: 0,
-      ease: "circ.inOut"
-    })
-    .to(".white", {
-      height: "0%",
-      duration: 1,
-      delay: -0.5,
-      ease: "circ.inOut",
-    });
+  t2.to("#preloader", { height: 0, duration: 1.5, ease: "circ.inOut" })
+    .to("#final-text", { opacity: 0, delay: -1.5, ease: "circ.inOut" })
+    .to(".white", { height: "100%", duration: 2, delay: -2.5, top: 0, ease: "circ.inOut" })
+    .to(".white", { height: "0%", duration: 1, delay: -0.5, ease: "circ.inOut" });
 }
 
-// Hero animations separately so we can call immediately when skipping loader
+// -----------------------------
+// Hero animations
+// -----------------------------
 function runHeroAnimations() {
   gsap.from(".headline", {
     y: 50,
     opacity: 0,
     rotationX: -90,
     duration: 1.2,
-    ease: "power3.out",
-    delay: 0 // Run immediately, no delay when skipping loader
+    ease: "power3.out"
   });
 
   gsap.from(".hero-content .sub", {
     y: 20,
     opacity: 0,
     duration: 1.5,
-    ease: "power2.out",
-    delay: 0
+    ease: "power2.out"
   });
 }
-
