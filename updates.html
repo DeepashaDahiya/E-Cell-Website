@@ -8,54 +8,77 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   
 <style>
-/* Navbar container */
-.nav {
-  display: flex;
-  justify-content: space-between; /* Logo left, links right */
-  align-items: center;
-  padding: 0 30px; /* Adjust spacing from edges */
-  height: 64px; /* slightly smaller navbar */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-/* Logo */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: saturate(140%) blur(8px);
+  background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+}
+
+.nav {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  color: #f5f5f5;
 }
 
 .brand img {
   height: 42px;
   width: 42px;
   border-radius: 12px;
-  object-fit: cover;
 }
 
-/* Logo text */
-.brand .title,
+.brand .title {
+  font-weight: 800;
+}
+
 .brand .subtitle {
-  font-weight: 800; /* Bold */
-  color: #fff;
+  font-size: 14px;
+  color: #999;
 }
 
-/* Navbar links */
 .links {
   display: flex;
-  gap: 24px; /* spacing between links */
+  gap: 28px;
   align-items: center;
 }
 
-.links .nav-text,
-.links .cta {
-  font-weight: 700; /* Bold navbar text */
-  color: #fff;
-  text-decoration: none;
+.links .nav-text {
   cursor: pointer;
   position: relative;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-weight: 600;
 }
 
-/* Hover effect for links */
 .links .nav-text::after {
   content: "";
   position: absolute;
@@ -64,64 +87,177 @@
   height: 2px;
   width: 0;
   background: linear-gradient(90deg, #f3f4f6, #8a2be2);
-  transition: width 0.25s ease;
+  transition: width .25s ease
 }
 
 .links .nav-text:hover::after {
-  width: 100%;
+  width: 100%
 }
 
-/* CTA hover */
-.links .cta:hover {
-  background: rgba(255,255,255,0.1);
+.cta {
+  padding: 10px 16px;
   border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+  cursor: pointer;
+  color: #f5f5f5;
+  font-weight: 700
 }
+
+/* Hamburger */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background: #111;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+  transition: right 0.3s ease;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.drawer a {
+  display: block;
+  margin: 15px 0;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.drawer a:hover {
+  color: #a855f7;
+}
+
+.drawer .close {
+  font-size: 22px;
+  cursor: pointer;
+  color: #aaa;
+  margin-left: auto;
+  margin-bottom: 20px;
+  display: block;
+  width: fit-content;
+}
+
+.drawer .close:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+}
+/* Timeline line */
+.timeline-line {
+  width: 4px;
+  background: rgba(168, 85, 247, 0.6); /* purple line */
+  margin: 0 auto;
+  z-index: -1;
+}
+
+/* Dots */
+.timeline-dot {
+  border: 3px solid white;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.9);
+}
+
+/* Timeline card */
+.timeline-card {
+  background: rgba(26, 26, 26, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+}
+
+/* Headings */
+.timeline-card h3 {
+  color: #a855f7; /* purple */
+  margin-bottom: 8px;
+}
+
+
 </style>
 
 </head>
 <body>
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-black/70">
-    <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-      <!-- Brand -->
-      <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg">
-        <img src="logo.jpeg" alt="E-Cell IGDTUW Logo" class="h-10 w-10 rounded-lg">
-        <div>
-          <div class="font-extrabold">E-Cell IGDTUW</div>
-          <div class="text-sm text-gray-400">Innovate • Create • Grow</div>
-        </div>
-      </a>
-
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-white hover:text-purple-400">About</a>
-        <a href="events.html" class="text-white hover:text-purple-400">Events</a>
-        <a href="blogs.html" class="text-white hover:text-purple-400">Blogs</a>
-        <a href="gallery.html" class="text-white hover:text-purple-400">Gallery</a>
-        <a href="updates.html" class="text-white hover:text-purple-400">Updates</a>
-        <a href="our-team.html" class="text-white hover:text-purple-400">Team</a>
-        <a href="contact.html" class="px-4 py-2 rounded-full border border-white/20 bg-white/10 hover:bg-purple-600 transition">Contact Us</a>
+<header role="banner">
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
+      <div>
+        <div class="title">E-Cell IGDTUW</div>
+        <div class="subtitle">Innovate • Create • Grow</div>
       </div>
-
-      <!-- Hamburger -->
-      <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-        ☰
-      </button>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-3 px-4 pb-4 bg-black/90">
-      <a href="index.html" class="text-white hover:text-purple-400">About</a>
-      <a href="events.html" class="text-white hover:text-purple-400">Events</a>
-      <a href="blogs.html" class="text-white hover:text-purple-400">Blogs</a>
-      <a href="gallery.html" class="text-white hover:text-purple-400">Gallery</a>
-      <a href="updates.html" class="text-white hover:text-purple-400">Updates</a>
-      <a href="our-team.html" class="text-white hover:text-purple-400">Team</a>
-      <a href="contact.html" class="text-white hover:text-purple-400">Contact Us</a>
+    </a>
+    <div class="links">
+      <a href="index.html" class="nav-text">About</a>
+      <a href="events.html" class="nav-text">Events</a>
+      <a href="blogs.html" class="nav-text">Blogs</a>
+      <a href="gallery.html" class="nav-text">Gallery</a>
+      <a href="updates.html" class="nav-text">Updates</a>
+      <a href="our-team.html" class="nav-text">Team</a>
+      <a class="cta" href="contact.html">Contact Us</a>
     </div>
-  </header>
-  
+
+    <!-- Hamburger -->
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Drawer -->
+<div class="drawer" id="drawer">
+  <span class="close" id="closeDrawer">&times;</span>
+  <a href="index.html">About</a>
+  <a href="events.html">Events</a>
+  <a href="blogs.html">Blogs</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="updates.html">Updates</a>
+  <a href="our-team.html">Team</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
   <!-- Timeline Section -->
   <section class="py-16 px-6">
     <h2 class="text-4xl font-extrabold text-center text-white mb-16">✨ Latest Updates ✨</h2>
