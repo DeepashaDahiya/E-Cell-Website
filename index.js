@@ -12,11 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
     .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
     .to(preloader, {
-      // opacity: 0, duration: 1, delay: 1, ease: "power2.inOut",
+      // Keep current animation properties as is
       onComplete: () => {
         loaderAnimation();
         // IMPORTANT: Refresh ScrollTrigger after loader to ensure all positions are correct.
-        // This is a good practice and might indirectly help with layout issues.
         ScrollTrigger.refresh();
       }
     });
@@ -24,25 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
   //White-Loader
   function loaderAnimation() {
     var t2 = gsap.timeline({
-        onComplete: () => {
-
-            const ribbon = document.querySelector("#stats-ribbon");
-            if (ribbon && ribbon.getBoundingClientRect().top < window.innerHeight) {
-
-                animateCounters();
-            }
+      onComplete: () => {
+        const ribbon = document.querySelector("#stats-ribbon");
+        if (ribbon && ribbon.getBoundingClientRect().top < window.innerHeight) {
+          animateCounters();
         }
+
+        // Hide loader/preloader and their text elements here
+        document.getElementById('preloader').style.display = 'none';
+        document.querySelector('.loader').style.display = 'none';
+        document.getElementById('innovate').style.display = 'none';
+        document.getElementById('create').style.display = 'none';
+        document.getElementById('grow').style.display = 'none';
+        document.getElementById('final-text').style.display = 'none';
+      }
     });
+
     t2
       .to("#preloader", {
-            height: 0,
-            delay:0,
-            duration: 1.5,
-            ease: "circ.inOut" 
-        })
-      .to("#final-text",{
-        opacity:0,
-        delay:-1.5,
+        height: 0,
+        delay: 0,
+        duration: 1.5,
+        ease: "circ.inOut"
+      })
+      .to("#final-text", {
+        opacity: 0,
+        delay: -1.5,
         ease: "circ.inOut"
       })
       .to(".white", {
@@ -55,11 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
       .to(".white", {
         height: "0%",
         duration: 1,
-        delay: -0.5, 
+        delay: -0.5,
         ease: "circ.inOut",
-      })
+      });
   }
 
+  // ... rest of your JS code unchanged ...
+  
   // 👀 Fade-ins
   gsap.utils.toArray(".gsap-fade-in").forEach(element => {
     gsap.from(element, {
@@ -225,6 +233,72 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   gsap.registerPlugin(ScrollTrigger);
+
+//   // 🎬 Preloader animation
+//   const preloader = document.getElementById('preloader');
+//   const tl = gsap.timeline();
+//   tl.to("#innovate", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+//     .to("#innovate", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+//     .to("#create", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+//     .to("#create", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+//     .to("#grow", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+//     .to("#grow", { opacity: 0, duration: 0.5, ease: "power2.inOut", delay: 0.5 })
+//     .to("#final-text", { opacity: 1, duration: 1, ease: "power2.inOut" })
+//     .to(preloader, {
+//       // opacity: 0, duration: 1, delay: 1, ease: "power2.inOut",
+//       onComplete: () => {
+//         loaderAnimation();
+//         // IMPORTANT: Refresh ScrollTrigger after loader to ensure all positions are correct.
+//         // This is a good practice and might indirectly help with layout issues.
+//         ScrollTrigger.refresh();
+//       }
+//     });
+
+//   //White-Loader
+//   function loaderAnimation() {
+//     var t2 = gsap.timeline({
+//         onComplete: () => {
+
+//             const ribbon = document.querySelector("#stats-ribbon");
+//             if (ribbon && ribbon.getBoundingClientRect().top < window.innerHeight) {
+
+//                 animateCounters();
+//             }
+//         }
+//     });
+//     t2
+//       .to("#preloader", {
+//             height: 0,
+//             delay:0,
+//             duration: 1.5,
+//             ease: "circ.inOut" 
+//         })
+//       .to("#final-text",{
+//         opacity:0,
+//         delay:-1.5,
+//         ease: "circ.inOut"
+//       })
+//       .to(".white", {
+//         height: "100%",
+//         duration: 2,
+//         delay: -2.5,
+//         top: 0,
+//         ease: "circ.inOut"
+//       })
+//       .to(".white", {
+//         height: "0%",
+//         duration: 1,
+//         delay: -0.5, 
+//         ease: "circ.inOut",
+//       })
+//   }
+
+  
   // Moved these hero animations inside DOMContentLoaded to ensure they run after all elements are loaded
   gsap.from(".headline", {
     y: 50,
