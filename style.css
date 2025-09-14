@@ -217,6 +217,25 @@ html, body {
 .cta:hover {
   transform: translateY(-1px)
 }
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  /* Make the logo stick to the left */
+  .site-navbar .brand {
+    justify-content: flex-start;  /* Align logo to left */
+    margin-right: auto;           /* Push other elements to the right */
+  }
+
+  /* Optional: Adjust the title/subtitle next to the logo */
+  .site-navbar .brand div {
+    margin-left: 0.5rem;         /* Small space between logo and text */
+  }
+
+  /* Ensure nav links don't overlap logo */
+  .site-navbar .links {
+    margin-left: auto;
+  }
+}
+
 
 /* Mobile */
 .menu-btn {
