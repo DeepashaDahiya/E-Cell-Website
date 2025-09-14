@@ -235,7 +235,26 @@ html, body {
     margin-left: auto;
   }
 }
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  /* Make logo stick to extreme left */
+  .nav .brand {
+    margin-left: 0;        /* stick to left edge */
+    margin-right: auto;    /* push links/menu to the right */
+    justify-content: flex-start;
+  }
 
+  /* Make links/menu align right */
+  .nav .links,
+  .nav .menu-btn {
+    margin-left: auto;
+  }
+
+  /* Optional: reduce padding inside brand for mobile */
+  .nav .brand img {
+    margin-left: 0;
+  }
+}
 
 /* Mobile */
 .menu-btn {
