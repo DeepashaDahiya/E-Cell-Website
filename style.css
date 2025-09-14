@@ -72,12 +72,7 @@ body {
   position: absolute;
   top: 100%;
   height: 1000vh;
-<<<<<<< HEAD
-  background: linear-gradient(to bottom, #080808, rgb(130, 42, 144));
-=======
   background: linear-gradient(to bottom, #000, rgb(130, 42, 144));
->>>>>>> bdf26f015c1582093e33a31809cc9a048b86c0c2
-  ;
 }
 header {
   position: sticky;
@@ -271,6 +266,45 @@ html, body {
   cursor: pointer
 }
 
+
+
+/* .logo {
+    height: 50px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  #logo {
+    height: 80%;
+  }
+
+  #logo-text {
+    font-family: "Fredericka the Great", sans-serif;
+    font-size: larger;
+    margin-left: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+  }
+
+  /* <!-- ✅ Navbar stays fixed & transparent --> */
+ /* header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  flex-direction: row;
+  background-color: transparent;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  font-size: 20px;
+  /* font-family: "Crimson Text", serif; */
+  /* z-index: 1000;
+}  */ */
 #about{
   padding-bottom: 72px;
 }
