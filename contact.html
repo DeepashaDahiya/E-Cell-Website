@@ -4,20 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
-    <!-- Font Awesome for Social Icons -->
-     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap" rel="stylesheet" />
 
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Libre+Baskerville:wght@400;700&family=Fredericka+the+Great&family=Rye&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
     />
+
     <style>
       body {
         margin: 0;
-        font-family:"Inter", 'Crimson Text', 'Libre Baskerville', serif;
+        font-family: "Inter", 'Crimson Text', 'Libre Baskerville', serif;
         background-color: #0d0d0d;
         color: #f5f5f5;
         display: flex;
@@ -27,16 +34,13 @@
         background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
       }
 
-      /* Apply index.html fonts to contact page */
-body, input, textarea, button, h1, h2, h3, p, a {
-    font-family: 'Crimson Text', 'Libre Baskerville', serif;
-}
+      body, input, textarea, button, h1, h2, h3, p, a {
+        font-family: 'Crimson Text', 'Libre Baskerville', serif;
+      }
 
-/* Optional: make headings a bit bolder if needed */
-h1, h2, h3 {
-    font-family: 'Fredericka the Great', 'Crimson Text', serif;
-}
-
+      h1, h2, h3 {
+        font-family: 'Fredericka the Great', 'Crimson Text', serif;
+      }
 
       .contact-container {
         position: relative;
@@ -48,9 +52,9 @@ h1, h2, h3 {
         text-align: center;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
         overflow: hidden;
+        margin: auto;
       }
 
-      /* translucent background image in center */
       .contact-container::before {
         content: "";
         position: absolute;
@@ -59,7 +63,7 @@ h1, h2, h3 {
         width: 80%;
         height: 80%;
         background: url("your-image.jpg") center/contain no-repeat;
-        opacity: 0.1; /* translucent */
+        opacity: 0.1;
         transform: translate(-50%, -50%);
         z-index: 0;
       }
@@ -97,27 +101,69 @@ h1, h2, h3 {
 
       .social-icons a:hover {
         transform: scale(1.2);
-        color: #ffd166; /* highlight on hover */
+        color: #ffd166;
       }
 
-         /* Top-right X button */
-    .contact-close {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 2rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: #f5f5f5;
-      transition: transform 0.2s ease, color 0.2s ease;
-      z-index: 10;
-    }
-    .contact-close:hover {
-      color: #ffd166;
-      transform: scale(1.2);
-    }
+      .contact-close {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 2rem;
+        font-weight: 700;
+        cursor: pointer;
+        color: #f5f5f5;
+        transition: transform 0.2s ease, color 0.2s ease;
+        z-index: 10;
+      }
+      .contact-close:hover {
+        color: #ffd166;
+        transform: scale(1.2);
+      }
 
-      /* Responsive */
+      /* Form Inputs */
+      input, textarea {
+        padding: 10px;
+        width: 80%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        border: none;
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: #ffd166;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      /* Toast Notification */
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #222;
+        color: #fff;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        z-index: 9999;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       @media (max-width: 768px) {
         .contact-container {
           width: 90%;
@@ -128,92 +174,83 @@ h1, h2, h3 {
         }
       }
     </style>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init({
+          publicKey: "ZNfL513xrKiRG-bdl",
+        });
+      })();
+    </script>
   </head>
   <body>
     <div class="contact-container">
       <div class="contact-close" onclick="location.href='index.html'">&times;</div>
       <h1>Get in Touch</h1>
       <p>We'd love to hear from you! Connect with us on any platform below:</p>
+
       <div class="social-icons">
         <a href="https://www.instagram.com/ecell.igdtuw/"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/ecelligdtuw/posts/?feedView=all"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://mail.google.com/mail/?view=cm&to=Ecell.igdtu@gmail.com" target="_blank">
-  <i class="fas fa-envelope"></i>
-</a>
-
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
-      <!-- Message Form -->
-      <form
-        action="https://mail.google.com/mail/?view=cm&to=Ecell.igdtu@gmail.com"
-        method="post"
-        enctype="text/plain"
-        style="margin-top: 30px; z-index: 1; position: relative"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-          style="
-            padding: 10px;
-            width: 80%;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            border: none;
-          "
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-          style="
-            padding: 10px;
-            width: 80%;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            border: none;
-          "
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          required
-          style="
-            padding: 10px;
-            width: 80%;
-            height: 100px;
-            border-radius: 10px;
-            border: none;
-            margin-bottom: 10px;
-          "
-        ></textarea>
+
+      <!-- Contact Form -->
+      <form id="contact-form" onsubmit="sendMail(); return false;" style="margin-top: 30px; z-index: 1; position: relative">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <input type="text" id="subject" placeholder="Subject" required />
+        <textarea id="message" placeholder="Your Message" required></textarea>
         <br />
-        <button
-          type="submit"
-          style="
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background: #ffd166;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.3s;
-          "
-        >
-          Send Message
-        </button>
+        <button type="submit">Send Message</button>
       </form>
 
       <!-- Phone Contact -->
       <p style="margin-top: 20px; color: #bbb; z-index: 1; position: relative">
         Or contact our Sponsorship Lead:
-        <a
-          href="tel:+919810823235"
-          style="color: #ffd166; text-decoration: none"
-          >+91 98108 23235</a
-        >
+        <a href="tel:+919810823235" style="color: #ffd166; text-decoration: none">
+          +91 98108 23235
+        </a>
       </p>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+      function showToast(message, success = true) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.style.background = success ? "#28a745" : "#dc3545"; // green or red
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+      function sendMail() {
+        let parms = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          subject: document.getElementById("subject").value,
+          message: document.getElementById("message").value,
+        };
+
+        emailjs.send("service_zd3t6sq", "template_yexp0j8", parms)
+          .then(function (response) {
+            showToast("✅ Message Sent Successfully!");
+            document.getElementById("contact-form").reset();
+          })
+          .catch(function (error) {
+            showToast("❌ Failed to send message. Try again.", false);
+            console.log("FAILED...", error);
+          });
+      }
+    </script>
   </body>
 </html>

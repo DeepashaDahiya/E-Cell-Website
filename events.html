@@ -5,10 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Cell - Events</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:wght@400;600&family=Crimson+Text:wght@400;700&display=swap"
-    rel="stylesheet" />
+  <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
   <style>
     html,
     body {
@@ -183,18 +181,18 @@
     /* Events (unchanged) */
     .events-container {
       max-width: 1200px;
-      margin: 80px auto 40px;
+      margin: 10px auto 40px;
       padding: 20px;
+      font-style: bold;
     }
 
-    .events-container h1 {
+    /* .events-container h1 {
       text-align: center;
       font-size: 2.8rem;
       margin-bottom: 50px;
-      font-family: "Crimson Text", serif;
       letter-spacing: 2px;
       color: #f1f1f1;
-    }
+    } */
 
     .events-grid {
       display: grid;
@@ -232,10 +230,26 @@
       font-size: 1.4rem;
       margin: 0 0 10px;
     }
+    .events-container h1 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;       /* bold */
+      font-size: 2.8rem;     
+      text-align: center;     
+      margin-bottom: 50px;   
+      letter-spacing: 1px;
+      color: #f5f5f5;        
+    }
+
+    .event-info h2 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      color: #f5f5f5;
+    }
 
     .event-info p {
-      font-size: 0.95rem;
-      color: #ddd;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      color: #ccc; /* softer, consistent gray */
     }
 
     /* Modal (unchanged) */
@@ -313,63 +327,63 @@
 
 <body>
   <!-- Navbar -->
-  <header role="banner">
-    <nav class="nav">
-      <a class="brand" href="index.html">
-        <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
-        <div>
-          <div class="title">E-Cell IGDTUW</div>
-          <div class="subtitle">Innovate • Create • Grow</div>
-        </div>
-      </a>
-      <div class="links">
-        <a href="index.html" class="nav-text">About</a>
-        <a href="events.html" class="nav-text">Events</a>
-        <a href="blogs.html" class="nav-text">Blogs</a>
-        <a href="gallery.html" class="nav-text">Gallery</a>
-        <a href="updates.html" class="nav-text">Updates</a>
-        <a href="our-team.html" class="nav-text">Team</a>
-        <a class="cta" href="contact.html">Contact Us</a>
+<header role="banner">
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
+      <div>
+        <div class="title">E-Cell IGDTUW</div>
+        <div class="subtitle">Innovate • Create • Grow</div>
       </div>
+    </a>
+    <div class="links">
+      <a href="index.html" class="nav-text">About</a>
+      <a href="events.html" class="nav-text">Events</a>
+      <a href="blogs.html" class="nav-text">Blogs</a>
+      <a href="gallery.html" class="nav-text">Gallery</a>
+      <a href="updates.html" class="nav-text">Updates</a>
+      <a href="our-team.html" class="nav-text">Team</a>
+      <a class="cta" href="contact.html">Contact Us</a>
+    </div>
 
-      <!-- ✅ Hamburger -->
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-  </header>
+    <!-- Hamburger -->
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
 
-  <!-- ✅ Drawer -->
-  <div class="drawer" id="drawer">
-    <span class="close" id="closeDrawer">&times;</span>
-    <a href="index.html">About</a>
-    <a href="events.html">Events</a>
-    <a href="blogs.html">Blogs</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="updates.html">Updates</a>
-    <a href="our-team.html">Team</a>
-    <a href="contact.html">Contact Us</a>
-  </div>
+<!-- Drawer -->
+<div class="drawer" id="drawer">
+  <span class="close" id="closeDrawer">&times;</span>
+  <a href="index.html">About</a>
+  <a href="events.html">Events</a>
+  <a href="blogs.html">Blogs</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="updates.html">Updates</a>
+  <a href="our-team.html">Team</a>
+  <a href="contact.html">Contact Us</a>
+</div>
 
   <!-- Events Section (unchanged) -->
   <div class="events-container">
-    <h1>✨ Our Events ✨</h1>
+    <h1>Our Events</h1>
     <div class="events-grid">
 
       <!-- Event 1 -->
-      <div class="event-card" onclick="openModal('modal-orientation')">
-        <img src="https://i.postimg.cc/3wsqjpmr/Scanned-20250828-1901-04.jpg" class="event-thumb" alt="Orientation">
+      <div class="event-card" onclick="openModal('modal-ideastorm')">
+        <img src="images/events/ideastorm/ideastorm2.jpg" class="event-thumb" alt="IdeaStorm Event">
         <div class="event-info">
-          <h2>Orientation’25</h2>
-          <p>Kicking off the new tenure with 100+ enthusiastic attendees</p>
+          <h2>IdeaStorm</h2>
+          <p>Unleashing Creativity: A 24-hour Ideathon</p>
         </div>
       </div>
 
       <!-- Event 2 -->
       <div class="event-card" onclick="openModal('modal-case')">
-        <img src="ideastorm.png" class="event-thumb" alt="Case Conqueror">
+        <img src="images/events/caseconq/caseconq1.jpg" class="event-thumb" alt="Case Conqueror">
         <div class="event-info">
           <h2>The Case Conqueror</h2>
           <p>Nationwide Case Study Challenge powered by Unstop</p>
@@ -385,93 +399,321 @@
         </div>
       </div>
 
+      <!-- Event 4 -->
+      
+      <div class="event-card" onclick="openModal('modal-orientation')">
+        <img src="https://i.postimg.cc/3wsqjpmr/Scanned-20250828-1901-04.jpg" class="event-thumb" alt="Orientation">
+        <div class="event-info">
+          <div id="orientation-details" class="orientation-section">
+          <h2>Orientation’25</h2>
+          <p>Kicking off the new tenure with 100+ enthusiastic attendees</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 5 -->
+      <div class="event-card" onclick="openModal('modal-gate')">
+        <img src="images/events/gate/gate2.jpg" class="event-thumb" alt="Workshop: Cracking GATE with Made Easy">
+        <div class="event-info">
+          <h2>Workshop: Cracking GATE with Made Easy</h2>
+          <p>Unlocking the Secrets of Success with Made Easy</p>
+        </div>
+      </div>
+
+      <!-- Event 6 -->
+      <div class="event-card" onclick="openModal('modal-web3')">
+        <img src="images/events/web3/web3.jpg" class="event-thumb" alt="Web3 Workshop">
+        <div class="event-info">
+          <h2>Web3 Workshop</h2>
+          <p>Exploring the Future of Decentralized Technology</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- Modals (unchanged) -->
-  <div id="modal-drishti" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('modal-drishti')">&times;</span>
-      <h2>E-Cell x Drishti IAS</h2>
-      <div class="modal-images">
-        <img src="https://i.postimg.cc/3wsqjpmr/Scanned-20250828-1901-04.jpg" alt="">
-        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
-        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
+   
+
+
+    <!-- event 1 modal -->
+      <div id="modal-ideastorm" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal('modal-ideastorm')">&times;</span>
+          <div id="ideastorm" class="marquee-section"></div>
+          <h2>IdeaStorm</h2>
+          <div class="modal-images">
+            <img src="images/events/ideastorm/ideastorm2.jpg" alt="">
+            <img src="ideastorm.png" alt="">
+            <img src="images/events/ideastorm/ideastorm3.jpg" alt="">
+
+          </div>
+        <p>
+    <p>
+      <strong>“IdeaStorm”</strong> ~<br>
+      An Ideathon was organized in association with IGDTUW’s Anveshan Foundation, on the occasion of <strong>Innovation Day, 2023 ✨</strong><br><br>
+
+      <strong>Rounds:</strong><br>
+      <u>Round 1 - Online Submission</u><br>
+      ▪ Online submissions were invited<br>
+      ▪ Last date to submit was <strong>Friday, 12th February, 2023</strong><br><br>
+
+      <u>Round 2 - Idea Pitching Round</u><br>
+      ▪ Shortlisted teams pitched their ideas to our esteemed panel of judges<br>
+      ▪ Date: <strong>Thursday, 16th February, 2023 (10 AM - 4 PM)</strong><br><br>
+
+      <strong>Rules:</strong><br>
+      ▪ Team size: 1–4 members<br>
+      ▪ Maximum age of participants: 30 years<br>
+      ▪ One female candidate was compulsory in each team<br><br>
+
+      <strong>Prizes:</strong><br>
+      🔹 Prize pool of Rs. 40,000<br><br>
+
+      Refer to how the event went through this link:  
+      <a href="https://www.instagram.com/reel/Cq73LgigvlF/?igsh=eDAyM2RicTZzaDg4" target="_blank">https://www.instagram.com/reel/Cq73LgigvlF/?igsh=eDAyM2RicTZzaDg4</a> ✨
+    </p>
+
+    </p>
+        </div>
       </div>
-      <p>E-Cell x Drishti IAS: From Engineering Dreams to Cracking Civil Services 
+    <!-- event 2 modal -->
+      <div id="modal-case" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal('modal-case')">&times;</span>
+          <h2>The Case Conqueror</h2>
+          <div class="modal-images">
+            <img src="images/events/caseconq/caseconq1.jpg" alt="">
+            <img src="images/events/caseconq/caseconq3.jpg" alt="">
+            <img src="images/events/caseconq/caseconq2.jpg" alt="">
+          </div>
+        <p>
+      <strong>Event Overview</strong>
+    </p>
 
-On 17th February 2025, E-Cell in collaboration with Drishti IAS hosted an engaging and insightful speaker session in the college auditorium, with a turnout of over 200 enthusiastic participants.
+    <p>
+      <strong>The Case Conqueror</strong>, hosted by <strong>E-Cell IGDTUW</strong> and powered by <strong>Unstop</strong>, was not just another case study competition—it turned into a battlefield of wits, strategy, and innovation. With <strong>350+ participants</strong> from multiple colleges and disciplines, the event challenged undergraduate students to take on real-world business problems and craft bold, game-changing solutions. Participants competed against some of the sharpest minds, tested their analytical genius, and proved their ability to think like top strategists.
+    </p>
 
-The session was led by Mr. Prashant Sharma, a renowned educator with 20+ years of experience, recipient of three national awards, and mentor to thousands of aspirants. Known for his expertise in training and soft skills, Mr. Sharma shared invaluable insights on:
-	•	UPSC Preparation – practical strategies and the roadmap to cracking Civil Services
-	•	Balancing College with Aspirations – managing academics while preparing for competitive exams
-	•	Soft Skills Enhancement – building confidence, communication, and personality for success
+    <p>
+      The judging focused on <strong>clarity of problem understanding</strong>, <strong>creativity of ideas</strong>, <strong>practicality and scalability of solutions</strong>, <strong>logical presentation</strong>, and <strong>analytical depth</strong>. This ensured that the most well-rounded and impactful solutions stood out.
+    </p>
 
-The event not only inspired students to aim higher but also equipped them with a blueprint for success—whether in Civil Services or other professional pursuits. It was a powerful reminder that with the right guidance, determination, and preparation, engineers too can dream big and achieve beyond conventional career paths.
+    <p>
+      <strong>Event Format</strong>
+    </p>
 
-One mentor. One session. One opportunity. This event left a lasting impact on everyone who attended.</p>
+    <ul>
+      <li><strong>Team Size:</strong> 2–4 members per team (unchangeable after registration)</li>
+      <li><strong>Round 1 (Online):</strong> A real-world case study was released, and teams submitted their solutions in a 7-slide PPT (including title slide).</li>
+      <li><strong>Round 2 (Online):</strong> Shortlisted teams prepared a 2-slide deck and a 3-minute video presentation based on their solutions.</li>
+    </ul>
+
+    <p>
+      <strong>Rewards & Prizes</strong>
+    </p>
+
+    <ul>
+      <li><strong>Winner:</strong> Team Bulbasaur – ₹5,000 + Certificate</li>
+      <li><strong>First Runner-Up:</strong> Team Vyapari – ₹3,000 + Certificate</li>
+      <li><strong>Second Runner-Up:</strong> Team Case Crusaders – ₹2,000 + Certificate</li>
+      <li><strong>All Participants:</strong> Certificates of participation</li>
+    </ul>
+
+    <p>
+      ✨ The Case Conqueror concluded with great enthusiasm, showcasing the spirit of <strong>innovation, teamwork,</strong> and <strong>problem-solving</strong> among undergraduate students nationwide.
+    </p>
+
+        </div>
+      </div>
+
+    <!-- event 3 modal -->
+      <div id="modal-drishti" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal('modal-drishti')">&times;</span>
+          <h2>E-Cell x Drishti IAS</h2>
+          <div class="modal-images">
+            <img src="images/events/drishtiias/1000074428.jpg" alt="">
+            <img src="images/events/drishtiias/1000074424.jpg" alt="">
+            <img src="images/events/drishtiias/1000074475.jpg" alt="">
+          </div>
+          <p>
+      <strong>E-Cell x Drishti IAS:</strong> <em>From Engineering Dreams to Cracking Civil Services</em>
+    </p>
+
+    <p>
+      On <strong>17th February 2025</strong>, E-Cell in collaboration with Drishti IAS hosted an engaging and insightful <strong>speaker session</strong> in the college auditorium, with a turnout of over 200 enthusiastic participants.
+    </p>
+
+    <p>
+      The session was led by <strong>Mr. Prashant Sharma</strong>, a renowned educator with 20+ years of experience, recipient of three national awards, and mentor to thousands of aspirants. Known for his expertise in training and soft skills, Mr. Sharma shared invaluable insights on:
+    </p>
+
+    <ul>
+      <li><strong>UPSC Preparation:</strong> Practical strategies and the roadmap to cracking Civil Services.</li>
+      <li><strong>Balancing College with Aspirations:</strong> Managing academics while preparing for competitive exams.</li>
+      <li><strong>Soft Skills Enhancement:</strong> Building confidence, communication, and personality for success.</li>
+    </ul>
+
+    <p>
+      The event not only inspired students to aim higher but also equipped them with a <strong>blueprint for success</strong>—whether in Civil Services or other professional pursuits. It was a powerful reminder that with the right guidance, determination, and preparation, engineers too can dream big and achieve beyond conventional career paths.
+    </p>
+
+    <p>
+      <strong>One mentor. One session. One opportunity.</strong> This event left a lasting impact on everyone who attended.
+    </p>
+          
+        </div>
+      </div>
+
+
+      <!-- event 4 modal -->
+      <div id="modal-orientation" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal('modal-orientation')">&times;</span>
+          <div id="orientation-details" class="marquee-section"></div>
+          <h2>Orientation’25</h2>
+          <div class="modal-images">
+            <img src="images/events/orientation/orientation1.jpg" alt="">
+            <img src="images/events/orientation/orientation2.jpg" alt="">
+            <img src="images/events/orientation/orientation3.jpg" alt="">
+
+          </div>
+        <p>
+      <strong>Orientation Session Overview</strong>
+    </p>
+
+    <p>
+      The <strong>Orientation Session</strong> of <strong>E-Cell IGDTUW</strong> was held on <strong>28th August</strong>, marking the beginning of an exciting new tenure of entrepreneurial activities on campus. With <strong>100+ enthusiastic attendees</strong>, the event provided students with an opportunity to immerse themselves in the culture of <strong>innovation, leadership,</strong> and <strong>collaboration</strong> that E-Cell stands for. The session aimed to familiarize students with the Cell’s vision, showcase the opportunities available, and inspire them to step into the world of entrepreneurship.
+    </p>
+
+    <p>
+      <strong>Highlights</strong>
+    </p>
+
+    <ul style="margin-left: 20px; line-height: 1.8;">
+      <li>The session opened with the introduction of the <strong>core team and leads</strong>, allowing students to get to know the people driving initiatives throughout the tenure.</li>
       
+      <li>
+        A comprehensive introduction to the various functional teams was conducted, including:
+        <ul style="margin-left: 20px; line-height: 1.6;">
+          <li>Web Development</li>
+          <li>Creative</li>
+          <li>Content</li>
+          <li>Sponsorship</li>
+          <li>Media</li>
+          <li>Research & Development</li>
+          <li>Operations</li>
+          <li>Marketing</li>
+        </ul>
+        Each team’s responsibilities were highlighted, from building digital platforms and designing creatives to managing sponsorships, curating content, driving research, handling events, and promoting E-Cell initiatives.
+      </li>
+      
+      <li>The official <strong>merchandise</strong> for the tenure was unveiled, creating excitement and a sense of belonging among participants.</li>
+      <li>An <strong>interactive quiz on guestimates</strong> was conducted, encouraging logical thinking, collaboration, and lively participation.</li>
+      <li>The event concluded with a <strong>Q&A session</strong>, where attendees clarified doubts about E-Cell’s functioning, the recruitment process, and ways to contribute.</li>
+      <li>The <strong>recruitment form rollout</strong> opened the doors for new members to join and actively participate in upcoming projects and initiatives.</li>
+    </ul>
+
+    <p>
+      ✨ The Orientation concluded on a high note, filled with <strong>energy, enthusiasm,</strong> and <strong>curiosity</strong>. It set the perfect tone for a tenure dedicated to <strong>innovation, teamwork,</strong> and <strong>impactful initiatives</strong>, while laying the foundation for a stronger and more vibrant entrepreneurial community at <strong>IGDTUW</strong>.
+    </p>
+
+
+        </div>
+      </div>
+
+
+  <!-- event 5 modal -->
+  <div id="modal-gate" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modal-gate')">&times;</span>
+      <div id="gate-details" class="marquee-section"></div>
+      <h2>GATE Preparation Workshop</h2>
+      <div class="modal-images">
+        <img src="images/events/gate/gate1.jpg" alt="">
+        <img src="images/events/gate/gate3.jpg" alt="">
+        <img src="images/events/gate/gate2.jpg" alt="">
+
+      </div>
+    <p class="text-gray-400 mb-6">
+  Our esteemed speaker, <strong>Mr. Gunjan Chowdhary</strong>, guided the students through a comprehensive journey of exam preparation.  
+  He discussed not only proven techniques and preparation strategies, but also the deeper mindset required to stay consistent during the long months of practice.  
+  From time management tips, effective study schedules, and subject prioritization, to handling exam stress and staying motivated, every crucial aspect was addressed with clarity.  
+  With his vast experience and insights, students walked away with a practical roadmap to approach competitive exams with confidence and discipline. 📚✨
+</p>
+
+<p class="text-gray-300 mb-6">
+  📅 <strong>Date:</strong> 1st November, 2025 (Wednesday) <br>
+  🕚 <strong>Time:</strong> 11:00 AM – 1:00 PM <br>
+  📍 <strong>Venue:</strong> Seminar Hall, IGDTUW Campus
+</p>
+
+<p class="text-gray-400 mb-6">
+  This was a <strong>must-attend event</strong> for all B.Tech students of IGDTUW aiming to perform their best in GATE and other competitive exams.  
+  Beyond strategies, the session also provided students with motivational takeaways and real-life success stories, making it more relatable and inspiring.  
+  Those who attended gained not just knowledge, but also a fresh perspective and the self-belief needed to face upcoming challenges.  
+</p>
+
+
+    <p class="text-gray-400 mb-6">
+      The session proved to be highly beneficial for all B.Tech students who attended.  
+      It was a golden opportunity to gain first-hand knowledge from one of the finest experts in the field, and it left students inspired and motivated to achieve excellence.  
+    </p>
+
+
     </div>
   </div>
 
-  <div id="modal-case" class="modal">
+
+<!-- event 6 modal -->
+  <div id="modal-web3" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('modal-case')">&times;</span>
-      <h2>The Case Conqueror</h2>
+      <span class="close-btn" onclick="closeModal('modal-web3')">&times;</span>
+      <div id="web3" class="marquee-section"></div>
+      <h2>Web3 Workshop</h2>
       <div class="modal-images">
-        <img src="https://i.postimg.cc/TPGnv3V2/IMG-9233.avif" alt="">
-        <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" alt="">
-        <img src="https://i.postimg.cc/J4QLCNQh/IMG-9226.avif" alt="">
-      </div>
-      <p>Event Overview
-The Case Conqueror, hosted by E-Cell IGDTUW and powered by Unstop, was not just another case study competition—it turned into a battlefield of wits, strategy, and innovation. With 350+ participants from multiple colleges and disciplines, the event challenged undergraduate students to take on real-world business problems and craft bold, game-changing solutions. Participants competed against some of the sharpest minds, tested their analytical genius, and proved their ability to think like top strategists.
-
-The judging focused on clarity of problem understanding, creativity of ideas, practicality and scalability of solutions, logical presentation, and analytical depth. This ensured that the most well-rounded and impactful solutions stood out.
-
-Event Format
-
-Team Size: 2–4 members per team (unchangeable after registration)
-
-Round 1 (Online): A real-world case study was released, and teams submitted their solutions in a 7-slide PPT (including title slide).
-
-Round 2 (Online): Shortlisted teams prepared a 2-slide deck and a 3-minute video presentation based on their solutions.
-
-Rewards & Prizes
-
-Winner: Team Bulbasaur – ₹5,000 + Certificate
-
-First Runner-Up: Team Vyapari – ₹3,000 + Certificate
-
-Second Runner-Up: Team Case Crusaders – ₹2,000 + Certificate
-
-All Participants: Certificates of participation
-
-✨ The Case Conqueror concluded with great enthusiasm, showcasing the spirit of innovation, teamwork, and problem-solving among undergraduate students nationwide.</p>
-      
-    </div>
-  </div>
-
-  <div id="modal-orientation" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal('modal-orientation')">&times;</span>
-      <h2>Orientation’25</h2>
-      <div class="modal-images">
-        <img src="https://i.postimg.cc/9F0h1dsC/IMG-9223.avif" alt="">
-        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
-        <img src="https://i.postimg.cc/dQ2MG2p9/IMG-6012.avif" alt="">
+        <img src="images/events/web3/20241112_144531.jpg" alt="">
+        <img src="images/events/web3/web3.jpg" alt="">
+        <img src="images/events/web3/20241112_145123.jpg" alt="">
 
       </div>
-      <p>The Orientation Session of E-Cell IGDTUW was held on 28th August, marking the beginning of an exciting new tenure of entrepreneurial activities on campus. With 100+ enthusiastic attendees, the event provided students with an opportunity to immerse themselves in the culture of innovation, leadership, and collaboration that E-Cell stands for. The session aimed to familiarize students with the Cell’s vision, showcase the opportunities available, and inspire them to step into the world of entrepreneurship.
+    <p class="text-gray-400 mb-6">
+  Have you ever wondered, <em>“Is Web3 really worth it? Will I be able to build a career in this space?”</em> 🤔  
+  If these questions sound familiar, this session was designed just for you!  
+  AssetMantle IGDTUW, in collaboration with <strong>@ecell_igdtuw</strong>, proudly hosted an enlightening session on  
+  <strong>“Intro to Web3 and Career Scope”</strong> featuring the talented <strong>Mr. Sanket Agarwal</strong>. 🚀  
+</p>
 
-Highlights
-The session opened with the introduction of the core team and leads, setting the stage for students to get to know the people who would be driving initiatives throughout the tenure. This was followed by a comprehensive introduction to the various functional teams—including Web Development, Creative, Content, Sponsorship, Media, Research & Development, Operations, and Marketing. Each team’s responsibilities were highlighted, from building digital platforms and designing creatives to managing sponsorships, curating content, driving research, handling events, and promoting E-Cell’s initiatives. This helped the attendees gain a clear picture of how E-Cell operates as a unit and the diverse opportunities available for them to contribute.
+<p class="text-gray-400 mb-6">
+  Sanket, currently a <strong>Product Manager at Quillaudits</strong>, has been actively shaping the blockchain industry for the past 2 years.  
+  His extensive journey included hands-on contributions to projects with global leaders like <strong>Binance, Crypto.com, CoinDCX</strong>, and many more.  
+  But what truly makes him special is his passion for teaching — having trained <strong>10,000+ students</strong> across 40+ of India’s premiere institutions,  
+  he has inspired countless young minds to step confidently into the Web3 revolution. ✨  
+</p>
 
-To make the session more engaging, the official merchandise for the tenure was unveiled, creating excitement and a sense of belonging among the participants. Adding a fun twist, the team conducted an interactive quiz on guestimates, which not only tested logical thinking but also encouraged collaboration and lively participation.
+<p class="text-gray-400 mb-6">
+  During this interactive and engaging session, attendees got an insider’s look at what Web3 really is,  
+  how it is different from Web2, the immense career opportunities it brings, and how students can start their journey today.  
+  From blockchain basics and smart contracts, to decentralized applications and career pathways,  
+  Sanket broke down complex concepts into simple, actionable insights. 💡  
+</p>
 
-Towards the end, the event moved into a Q&A session, where attendees interacted directly with the team to clarify their doubts about E-Cell’s functioning, the recruitment process, and ways to contribute. The session concluded with the roll-out of the recruitment form, opening the doors for new members to join the community and actively participate in upcoming projects and initiatives.
+<p class="text-gray-300 mb-6">
+  📅 <strong>Date:</strong> 13th February, 2025 <br>
+  🕛 <strong>Time:</strong> 12:00 PM onwards <br>
+  📍 <strong>Venue:</strong> Auditorium, IGDTUW
+</p>
 
-✨ The Orientation concluded on a high note, filled with energy, enthusiasm, and curiosity. It set the perfect tone for a tenure dedicated to innovation, teamwork, and impactful initiatives, while laying the foundation for a stronger and more vibrant entrepreneurial community at IGDTUW.</p>
-      
+<p class="text-gray-400 mb-6">
+  The session wasn’t just technical — it was motivational.  
+  Students walked away with clarity about the future of blockchain and how they can align their skills with this fast-evolving domain.  
+  Whether you are a coder, designer, or strategist, Sanket emphasized that there is a place for everyone in Web3.  
+  This event left students not only better informed, but also highly inspired to take the leap into the world of decentralized technology. 🌐🔥  
+</p>
+
+
+
     </div>
   </div>
 
@@ -507,6 +749,87 @@ Towards the end, the event moved into a Q&A session, where attendees interacted 
       drawer.classList.remove("open");
     });
   </script>
+     <!-- Footer Section -->
+<footer class="bg-gray-900 text-gray-500 py-12 relative">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- Location with Map -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Location</h3>
+      <div class="flex flex-col space-y-4">
+        <!-- Map Embed -->
+        <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Address + Contact -->
+        <div>
+          <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
+      <ul class="space-y-2">
+       <li><a href="#about" class="hover:text-pink-400 transition">About Us</a></li>
+     <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
+    <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
+    <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+      <div class="flex space-x-4 mb-4">
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="mt-4">
+          <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
+          <br>
+          <br>
+        <p>+91 98765 43210</p>
+          <br>
+          <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    © 2025 ECell IGDTUW. All rights reserved.
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="index.js"></script>
+
 </body>
 
 </html>
