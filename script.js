@@ -70,6 +70,29 @@ document.addEventListener("DOMContentLoaded", () => {
         overwrite: "auto"
       });
     });
+    // ----------------------------
+  // Hamburger Drawer Toggle
+  // ----------------------------
+  const menuBtn = document.querySelector('.menu-btn');
+  const drawer = document.querySelector('.drawer');
+  const closeBtn = document.querySelector('.close-btn');
+
+  if (menuBtn && drawer && closeBtn) {
+    menuBtn.addEventListener('click', () => {
+      drawer.classList.add('open');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('open');
+    });
+
+    // Optional: Close drawer on link click
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+      });
+    });
+  }
   }
 });
 

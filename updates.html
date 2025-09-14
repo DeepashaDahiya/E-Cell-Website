@@ -618,7 +618,7 @@
             <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
             <br>
             <br>
-            <p>+91 98765 43210</p>
+            <p>+919810823235</p>
             <br>
             <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
 
@@ -634,92 +634,87 @@
     </footer>
   </div>
   <script src="index.js"></script>
-  <script>
-
-    document.addEventListener('DOMContentLoaded', () => {
-
-      const drawer = document.getElementById('drawer');
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const drawer = document.getElementById('drawer');
   const menuBtn = document.getElementById('menuBtn');
   const closeDrawer = document.getElementById('closeDrawer');
 
   function openDrawer() {
-  drawer.classList.add('open');   // ✅
-  menuBtn.setAttribute('aria-expanded', 'true');
-  drawer.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-}
+    drawer.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+  }
 
-function hideDrawer() {
-  drawer.classList.remove('open');   // ✅
-  menuBtn.setAttribute('aria-expanded', 'false');
-  drawer.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
+  function hideDrawer() {
+    drawer.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // restore scroll
+  }
 
+  // Open/close logic
   menuBtn.addEventListener('click', openDrawer);
   closeDrawer.addEventListener('click', hideDrawer);
-  drawer.addEventListener('click', (e) => { if (e.target === drawer) hideDrawer(); });
 
-      // --- Logic for fading in timeline items ---
-      const timelineItems = document.querySelectorAll('.timeline-item');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      }, {
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0
-      });
+  // Close drawer when clicking any link inside
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', hideDrawer);
+  });
 
-      timelineItems.forEach(item => {
-        observer.observe(item);
-      });
+  // Close drawer if clicking on overlay area (optional safety)
+  drawer.addEventListener('click', e => {
+    if (e.target === drawer) hideDrawer();
+  });
 
-      // --- Logic for the glowing progress bar ---
-      const timeline = document.querySelector('.timeline');
-      const progressBar = document.querySelector('.timeline-progress-bar');
-
-      const updateProgressBar = () => {
-        if (!timeline || !progressBar) return;
-
-        const timelineRect = timeline.getBoundingClientRect();
-        const timelineHeight = timeline.offsetHeight;
-        const windowHeight = window.innerHeight;
-
-        // The point in the viewport that acts as the trigger (e.g., the middle)
-        const triggerPoint = windowHeight * 0.5;
-
-        // Calculate the height based on the timeline's position relative to the trigger point
-        let newHeight = triggerPoint - timelineRect.top;
-
-        // Clamp the height between 0 and the total height of the timeline container
-        newHeight = Math.max(0, newHeight);
-        newHeight = Math.min(newHeight, timelineHeight);
-
-        progressBar.style.height = `${newHeight}px`;
-      };
-
-      let ticking = false;
-      const onScroll = () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateProgressBar();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
-
-      window.addEventListener('scroll', onScroll);
-
-      // Initial call to set state on page load
-      updateProgressBar();
+  /* -----------------------------
+     TIMELINE scroll animations
+  ------------------------------ */
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
     });
-  </script>
+  }, {
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0
+  });
+  timelineItems.forEach(item => observer.observe(item));
+
+  const timeline = document.querySelector('.timeline');
+  const progressBar = document.querySelector('.timeline-progress-bar');
+
+  const updateProgressBar = () => {
+    if (!timeline || !progressBar) return;
+    const timelineRect = timeline.getBoundingClientRect();
+    const timelineHeight = timeline.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const triggerPoint = windowHeight * 0.5;
+    let newHeight = triggerPoint - timelineRect.top;
+    newHeight = Math.max(0, Math.min(newHeight, timelineHeight));
+    progressBar.style.height = `${newHeight}px`;
+  };
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateProgressBar();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  updateProgressBar(); // Initial
+});
+</script>
+
 </body>
 
 </html>

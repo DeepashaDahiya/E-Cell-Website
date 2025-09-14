@@ -247,6 +247,76 @@ header {
   transform: translateY(-1px);
 }
 }
+/* ===========================
+   📱 Mobile Responsive Navbar
+=========================== */
+@media (max-width: 768px) {
+  /* Hide desktop links */
+  .links {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .menu-btn span {
+    display: block;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+  }
+
+  /* Drawer full screen slide */
+  .drawer {
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    padding: 4rem 2rem;
+  }
+  .drawer.open {
+    right: 0;
+  }
+}
+
+/* ===========================
+   📱 Mobile Responsive Gallery
+=========================== */
+@media (max-width: 768px) {
+  .gallery-flex {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 per row on phones */
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .gallery-flex .column {
+    display: contents; /* let items flow into grid */
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
+/* 📱 Ultra small screens (<480px): 1 image per row */
+@media (max-width: 480px) {
+  .gallery-flex {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
 </style>
 </head>
 <body>
@@ -400,7 +470,7 @@ header {
           <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
           <br>
           <br>
-        <p>+91 98765 43210</p>
+        <p>+919810823235</p>
           <br>
           <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
         

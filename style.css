@@ -98,6 +98,19 @@ header {
   padding: 0 1rem;
   box-sizing: border-box;
 }
+/* Make navbar logo stick to extreme left and links to extreme right */
+.nav {
+  max-width: 100%;        /* allow full width usage */
+  padding: 0 2rem;         /* space from edges */
+}
+
+.brand {
+  margin-right: auto;      /* push links to right */
+}
+
+.links {
+  margin-left: auto;       /* keep them grouped to the right side */
+}
 
 .brand, .links, .menu-btn {
   flex-shrink: 0;
@@ -491,6 +504,24 @@ section {
   grid-template-columns: repeat(6, 1fr);
   gap: 8px
 }
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 /* Hero Section */
@@ -823,4 +854,32 @@ section {
 .gsap-fade-in {
   opacity: 0;
   transform: translateY(20px);
+}
+/* 📱 Mobile Responsive — Sponsors Section */
+@media (max-width: 768px) {
+  .sponsor-columns-container {
+    flex-direction: column;         /* stack columns vertically */
+    height: auto;                    /* allow height to grow naturally */
+    align-items: center;             /* center the columns */
+    gap: 2rem;                        /* space between columns */
+    padding: 2rem 2rem;
+  }
+
+  .sponsor-column {
+    flex-direction: row;              /* show logos side by side within each column */
+    flex-wrap: wrap;                  /* allow wrapping if too many */
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .sponsor-column-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .sponsor-logo {
+    width: 120px;                     /* smaller logos for mobile */
+    height: 120px;
+  }
 }
