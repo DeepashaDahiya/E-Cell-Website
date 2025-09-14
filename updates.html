@@ -1,454 +1,725 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Updates - E-Cell IGDTUW</title>
+  <title>Interactive Vertical Timeline</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
-<<<<<<< HEAD
-  <link rel="stylesheet" href="style.css" class="css">
-  
-=======
->>>>>>> bdf26f015c1582093e33a31809cc9a048b86c0c2
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ff69b4;
+      /* Hot Pink */
+      --secondary-color: #9f52ff;
+      /* Bright Purple */
+      --background-start: #1a0b2e;
+      --card-background: rgba(26, 11, 46, 0.5);
+      --text-color: #f0f0f0;
+      --text-color-muted: #c0c0c0;
+      --glow-color: rgba(238, 130, 238, 0.6);
+      --line-color: rgba(159, 82, 255, 0.5);
+    }
 
-* {
-  box-sizing: border-box;
-  max-width: 100%;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background-color: #0a0a0a;
-  color: white;
-  font-family: "Poppins", sans-serif;
-}
+    html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
 
-/* Navbar */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: saturate(140%) blur(8px);
-  background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: var(--text-color);
+      overflow-x: hidden;
+      /* For parallax effect */
+      height: 100%;
+      perspective: 1px;
+      transform-style: preserve-3d;
+      overflow-y: auto;
+    }
 
-.nav {
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 18px;
-}
+    .animated-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      /* background: linear-gradient(315deg, var(--primary-color), var(--secondary-color), var(--background-start)); */
+      background-size: 400% 400%;
+      animation: gradientAnimation 20s ease infinite;
+      /* Parallax effect */
+      transform: translateZ(-1px) scale(1.5);
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #f5f5f5;
-}
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
 
-.brand img {
-  height: 42px;
-  width: 42px;
-  border-radius: 12px;
-}
+      50% {
+        background-position: 100% 50%;
+      }
 
-.brand .title {
-  font-weight: 800;
-}
-
-.brand .subtitle {
-  font-size: 14px;
-  color: #999;
-}
-
-.links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-}
-
-.links .nav-text {
-  cursor: pointer;
-  position: relative;
-  text-decoration: none;
-  color: #f5f5f5;
-  font-weight: 600;
-}
-
-.links .nav-text::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  height: 2px;
-  width: 0;
-  background: linear-gradient(90deg, #f3f4f6, #8a2be2);
-  transition: width .25s ease
-}
-
-.links .nav-text:hover::after {
-  width: 100%
-}
-
-.cta {
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, .15);
-  background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
-  cursor: pointer;
-  color: #f5f5f5;
-  font-weight: 700
-}
-
-/* Hamburger */
-.menu-btn {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-btn span {
-  display: block;
-  width: 26px;
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-}
-
-/* Drawer */
-.drawer {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 250px;
-  height: 100%;
-  background: #111;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
-  transition: right 0.3s ease;
-  z-index: 2000;
-  padding: 20px;
-}
-
-.drawer.open {
-  right: 0;
-}
-
-.drawer a {
-  display: block;
-  margin: 15px 0;
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.drawer a:hover {
-  color: #a855f7;
-}
-
-.drawer .close {
-  font-size: 22px;
-  cursor: pointer;
-  color: #aaa;
-  margin-left: auto;
-  margin-bottom: 20px;
-  display: block;
-  width: fit-content;
-}
-
-.drawer .close:hover {
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  .links {
-    display: none;
-  }
-
-  .menu-btn {
-    display: flex;
-  }
-}
-/* Timeline line */
-.timeline-line {
-  width: 4px;
-  background: rgba(168, 85, 247, 0.6); /* purple line */
-  margin: 0 auto;
-  z-index: -1;
-}
-
-/* Dots */
-.timeline-dot {
-  border: 3px solid white;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.9);
-}
-
-/* Timeline card */
-.timeline-card {
-  background: rgba(26, 26, 26, 0.95);
-  border-radius: 16px;
-  padding: 20px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.timeline-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
-}
-
-/* Headings */
-.timeline-card h3 {
-  color: #a855f7; /* purple */
-  margin-bottom: 8px;
-}
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
 
-</style>
+    /* Navbar */
+    header {
+      margin-top: 0;
+      padding-top: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+    }
 
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #f5f5f5;
+    }
+
+    .brand img {
+      height: 42px;
+      width: 42px;
+      border-radius: 12px;
+    }
+
+    .brand .title {
+      font-weight: 800;
+    }
+
+    .brand .subtitle {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .links .nav-text {
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 600;
+    }
+
+    .links .nav-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+      transition: width .25s ease
+    }
+
+    .links .nav-text:hover::after {
+      width: 100%
+    }
+
+    .cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+      cursor: pointer;
+      color: #f5f5f5;
+      font-weight: 700
+    }
+
+    /* Hamburger */
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+      transition: right 0.3s ease;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .drawer.open {
+      right: 0;
+    }
+
+    .drawer a {
+      display: block;
+      margin: 15px 0;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .drawer a:hover {
+      color: #a855f7;
+    }
+
+    .drawer .close {
+      font-size: 22px;
+      cursor: pointer;
+      color: #aaa;
+      margin-left: auto;
+      margin-bottom: 20px;
+      display: block;
+      width: fit-content;
+    }
+
+    .drawer .close:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+    }
+
+    .main-title {
+      padding-top: 30px;
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 80px;
+      color: #fff;
+      text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* The grey background track */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      background-color: var(--line-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1.5px;
+      z-index: -1;
+    }
+
+    /* The glowing progress bar that fills on scroll */
+    .timeline-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 0;
+      /* Initially 0, controlled by JS */
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      /* Refined, more pronounced glow */
+      box-shadow:
+        0 0 10px var(--glow-color),
+        0 0 25px var(--glow-color),
+        0 0 40px var(--secondary-color);
+      z-index: 0;
+      /* Add a subtle transition for smoother height changes */
+      transition: height 50ms linear;
+    }
+
+
+    .timeline-item {
+      padding: 20px 0;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .timeline-item.left {
+      left: 0;
+      transform: translateX(-50px);
+    }
+
+    .timeline-item.right {
+      left: 50%;
+      transform: translateX(50px);
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-marker {
+      position: absolute;
+      top: 40px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      border: 3px solid #fff;
+      z-index: 2;
+      box-shadow: 0 0 15px var(--glow-color);
+    }
+
+    .timeline-item.left .timeline-marker {
+      right: -8px;
+    }
+
+    .timeline-item.right .timeline-marker {
+      left: -8px;
+    }
+
+    .timeline-item-content {
+      padding: 30px;
+      /* background: var(--card-background); */
+      background-color: rgba(26, 26, 26, 0.95);
+      position: relative;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      margin: 0 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-item-content:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 30px var(--glow-color);
+    }
+
+    /* Arrow pointing to marker */
+    .timeline-item-content::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .timeline-item.left .timeline-item-content::before {
+      right: -10px;
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent var(--card-background);
+    }
+
+    .timeline-item.right .timeline-item-content::before {
+      left: -10px;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent var(--card-background) transparent transparent;
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .timeline-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .timeline-item-content p {
+      font-size: 1rem;
+      color: var(--text-color-muted);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .read-more {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .read-more:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--glow-color);
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 20px;
+      }
+
+      .timeline-progress-bar {
+        left: 20px;
+        transform: none;
+        /* Reset transform for mobile layout */
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 0;
+      }
+
+      .timeline-item.left,
+      .timeline-item.right {
+        left: 0;
+        transform: translateX(50px);
+        /* Start off-screen */
+      }
+
+      .timeline-item.visible {
+        transform: translateX(0);
+      }
+
+      .timeline-item .timeline-marker {
+        left: 12px;
+      }
+
+      .timeline-item-content {
+        margin: 0 15px 0 25px;
+      }
+
+      .timeline-item .timeline-item-content::before {
+        left: -10px;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--card-background) transparent transparent;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div id="root">
+    <!-- Navbar -->
+    <header role="banner">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
+          <div>
+            <div class="title">E-Cell IGDTUW</div>
+            <div class="subtitle">Innovate • Create • Grow</div>
+          </div>
+        </a>
+        <div class="links">
+          <a href="index.html" class="nav-text">About</a>
+          <a href="events.html" class="nav-text">Events</a>
+          <a href="blogs.html" class="nav-text">Blogs</a>
+          <a href="gallery.html" class="nav-text">Gallery</a>
+          <a href="updates.html" class="nav-text">Updates</a>
+          <a href="our-team.html" class="nav-text">Team</a>
+          <a class="cta" href="contact.html">Contact Us</a>
+        </div>
 
-  <!-- Navbar -->
-<header role="banner">
-  <nav class="nav">
-    <a class="brand" href="index.html">
-      <img src="logo.jpeg" alt="E-Cell IGDTUW logo" />
-      <div>
-        <div class="title">E-Cell IGDTUW</div>
-        <div class="subtitle">Innovate • Create • Grow</div>
-      </div>
-    </a>
-    <div class="links">
-      <a href="index.html" class="nav-text">About</a>
-      <a href="events.html" class="nav-text">Events</a>
-      <a href="blogs.html" class="nav-text">Blogs</a>
-      <a href="gallery.html" class="nav-text">Gallery</a>
-      <a href="updates.html" class="nav-text">Updates</a>
-      <a href="our-team.html" class="nav-text">Team</a>
-      <a class="cta" href="contact.html">Contact Us</a>
+        <!-- Hamburger -->
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Drawer -->
+    <div class="drawer" id="drawer">
+      <span class="close" id="closeDrawer">&times;</span>
+      <a href="index.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="updates.html">Updates</a>
+      <a href="our-team.html">Team</a>
+      <a href="contact.html">Contact Us</a>
     </div>
 
-    <!-- Hamburger -->
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
-</header>
-
-<!-- Drawer -->
-<div class="drawer" id="drawer">
-  <span class="close" id="closeDrawer">&times;</span>
-  <a href="index.html">About</a>
-  <a href="events.html">Events</a>
-  <a href="blogs.html">Blogs</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="updates.html">Updates</a>
-  <a href="our-team.html">Team</a>
-  <a href="contact.html">Contact Us</a>
-</div>
-
-  <!-- Timeline Section -->
-  <section class="py-16 px-6">
-    <h2 class="text-4xl font-extrabold text-center text-white mb-16">✨ Latest Updates ✨</h2>
-    
-    <div class="relative max-w-5xl mx-auto">
-      <!-- Center Line -->
-      <div class="timeline-line absolute top-0 left-1/2 transform -translate-x-1/2 h-full"></div>
-
-      <!-- Event: Farewell -->
-      <div class="mb-6 flex justify-start">
-        <div class="w-1/2 pr-8 text-right">
-          <div class="timeline-card">
-            <time class="block mb-1 text-sm font-semibold text-purple-400">Coming Soon</time>
-            <h3 class="text-xl font-bold">Farewell</h3>
-            <p class="text-gray-300">A heartfelt goodbye to our graduating members.</p>
-          </div>
-        </div>
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+    <h1 class="main-title">Latest Updates ✨</h1>
+    <section class="timeline">
+      <div class="timeline-progress-bar"></div>
+      <div class="timeline-item left">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">Coming Soon</span>
+          <h2 class="timeline-title">Farewell</h2>
+          <p>A heartfelt goodbye to our graduating members.</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
-
-      <!-- Event: Coordinators Reveal -->
-      <div class="mb-6 flex justify-end">
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
-        </div>
-        <div class="w-1/2 pl-8">
-          <div class="timeline-card">
-            <time class="block mb-1 text-sm font-semibold text-purple-400">10 Sep 2025</time>
-            <h3 class="text-xl font-bold">Coordinators Reveal</h3>
-            <p class="text-gray-300">Unveiling the team of coordinators for 2025!</p>
-          </div>
+      <div class="timeline-item right">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">10 Sep 2025</span>
+          <h2 class="timeline-title">Coordinators Reveal</h2>
+          <p>Unveiling the team of coordinators for 2025!</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
-
-      <!-- Event: Recruitment Form -->
-      <div class="mb-6 flex justify-start">
-        <div class="w-1/2 pr-8 text-right">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpifaJHZW6_W5Ki3o5mF6xTlq7OUm2icaYdWu1g9YN4nmVLA/closedform" target="_blank" class="block">
-            <div class="timeline-card">
-              <time class="block mb-1 text-sm font-semibold text-purple-400">28 Aug – 3 Sep 2025</time>
-              <h3 class="text-xl font-bold">Recruitment Form</h3>
-              <p class="text-gray-300">Forms opened on 28th Aug and closed on 3rd Sept 2025.</p>
-            </div>
-          </a>
-        </div>
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+      <div class="timeline-item left">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">28 Aug – 3 Sep 2025</span>
+          <h2 class="timeline-title">Recruitment Form</h2>
+          <p>Forms opened on 28th Aug and closed on 3rd Sept 2025.</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
-
-      <!-- Event: Orientation -->
-      <div class="mb-6 flex justify-end">
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
-        </div>
-        <div class="w-1/2 pl-8">
-          <div class="timeline-card">
-            <time class="block mb-1 text-sm font-semibold text-purple-400">28 Aug 2025</time>
-            <h3 class="text-xl font-bold">Orientation</h3>
-            <p class="text-gray-300">Welcoming new members with an interactive session.</p>
-          </div>
+      <div class="timeline-item right">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">28 Aug 2025</span>
+          <h2 class="timeline-title">Orientation</h2>
+          <p>Welcoming new members with an interactive session.</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
-
-      <!-- Event: New Team Announcement -->
-      <div class="mb-6 flex justify-start">
-        <div class="w-1/2 pr-8 text-right">
-          <div class="timeline-card">
-            <time class="block mb-1 text-sm font-semibold text-purple-400">23 Aug 2025</time>
-            <h3 class="text-xl font-bold">New Team Announcement (Core & Leads)</h3>
-            <p class="text-gray-300">Meet the fresh faces leading the way!</p>
-          </div>
-        </div>
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+      <div class="timeline-item left">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">23 Aug 2025</span>
+          <h2 class="timeline-title">New Team Announcement</h2>
+          <p>Meet the fresh faces (Core & Leads) leading the way!</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
-
-      <!-- Event: Merch Reveal -->
-      <div class="mb-6 flex justify-end">
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
-        </div>
-        <div class="w-1/2 pl-8">
-          <div class="timeline-card">
-            <time class="block mb-1 text-sm font-semibold text-purple-400">21 Aug 2025</time>
-            <h3 class="text-xl font-bold">Merch Reveal</h3>
-            <p class="text-gray-300">Exciting new merch dropped for the community!</p>
-          </div>
+      <div class="timeline-item right">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">21 Aug 2025</span>
+          <h2 class="timeline-title">Merch Reveal</h2>
+          <p>Exciting new merch dropped for the community!</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
-
-      <!-- Event: Drishti IAS -->
-      <div class="mb-6 flex justify-start">
-        <div class="w-1/2 pr-8 text-right">
-          <div class="timeline-card">
-            <time class="block mb-1 text-sm font-semibold text-purple-400">17 Feb 2025</time>
-            <h3 class="text-xl font-bold">Drishti IAS</h3>
-            <p class="text-gray-300">Special collaboration session with Drishti IAS.</p>
-          </div>
-        </div>
-        <div class="w-0 relative">
-          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full timeline-dot"></div>
+      <div class="timeline-item left">
+        <div class="timeline-marker"></div>
+        <div class="timeline-item-content">
+          <span class="timeline-date">17 Feb 2025</span>
+          <h2 class="timeline-title">Drishti IAS</h2>
+          <p>Special collaboration session with Drishti IAS.</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-500 py-12 relative">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-  <!-- Footer Section -->
-<footer class="bg-gray-900 text-gray-500 py-12 relative">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-
-    <!-- Location with Map -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Location</h3>
-      <div class="flex flex-col space-y-4">
-        <!-- Map Embed -->
-        <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-
-        <!-- Address + Contact -->
+        <!-- Location with Map -->
         <div>
-          <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
+          <h3 class="text-lg font-semibold mb-4">Location</h3>
+          <div class="flex flex-col space-y-4">
+            <!-- Map Embed -->
+            <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <!-- Address + Contact -->
+            <div>
+              <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India
+              </p>
+            </div>
+          </div>
         </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="hover:text-pink-400 transition">About Us</a></li>
+            <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
+            <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+          </div>
+          <div class="mt-4">
+            <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
+            <br>
+            <br>
+            <p>+91 98765 43210</p>
+            <br>
+            <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
+
+          </div>
+        </div>
+
       </div>
-    </div>
 
-    <!-- Company -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
-      <ul class="space-y-2">
-       <li><a href="index.html" class="hover:text-pink-400 transition">About Us</a></li>
-     <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
-    <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
-    <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
-    </div>
-
-    <!-- Services -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Services</h3>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
-        <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
-      </ul>
-    </div>
-
-    <!-- Social -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-      <div class="flex space-x-4 mb-4">
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+      <!-- Footer Bottom -->
+      <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        © 2025 ECell IGDTUW. All rights reserved.
       </div>
-      <div class="mt-4">
-          <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
-          <br>
-          <br>
-        <p>+91 98765 43210</p>
-          <br>
-          <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
-        
-      </div>
-    </div>
-
+    </footer>
   </div>
+  <script src="index.js"></script>
+  <script>
 
-  <!-- Footer Bottom -->
-  <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-    © 2025 ECell IGDTUW. All rights reserved.
-  </div>
-</footer>
-  
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const drawer = document.getElementById('drawer');
+  const menuBtn = document.getElementById('menuBtn');
+  const closeDrawer = document.getElementById('closeDrawer');
+
+  function openDrawer() {
+  drawer.classList.add('open');   // ✅
+  menuBtn.setAttribute('aria-expanded', 'true');
+  drawer.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function hideDrawer() {
+  drawer.classList.remove('open');   // ✅
+  menuBtn.setAttribute('aria-expanded', 'false');
+  drawer.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+  menuBtn.addEventListener('click', openDrawer);
+  closeDrawer.addEventListener('click', hideDrawer);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) hideDrawer(); });
+
+      // --- Logic for fading in timeline items ---
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0
+      });
+
+      timelineItems.forEach(item => {
+        observer.observe(item);
+      });
+
+      // --- Logic for the glowing progress bar ---
+      const timeline = document.querySelector('.timeline');
+      const progressBar = document.querySelector('.timeline-progress-bar');
+
+      const updateProgressBar = () => {
+        if (!timeline || !progressBar) return;
+
+        const timelineRect = timeline.getBoundingClientRect();
+        const timelineHeight = timeline.offsetHeight;
+        const windowHeight = window.innerHeight;
+
+        // The point in the viewport that acts as the trigger (e.g., the middle)
+        const triggerPoint = windowHeight * 0.5;
+
+        // Calculate the height based on the timeline's position relative to the trigger point
+        let newHeight = triggerPoint - timelineRect.top;
+
+        // Clamp the height between 0 and the total height of the timeline container
+        newHeight = Math.max(0, newHeight);
+        newHeight = Math.min(newHeight, timelineHeight);
+
+        progressBar.style.height = `${newHeight}px`;
+      };
+
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateProgressBar();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', onScroll);
+
+      // Initial call to set state on page load
+      updateProgressBar();
+    });
+  </script>
 </body>
+
 </html>
