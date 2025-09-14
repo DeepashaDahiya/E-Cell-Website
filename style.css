@@ -156,6 +156,29 @@ html, body {
   align-items: center;
   z-index: 1000;
 }
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* space between logo and links */
+  width: 100%;
+  max-width: 100%;      /* allow full width */
+  padding: 0;           /* remove left & right padding */
+  box-sizing: border-box;
+}
+
+.brand {
+  margin-left: 0;       /* stick to extreme left */
+  margin-right: auto;   /* push links to right */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.links {
+  margin-left: auto;            /* push links to the extreme right */
+  display: flex;
+  gap: 28px;
+}
 
 .links .nav-text {
   cursor: pointer;
@@ -189,6 +212,7 @@ html, body {
   color: #f5f5f5;
   font-weight: 700
 }
+
 
 .cta:hover {
   transform: translateY(-1px)
@@ -341,6 +365,10 @@ html, body {
   width: 100%;
   /* height: auto; */
   display: block;
+}
+.brand.about-left {
+  margin-right: 0;        /* remove spacing */
+  padding-left: 0;        /* optional, remove left padding */
 }
 
 /* ---------- Hero ---------- */
