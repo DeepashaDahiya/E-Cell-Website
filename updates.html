@@ -491,7 +491,6 @@
       <a href="contact.html">Contact Us</a>
     </div>
 
-    <h1 class="main-title">Latest Updates ✨</h1>
     <section class="timeline">
       <div class="timeline-progress-bar"></div>
       <div class="timeline-item left">
@@ -500,7 +499,12 @@
           <span class="timeline-date">Coming Soon</span>
           <h2 class="timeline-title">Farewell</h2>
           <p>A heartfelt goodbye to our graduating members.</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href="#" 
+   onclick="showComingSoon(event)" 
+   class="read-more">
+   Read More
+</a>
+
         </div>
       </div>
       <div class="timeline-item right">
@@ -509,7 +513,7 @@
           <span class="timeline-date">10 Sep 2025</span>
           <h2 class="timeline-title">Coordinators Reveal</h2>
           <p>Unveiling the team of coordinators for 2025!</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href="https://www.instagram.com/stories/highlights/18070875605145221/" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
       <div class="timeline-item left">
@@ -518,7 +522,7 @@
           <span class="timeline-date">28 Aug – 3 Sep 2025</span>
           <h2 class="timeline-title">Recruitment Form</h2>
           <p>Forms opened on 28th Aug and closed on 3rd Sept 2025.</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href="https://www.instagram.com/reel/DN5sZJ_CG6B/?utm_source=ig_web_copy_link&igsh=cm9hN25zOHRpcnE4" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
       <div class="timeline-item right">
@@ -527,7 +531,8 @@
           <span class="timeline-date">28 Aug 2025</span>
           <h2 class="timeline-title">Orientation</h2>
           <p>Welcoming new members with an interactive session.</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href="https://www.instagram.com/p/DOBDp8pCPt9/
+" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
       <div class="timeline-item left">
@@ -536,7 +541,8 @@
           <span class="timeline-date">23 Aug 2025</span>
           <h2 class="timeline-title">New Team Announcement</h2>
           <p>Meet the fresh faces (Core & Leads) leading the way!</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href="https://www.instagram.com/p/DNsP1y10NMc/?utm_source=ig_web_copy_link&igsh=MWdyZ3lmNXQ5dW44
+" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
       <div class="timeline-item right">
@@ -545,7 +551,8 @@
           <span class="timeline-date">21 Aug 2025</span>
           <h2 class="timeline-title">Merch Reveal</h2>
           <p>Exciting new merch dropped for the community!</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href=" https://www.instagram.com/p/DNsQOzkXiKh/?utm_source=ig_web_copy_link&igsh=MWV3NHpqMDgwZ2Q5Yw==
+" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
       <div class="timeline-item left">
@@ -554,7 +561,7 @@
           <span class="timeline-date">17 Feb 2025</span>
           <h2 class="timeline-title">Drishti IAS</h2>
           <p>Special collaboration session with Drishti IAS.</p>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
+          <a href="https://www.instagram.com/p/DGFnoNiPmmi/?utm_source=ig_web_copy_link&igsh=MXJsc2Rpd3N6N2g2eg==" target="_blank" rel="noopener noreferrer" class="read-more">Read More</a>
         </div>
       </div>
     </section>
@@ -633,8 +640,37 @@
       </div>
     </footer>
   </div>
-  <script src="index.js"></script>
+  
  <script>
+function showComingSoon(e) {
+    e.preventDefault();
+
+    const popup = document.createElement("div");
+    popup.textContent = "🚀 Coming Soon!";
+    popup.style.position = "fixed";
+    popup.style.bottom = "30px";
+    popup.style.right = "30px";
+    popup.style.background = "#1f2937";
+    popup.style.color = "#fff";
+    popup.style.padding = "12px 20px";
+    popup.style.borderRadius = "8px";
+    popup.style.fontSize = "16px";
+    popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+    popup.style.opacity = "0";
+    popup.style.transition = "opacity 0.3s ease-in-out";
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      popup.style.opacity = "1";
+    }, 50);
+
+    setTimeout(() => {
+      popup.style.opacity = "0";
+      setTimeout(() => popup.remove(), 300);
+    }, 3000);
+  }
+
 document.addEventListener('DOMContentLoaded', () => {
   const drawer = document.getElementById('drawer');
   const menuBtn = document.getElementById('menuBtn');
@@ -713,7 +749,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateProgressBar(); // Initial
 });
+
 </script>
+<script src="index.js"></script>
 
 </body>
 
