@@ -236,17 +236,27 @@
     }
 
     /* Mobile */
-    @media (max-width: 640px) {
-      .gallery-flex {
-        grid-template-columns: 1fr;
-      }
+   /* Mobile */
+@media (max-width: 640px) {
+  .gallery {
+    padding: 3rem 1rem; /* smaller padding for mobile */
+  }
 
-      .column.middle,
-      .column.left,
-      .column.right {
-        order: initial;
-      }
-    }
+  .gallery-flex {
+    grid-template-columns: 1fr;
+  }
+
+  .column.middle,
+  .column.left,
+  .column.right {
+    order: initial;
+  }
+
+  .gallery-flex .item img {
+    width: 100%;  /* already there, but ensures it spans the column */
+  }
+}
+
   </style>
 </head>
 

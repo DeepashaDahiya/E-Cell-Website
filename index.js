@@ -245,6 +245,12 @@ function loaderAnimation() {
       hidePreloaderElements();
       runHeroAnimations();
       initTyped();
+
+      // Play hero video once loader is done
+      const heroVideo = document.getElementById("heroVideo");
+      if (heroVideo) {
+        heroVideo.play().catch(err => console.log("Video play blocked:", err));
+      }
     }
   });
 
