@@ -105,6 +105,25 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: "power3.out"
     });
   });
+  // Horizontal scrolling for mobile rows
+// Mobile horizontal scroll animation
+if (window.innerWidth <= 480) {
+  document.querySelectorAll(".mobile-only .sponsor-row").forEach((row, index) => {
+    // Duplicate content for seamless scroll
+    row.innerHTML += row.innerHTML;
+
+    const totalWidth = row.scrollWidth / 2; // width of original logos
+    const direction = index % 2 === 0 ? 1 : -1; // alternate directions
+
+    gsap.to(row, {
+      x: direction * -totalWidth,
+      duration: 20,  // adjust speed here
+      repeat: -1,
+      ease: "linear"
+    });
+  });
+}
+
 
   // -----------------------------
   // Cursor gradient effect

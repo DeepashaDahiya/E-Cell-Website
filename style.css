@@ -819,73 +819,65 @@ section {
   100% {
     transform: translateY(0);
   }
+  }
+/* Mobile Only Section */
+.sponsor-columns-container {
+    display: none;
+  }
+.mobile-only {
+  display: none; /* hide on desktop */
 }
 
 @media (max-width: 768px) {
-  .sponsor-columns-container {
-    flex-direction: row;
-    height: 400px; 
-    padding: 2rem 3vw;
-    gap: 1rem;
+  .mobile-only {
+    display: block;
   }
 
-  .sponsor-column {
-    gap: 30px;
-  }
-
-  .sponsor-logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 30px;
-  }
-
-  .sponsors-section .section-heading {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .sponsor-columns-container {
-    flex-direction: column;
-    height: auto;
-    padding: 1.5rem 2vw;
-  }
-
-  .sponsor-column {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    animation: none !important;
-  }
-
-  .sponsor-column-inner {
-    flex-direction: row;
-    gap: 1rem;
-    animation: none !important;
-  }
-
-  .sponsor-column::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .sponsor-column::-webkit-scrollbar-thumb {
-    background: #f8b6d8;
-    border-radius: 4px;
-  }
-
-  .sponsor-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 20px;
-  }
-
-  .sponsors-section .section-heading {
-    font-size: 2rem;
+  .mobile-row {
+    overflow: hidden;
     margin-bottom: 20px;
   }
+
+  .mobile-row-inner {
+    display: flex;
+    gap: 20px;
+    animation: scroll-left 20s linear infinite;
+  }
+
+  /* Alternate direction for even rows */
+  .mobile-row.row2 .mobile-row-inner {
+    animation: scroll-right 20s linear infinite;
+  }
+
+  .mobile-row.row3 .mobile-row-inner {
+    animation: scroll-left 20s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .mobile-row-inner .sponsor-logo {
+    flex: 0 0 auto; /* prevent shrinking */
+    width: 120px;
+    height: 120px;
+  }
 }
+/* Mobile-specific heading adjustments */
+@media (max-width: 768px) {
+  .sponsors-section .section-heading {
+    font-size: 2rem;       /* smaller font for mobile */
+    margin-bottom: 15px;   /* reduce gap below heading */
+  }
+}
+
+
 
 /* Get In Touch Section */
 #contact {
