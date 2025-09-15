@@ -821,11 +821,26 @@ section {
   }
   }
 /* Mobile Only Section */
-.sponsor-columns-container {
+/* Desktop view (default) */
+.sponsor-columns-container.desktop {
+  display: flex; /* show desktop sponsor columns */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .sponsor-columns-container.desktop {
     display: none;
+     /* hide desktop version on mobile */
   }
+
+  .sponsor-columns-container.mobile {
+    display: flex;
+     /* show mobile version on mobile */
+  }
+}
 .mobile-only {
-  display: none; /* hide on desktop */
+  display: none;
+  /* hide on desktop */
 }
 
 @media (max-width: 768px) {
@@ -872,10 +887,34 @@ section {
 /* Mobile-specific heading adjustments */
 @media (max-width: 768px) {
   .sponsors-section .section-heading {
-    font-size: 2rem;       /* smaller font for mobile */
-    margin-bottom: 15px;   /* reduce gap below heading */
+    font-size: 2rem;      /* smaller font for mobile */
+    margin-bottom: 1rem;   /* reduce gap below heading */
   }
 }
+
+/* Desktop sponsors container */
+.sponsor-columns-container.desktop {
+  display: flex; /* show desktop by default */
+}
+
+/* Mobile-only sponsors container */
+.mobile-only {
+  display: none; /* hide on desktop */
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+  /* Hide desktop container on mobile */
+  .sponsor-columns-container.desktop {
+    display: none;
+  }
+
+  /* Show mobile container on mobile */
+  .mobile-only {
+    display: block;
+  }
+}
+
 
 
 
