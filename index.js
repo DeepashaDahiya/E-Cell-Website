@@ -278,6 +278,30 @@ function loaderAnimation() {
     .to(".white", { height: "100%", duration: 2, delay: -2.5, top: 0, ease: "circ.inOut" })
     .to(".white", { height: "0%", duration: 1, delay: -0.5, ease: "circ.inOut" });
 }
+const video = document.getElementById('heroVideo');
+const homeSection = document.getElementById('home');
+
+// Function to play video from start
+function playHomeVideo() {
+  video.currentTime = 0; // start from beginning
+  video.play().catch(err => {
+    console.log("Video play failed:", err);
+  });
+}
+
+// Example: if you are using buttons or links to navigate
+const navLinks = document.querySelectorAll('nav a'); // adjust selector as needed
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    setTimeout(() => {
+      if (homeSection.offsetParent !== null) { // checks if visible
+        playHomeVideo();
+      }
+    }, 50); // slight delay to allow display changes
+  });
+});
+
+
 
 // -----------------------------
 // Hero animations
