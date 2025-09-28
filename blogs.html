@@ -331,36 +331,44 @@
 
   <div id="blog-list" class="space-y-12">
     <!-- Blog Card -->
-    <article class="flex bg-gray-900/80 rounded-2xl shadow-lg border border-gray-700 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-             onclick="openBlog('From Idea to Startup: Navigating Your Entrepreneurial Journey', 'Entrepreneurship is more than just starting a business—it’s about solving real-world problems, building a team, validating ideas, and scaling a venture effectively. In this blog, we dive into the key steps every aspiring student entrepreneur should know, from ideation to launch and growth.', 'Jane Doe')">
-      
-      <!-- Left: Image -->
-      <div class="w-2/5">
-        <img src="https://media.istockphoto.com/photos/bloggingblog-concepts-ideas-with-worktable-picture-id922745190?b=1&k=20&m=922745190&s=170667a&w=0&h=0lBPWualF5SE8Khy1uRoGOcMZry55ZiUUWvPUPIZ3H0=" 
+   <!-- Blog Card -->
+<article class="flex bg-gray-900/80 rounded-2xl shadow-lg border border-gray-700 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+         onclick="openBlog('GST 2.0: The Game-Changer India Needed', fullBlogContent, 'E-Cell IGDTUW Team')">
+  
+  <!-- Left: Image -->
+  <div class="w-2/5">
+    <img src="https://media.istockphoto.com/photos/bloggingblog-concepts-ideas-with-worktable-picture-id922745190?b=1&k=20&m=922745190&s=170667a&w=0&h=0lBPWualF5SE8Khy1uRoGOcMZry55ZiUUWvPUPIZ3H0=" 
              alt="Blog Thumbnail"
              class="w-full h-full object-cover">
+  </div>
+
+  <!-- Right: Blog Info -->
+  <div class="w-3/5 p-6 flex flex-col justify-between">
+    <div>
+      <h2 class="text-2xl font-semibold text-white mb-1">GST 2.0: The Game-Changer India Needed</h2>
+      <p class="text-gray-400 mb-1">What this reform means for startups, entrepreneurs, and India’s economy.</p>
+      <p class="text-gray-500 text-sm mb-3">By <strong>E-Cell IGDTUW Team</strong></p>
+    </div>
+
+    <div class="flex items-center justify-between text-sm text-gray-400">
+      <span>22 Sep 2025 · 12 min read</span>
+      <div class="flex space-x-5">
+        <button onclick="event.stopPropagation(); likePost(this)" class="hover:text-pink-400 transition">❤️ <span>0</span></button>
+        <button onclick="event.stopPropagation(); toggleComments(this)" class="hover:text-pink-400 transition">💬 <span>0</span></button>
       </div>
+    </div>
 
-      <!-- Right: Blog Info -->
-      <div class="w-3/5 p-6 flex flex-col justify-between">
-        <div>
-          <h2 class="text-2xl font-semibold text-white mb-1">From Idea to Startup: Navigating Your Entrepreneurial Journey</h2>
-          <p class="text-gray-400 mb-1">A step-by-step guide for aspiring student entrepreneurs to transform ideas into impactful ventures.</p>
-          <p class="text-gray-500 text-sm mb-3">By <strong>Jane Doe</strong></p>
-        </div>
-
-        <div class="flex items-center justify-between text-sm text-gray-400">
-          <span>10 Sep 2025 · 5 min read</span>
-          <div class="flex space-x-5">
-            <button onclick="event.stopPropagation(); likePost(this)" class="hover:text-pink-400 transition">❤️ <span>0</span></button>
-            <button onclick="event.stopPropagation(); toggleComments(this)" class="hover:text-pink-400 transition">💬 <span>0</span></button>
-          </div>
-        </div>
-
-        <!-- Comments Section -->
-      
+    <!-- Comments Section -->
+    <div class="comments hidden mt-4 space-y-3">
+      <div class="space-y-2 comment-list"></div>
+      <div class="flex space-x-2">
+        <input type="text" placeholder="Write a comment..." class="comment-box flex-1 px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none">
+        <button onclick="addComment(this)" class="px-3 py-2 bg-pink-600 hover:bg-pink-500 rounded-lg text-white">Post</button>
       </div>
-    </article>
+    </div>
+  </div>
+</article>
+
   </div>
 </main>
 
@@ -526,7 +534,7 @@ function toggleComments(btn) {
 function openBlog(title, content, author) {
   const modal = document.getElementById('blog-modal');
   document.getElementById('modal-title').textContent = title;
-  document.getElementById('modal-subtitle').textContent = "A step-by-step guide for aspiring student entrepreneurs to transform ideas into impactful ventures.";
+  document.getElementById('modal-subtitle').textContent = "";
   document.getElementById('modal-content').textContent = content;
   document.getElementById('modal-author').textContent = `By ${author}`;
   modal.style.display = 'block';
@@ -546,6 +554,171 @@ window.addEventListener('click', (e) => {
 
 
 });
+
+// Full GST 2.0 blog content as structured HTML
+const fullBlogContent = `
+<h2 class="text-3xl font-bold mb-6">GST 2.0: The Game-Changer India Needed</h2>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">The Backstory: Why This Reform Matters</h3>
+<p>Imagine paying ~ 12-28% more just because your product was “classified” on the wrong tax slab. Or having to chase refunds for months, just to keep your cash flow alive. That was the old GST regime. Confusing slabs, big spread of rates, glitches in refunds, inverted duty problems for manufacturers; you name it.</p>
+<br>
+<p>Then came GST 2.0, announced in September 2025, effective from 22 September. The government slashed the number of slabs, reworked many rates, and introduced a steep 40% rate for “luxury and sin” goods, while shifting most everyday items and many inputs into lower tax brackets. </p>
+<br>
+<p>Here is what changed:</p>
+<ul class="list-disc list-inside space-y-1">
+  <li>Most items moved from 12–18–28% slabs to 5% or 18%</li>
+  <li>Essentials like insurance, medicines, daily personal care goods became cheaper</li>
+  <li>Luxury cars & tobacco taxed at 40%</li>
+</ul>
+<img src="/images/img1.png" alt="GST 2.0 Reform Infographic" class="my-6 rounded-lg shadow-lg">
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">What the Numbers Tell Us</h3>
+<ul class="list-disc list-inside space-y-1">
+  <li>GST collections FY25: ₹22.08 lakh crore (~₹1.84 lakh crore/month)</li>
+  <li>Reform expected to inject ~₹2 lakh crore into economy</li>
+  <li>Revenue loss estimated ₹48,000 crore, offset by compliance</li>
+  <li>Crisil: India Inc. may see 6–7% revenue growth in FY26</li>
+</ul>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">Who Wins Big, Who Still Faces Pain Points</h3>
+<p><strong>Winners:</strong></p>
+<ul class="list-disc list-inside space-y-1">
+  <li>FMCG: toothpaste, soaps, biscuits cheaper (12–18% → 5%)</li>
+  <li>Automobiles: small cars & 2-wheelers see tax relief</li>
+  <li>Construction: cement GST drops from 28% → 18%</li>
+  <li>MSMEs/startups: simpler compliance, lower input tax</li>
+</ul>
+<p><strong>Pain Points:</strong></p>
+<ul class="list-disc list-inside space-y-1">
+  <li>Luxury apparel above ₹2,500 faces 18% vs earlier 12%</li>
+  <li>Tobacco/sin goods face higher taxes</li>
+  <li>Oil & gas exploration sees higher GST → squeezed margins</li>
+</ul>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">Startups: Opportunity Knocks (With Caveats)</h3>
+<p>Benefits: lower taxes on inputs, simpler compliance, wider reach into Tier-2/3 markets.  
+Risks: mismatched input credits, cash flow during transition, state-level taxes.</p>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">The Macro View: What India Gets (and Risks)</h3>
+<ul class="list-disc list-inside space-y-1">
+  <li>Revives household consumption</li>
+  <li>Promotes formalization & transparency</li>
+  <li>Inflation may ease by ~0.8–1.1%</li>
+  <li>Fiscal deficit risk if revenues fall short</li>
+</ul>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">The Donald Trump Tariff Shock & GST 2.0</h3>
+<p>U.S. tariffs (up to 50%) on Indian exports in Aug 2025 hurt textiles, gems, seafood, leather. GST 2.0 cushioned by:</p>
+<ol class="list-decimal list-inside space-y-1">
+  <li>Boosting domestic consumption</li>
+  <li>Offsetting growth drag (loss cut to ~0.2–0.3%)</li>
+  <li>Keeping inflation in check</li>
+  <li>Signalling proactive govt. response</li>
+</ol>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">Risks & Gaps</h3>
+<ul class="list-disc list-inside space-y-1">
+  <li>Permanent export market share loss</li>
+  <li>Labour-intensive sectors remain vulnerable</li>
+  <li>Lag effects between cuts & demand rise</li>
+  <li>Currency risk & global input costs</li>
+</ul>
+
+<h3 class="text-2xl font-semibold mt-6 mb-3">E-Cell Insights: What Entrepreneurs Should Do</h3>
+<ul class="list-disc list-inside space-y-1">
+  <li>Audit product mapping, reprice SKUs under new slabs</li>
+  <li>Revamp pricing & promotions in Tier-2/3 markets</li>
+  <li>Optimize supply chain for lower GST categories</li>
+  <li>Sharpen cash flow forecasting (transitional costs)</li>
+  <li>Track state-level policy changes closely</li>
+</ul>
+`;
+
+// Override openBlog to support HTML
+function openBlog(title, content, author) {
+  const modal = document.getElementById('blog-modal');
+  // document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-content').innerHTML = content;
+  document.getElementById('modal-author').textContent = `By ${author}`;
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+
+// Like feature with persistence
+function likePost(btn) {
+  let span = btn.querySelector("span");
+  let article = btn.closest("article");
+  let title = article.querySelector("h2").textContent;
+  let key = `likes-${title}`;
+  let count = parseInt(localStorage.getItem(key) || 0) + 1;
+  localStorage.setItem(key, count);
+  span.textContent = count;
+}
+
+// Restore likes and comments on load
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("article").forEach(article => {
+    // let title = article.querySelector("h2").textContent;
+    // let likeKey = `likes-${title}`;
+    // let commentKey = `comments-${title}`;
+
+    // restore likes
+    let savedLikes = localStorage.getItem(likeKey);
+    if (savedLikes) {
+      article.querySelector("button").querySelector("span").textContent = savedLikes;
+    }
+
+    // restore comments
+    let savedComments = JSON.parse(localStorage.getItem(commentKey) || "[]");
+    let list = article.querySelector(".comment-list");
+    savedComments.forEach(c => {
+      let p = document.createElement("p");
+      p.className = "text-gray-300 text-sm bg-gray-800 p-2 rounded-lg";
+      p.textContent = c;
+      list.appendChild(p);
+    });
+
+    // update comment count
+    if (savedComments.length > 0) {
+      article.querySelectorAll("button")[1].querySelector("span").textContent = savedComments.length;
+    }
+  });
+});
+
+// Toggle comments
+function toggleComments(btn) {
+  let article = btn.closest("article");
+  let comments = article.querySelector(".comments");
+  comments.classList.toggle("hidden");
+}
+
+// Add comment
+function addComment(btn) {
+  let article = btn.closest("article");
+  let input = article.querySelector(".comment-box");
+  let commentText = input.value.trim();
+  if (!commentText) return;
+
+  let list = article.querySelector(".comment-list");
+  let p = document.createElement("p");
+  p.className = "text-gray-300 text-sm bg-gray-800 p-2 rounded-lg";
+  p.textContent = commentText;
+  list.appendChild(p);
+
+  // persist comment
+  let title = article.querySelector("h2").textContent;
+  let key = `comments-${title}`;
+  let saved = JSON.parse(localStorage.getItem(key) || "[]");
+  saved.push(commentText);
+  localStorage.setItem(key, JSON.stringify(saved));
+
+  // update count
+  let span = article.querySelectorAll("button")[1].querySelector("span");
+  span.textContent = saved.length;
+
+  input.value = "";
+}
 
 
 
