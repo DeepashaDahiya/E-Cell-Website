@@ -1,158 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Cell - Blogs</title>
-    <link rel="icon" type="image/png" href="logo.jpeg">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Poppins:wght@400;600&family=Crimson+Text:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Global */
-      html, body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-      }
-      * { box-sizing: border-box; max-width: 100%; }
-      body {
-        background-color: #0a0a0a;
-        color: white;
-        font-family: "Poppins", sans-serif;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medium Style blogs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ff69b4;
+      /* Hot Pink */
+      --secondary-color: #9f52ff;
+      /* Bright Purple */
+      --background-start: #1a0b2e;
+      --card-background: rgba(26, 11, 46, 0.5);
+      --text-color: #f0f0f0;
+      --text-color-muted: #c0c0c0;
+      --glow-color: rgba(238, 130, 238, 0.6);
+      --line-color: rgba(159, 82, 255, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: var(--text-color);
+      overflow-x: hidden;
+      /* For parallax effect */
+      height: 100%;
+      perspective: 1px;
+      transform-style: preserve-3d;
+      overflow-y: auto;
+    }
+
+    .animated-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      /* background: linear-gradient(315deg, var(--primary-color), var(--secondary-color), var(--background-start)); */
+      background-size: 400% 400%;
+      animation: gradientAnimation 20s ease infinite;
+      /* Parallax effect */
+      transform: translateZ(-1px) scale(1.5);
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
       }
 
-      /* Navbar */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        backdrop-filter: saturate(140%) blur(8px);
-        background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+      50% {
+        background-position: 100% 50%;
       }
-      .nav {
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 18px;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: #f5f5f5;
-      }
-      .brand img {
-        height: 42px;
-        width: 42px;
-        border-radius: 12px;
-      }
-      .brand .title { font-weight: 800; }
-      .brand .subtitle { font-size: 14px; color: #999; }
 
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    /* Navbar */
+    header {
+      margin-top: 0;
+      padding-top: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #f5f5f5;
+    }
+
+    .brand img {
+      height: 42px;
+      width: 42px;
+      border-radius: 12px;
+    }
+
+    .brand .title {
+      font-weight: 800;
+    }
+
+    .brand .subtitle {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .links .nav-text {
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 600;
+    }
+
+    .links .nav-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+      transition: width .25s ease
+    }
+
+    .links .nav-text:hover::after {
+      width: 100%
+    }
+
+    .cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+      cursor: pointer;
+      color: #f5f5f5;
+      font-weight: 700
+    }
+
+    /* Hamburger */
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+      transition: right 0.3s ease;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .drawer.open {
+      right: 0;
+    }
+
+    .drawer a {
+      display: block;
+      margin: 15px 0;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .drawer a:hover {
+      color: #a855f7;
+    }
+
+    .drawer .close {
+      font-size: 22px;
+      cursor: pointer;
+      color: #aaa;
+      margin-left: auto;
+      margin-bottom: 20px;
+      display: block;
+      width: fit-content;
+    }
+
+    .drawer .close:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
       .links {
-        display: flex;
-        gap: 28px;
-        align-items: center;
-      }
-      .links .nav-text {
-        cursor: pointer;
-        position: relative;
-        text-decoration: none;
-        color: #f5f5f5;
-        font-weight: 600;
-      }
-      .links .nav-text::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        height: 2px;
-        width: 0;
-        background: linear-gradient(90deg, #f3f4f6, #8a2be2);
-        transition: width .25s ease;
-      }
-      .links .nav-text:hover::after { width: 100%; }
-
-      .cta {
-        padding: 10px 16px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, .15);
-        background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
-        cursor: pointer;
-        color: #f5f5f5;
-        font-weight: 700;
-      }
-
-      /* Hamburger */
-      .menu-btn {
         display: none;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-      }
-      .menu-btn span {
-        display: block;
-        width: 26px;
-        height: 3px;
-        background: #fff;
-        border-radius: 2px;
       }
 
-      /* Drawer */
-      .drawer {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 250px;
-        height: 100%;
-        background: #111;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
-        transition: right 0.3s ease;
-        z-index: 2000;
-        padding: 20px;
+      .menu-btn {
+        display: flex;
       }
-      .drawer.open { right: 0; }
-      .drawer a {
-        display: block;
-        margin: 15px 0;
-        text-decoration: none;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 600;
-      }
-      .drawer a:hover { color: #a855f7; }
-      .drawer .close {
-        font-size: 22px;
-        cursor: pointer;
-        color: #aaa;
-        margin-left: auto;
-        margin-bottom: 20px;
-        display: block;
-        width: fit-content;
-      }
-      .drawer .close:hover { color: #fff; }
+    }
 
-      @media (max-width: 768px) {
-        .links { display: none; }
-        .menu-btn { display: flex; }
-      }
+    .main-title {
+      padding-top: 10px;
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 80px;
+      color: #fff;
+      text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+    }
 
-      /* Page content */
-      h1 { text-align: center; margin-top: 150px; font-size: 2.5rem; color: #f5f5f5; }
-    </style>
-  </head>
-  <body>
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding-top: 80px; /* space below navbar */
+}
+
+.modal-content {
+  margin: 40px auto; /* vertical margin */
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%; /* wider */
+  max-width: 1000px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.modal-close:hover {
+  color: var(--primary-color);
+}
+
+  </style>
+</head>
+
+<body>
+  <div id="root">
     <!-- Navbar -->
     <header role="banner">
       <nav class="nav">
@@ -194,24 +325,234 @@
       <a href="contact.html">Contact Us</a>
     </div>
 
-    <!-- Page content -->
-    <h1>Coming soon!</h1>
+<!-- Blog Section -->
+<main class="max-w-5xl mx-auto px-6 py-16">
+  <h1 class="text-4xl font-bold mb-12 text-center text-white">Our Blogs</h1>
 
-    <script>
-      const menuBtn = document.getElementById("menuBtn");
-      const drawer = document.getElementById("drawer");
-      const closeDrawer = document.getElementById("closeDrawer");
+  <div id="blog-list" class="space-y-12">
+    <!-- Blog Card -->
+    <article class="flex bg-gray-900/80 rounded-2xl shadow-lg border border-gray-700 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+             onclick="openBlog('From Idea to Startup: Navigating Your Entrepreneurial Journey', 'Entrepreneurship is more than just starting a business—it’s about solving real-world problems, building a team, validating ideas, and scaling a venture effectively. In this blog, we dive into the key steps every aspiring student entrepreneur should know, from ideation to launch and growth.', 'Jane Doe')">
+      
+      <!-- Left: Image -->
+      <div class="w-2/5">
+        <img src="https://media.istockphoto.com/photos/bloggingblog-concepts-ideas-with-worktable-picture-id922745190?b=1&k=20&m=922745190&s=170667a&w=0&h=0lBPWualF5SE8Khy1uRoGOcMZry55ZiUUWvPUPIZ3H0=" 
+             alt="Blog Thumbnail"
+             class="w-full h-full object-cover">
+      </div>
 
-      menuBtn.addEventListener("click", () => {
-        drawer.classList.add("open");
-      });
+      <!-- Right: Blog Info -->
+      <div class="w-3/5 p-6 flex flex-col justify-between">
+        <div>
+          <h2 class="text-2xl font-semibold text-white mb-1">From Idea to Startup: Navigating Your Entrepreneurial Journey</h2>
+          <p class="text-gray-400 mb-1">A step-by-step guide for aspiring student entrepreneurs to transform ideas into impactful ventures.</p>
+          <p class="text-gray-500 text-sm mb-3">By <strong>Jane Doe</strong></p>
+        </div>
 
-      closeDrawer.addEventListener("click", () => {
-        drawer.classList.remove("open");
-      });
-    </script>
+        <div class="flex items-center justify-between text-sm text-gray-400">
+          <span>10 Sep 2025 · 5 min read</span>
+          <div class="flex space-x-5">
+            <button onclick="event.stopPropagation(); likePost(this)" class="hover:text-pink-400 transition">❤️ <span>0</span></button>
+            <button onclick="event.stopPropagation(); toggleComments(this)" class="hover:text-pink-400 transition">💬 <span>0</span></button>
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+      
+      </div>
+    </article>
+  </div>
+</main>
+
+<!-- Blog Modal -->
+<div id="blog-modal" class="modal">
+  <div class="modal-content max-w-4xl mx-auto bg-gray-900 rounded-xl p-6 relative shadow-2xl border border-gray-700">
+    <span class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer text-2xl" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title" class="text-3xl font-bold mb-4"></h2>
+    <p id="modal-subtitle" class="text-gray-300 mb-4"></p>
+    <p id="modal-content" class="text-gray-300 mb-6"></p>
+    <p id="modal-author" class="text-gray-400 text-sm text-right italic"></p>
+  </div>
+</div>
 
 
 
-  </body>
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-500 py-12 relative">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- Location with Map -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Location</h3>
+          <div class="flex flex-col space-y-4">
+            <!-- Map Embed -->
+            <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <!-- Address + Contact -->
+            <div>
+              <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="hover:text-pink-400 transition">About Us</a></li>
+            <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
+            <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+          </div>
+          <div class="mt-4">
+            <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
+            <br>
+            <br>
+            <p>+919810823235</p>
+            <br>
+            <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        © 2025 ECell IGDTUW. All rights reserved.
+      </div>
+    </footer>
+  </div>
+  
+ <script>
+
+  // Only attach modal opening to inputs meant for modal, not comment boxes
+document.querySelectorAll("input:not(.comment-box)").forEach(el => {
+  el.addEventListener("focus", openModal);
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const drawer = document.getElementById('drawer');
+  const menuBtn = document.getElementById('menuBtn');
+  const closeDrawer = document.getElementById('closeDrawer');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+  }
+
+  function hideDrawer() {
+    drawer.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // restore scroll
+  }
+
+  // Open/close logic
+  menuBtn.addEventListener('click', openDrawer);
+  closeDrawer.addEventListener('click', hideDrawer);
+
+  // Close drawer when clicking any link inside
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', hideDrawer);
+  });
+
+  // Close drawer if clicking on overlay area (optional safety)
+  drawer.addEventListener('click', e => {
+    if (e.target === drawer) hideDrawer();
+  });
+});
+
+// Open modal with full blog
+function openBlog(title, content) {
+  document.getElementById("modal-title").textContent = title;
+  document.getElementById("modal-content").textContent = content;
+  document.getElementById("blog-modal").classList.remove("hidden");
+  document.getElementById("blog-modal").classList.add("flex");
+}
+
+// Close modal
+function closeBlog() {
+  document.getElementById("blog-modal").classList.add("hidden");
+  document.getElementById("blog-modal").classList.remove("flex");
+}
+
+// Like feature
+function likePost(btn) {
+  let span = btn.querySelector("span");
+  span.textContent = parseInt(span.textContent) + 1;
+}
+
+// Toggle comments section
+function toggleComments(btn) {
+  let article = btn.closest("article");
+  let comments = article.querySelector(".comments");
+  comments.classList.toggle("hidden");
+}
+
+
+function openBlog(title, content, author) {
+  const modal = document.getElementById('blog-modal');
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-subtitle').textContent = "A step-by-step guide for aspiring student entrepreneurs to transform ideas into impactful ventures.";
+  document.getElementById('modal-content').textContent = content;
+  document.getElementById('modal-author').textContent = `By ${author}`;
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; // prevent background scroll
+}
+
+function closeModal() {
+  const modal = document.getElementById('blog-modal');
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close modal if clicking outside content
+window.addEventListener('click', (e) => {
+  const modal = document.getElementById('blog-modal');
+  if (e.target === modal) closeModal();
+
+
+});
+
+
+
+
+</script>
+<script src="index.js"></script>
+
+</body>
+
 </html>
