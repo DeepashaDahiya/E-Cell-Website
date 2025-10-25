@@ -176,6 +176,8 @@ if (window.innerWidth <= 480) {
   ScrollTrigger.refresh();
 });
 
+
+
 // -----------------------------
 // FUNCTIONS
 // -----------------------------
@@ -190,6 +192,73 @@ function resetAnimations() {
     window.typedInstance = null;
   }
 }
+
+// === Simple, robust slideshow JS ===
+  (function () {
+    const container = document.getElementById('teamSlideshow');
+    const slides = Array.from(container.querySelectorAll('.team-slide'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    if (!slides.length) return;
+
+    let current = slides.findIndex(s => s.classList.contains('active'));
+    if (current === -1) current = 0; // fallback if HTML didn't set active
+    let intervalId = null;
+    const INTERVAL_MS = 4000;
+
+    // create dots
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      if (i === current) btn.classList.add('active');
+      btn.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(btn);
+    });
+    const dots = Array.from(dotsContainer.children);
+
+    function show(index) {
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === index);
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      current = index;
+    }
+
+    function next() { show((current + 1) % slides.length); }
+    function prev() { show((current - 1 + slides.length) % slides.length); }
+    function goTo(i) { show(i); resetTimer(); }
+
+    // Auto-play with pause on hover
+    function startTimer() {
+      stopTimer();
+      intervalId = setInterval(next, INTERVAL_MS);
+    }
+    function stopTimer() {
+      if (intervalId) { clearInterval(intervalId); intervalId = null; }
+    }
+    function resetTimer() { stopTimer(); startTimer(); }
+
+    // Wire nav buttons
+    prevBtn?.addEventListener('click', () => { prev(); resetTimer(); });
+    nextBtn?.addEventListener('click', () => { next(); resetTimer(); });
+
+    // Pause on hover (container)
+    container.addEventListener('mouseenter', stopTimer);
+    container.addEventListener('mouseleave', startTimer);
+
+    // Start
+    show(current);
+    startTimer();
+
+    // Accessibility: keyboard arrows
+    container.tabIndex = 0;
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { prev(); resetTimer(); }
+      if (e.key === 'ArrowRight') { next(); resetTimer(); }
+    });
+  })();
 
 function hidePreloaderElements() {
   document.getElementById('preloader').style.display = 'none';

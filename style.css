@@ -629,52 +629,104 @@ section {
 
 
 /* Team Section Styles */
-#team {
-  background-color: #121212;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
+/* ----- Layout ----- */
+    .team-slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111; /* fallback so container has visible area while images load */
+      height: 560px; /* set a sensible height so it never collapses — change as needed */
+    }
 
-.team-image-container {
-  position: relative;
-  width: 200%;
-  height: fit-content;
-  max-width: 1000px;
-  overflow: hidden;
-  border-radius: 1rem;
-}
+    /* Slides stacked on top of each other */
+    .team-slide {
+      position: absolute;
+      inset: 0; /* top:0; right:0; bottom:0; left:0; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 900ms ease-in-out;
+      z-index: 0;
+    }
 
-.team-image-bw {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%);
-  transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
-  border-radius: 1rem;
-}
+    /* active slide is visible & clickable */
+    .team-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 1;
+    }
 
-.team-image-color {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1rem;
-}
+    /* Image styling:
+       - Use one image per slide.
+       - Start with grayscale, transition to color on hover */
+    .team-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%) contrast(0.95);
+      transition: filter 300ms ease, transform 400ms ease;
+      will-change: filter, transform;
+    }
 
-.team-image-container:hover .team-image-bw {
-  opacity: 0;
-}
+    /* On hover show color and small scale up */
+    .team-slide:hover img {
+      filter: none;
+      transform: scale(1.02);
+    }
 
-.event-card {
-  opacity: 0;
-  transform: translateY(50px);
-}
+    /* Optional: simple nav arrows */
+    .sl-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      cursor: pointer;
+      z-index: 5;
+      user-select: none;
+    }
+    .sl-nav.left { left: 12px; }
+    .sl-nav.right { right: 12px; }
+
+    /* Dots */
+    .sl-dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+      z-index: 6;
+    }
+    .sl-dots button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.5);
+      padding: 0;
+      cursor: pointer;
+    }
+    .sl-dots button.active {
+      background: white;
+      box-shadow: 0 0 6px rgba(0,0,0,0.45);
+    }
+
+    /* Responsive height tweak */
+    @media (max-width: 640px) {
+      .team-slideshow { height: 320px; }
+    }
 
 
 /* Recruitment Form */
