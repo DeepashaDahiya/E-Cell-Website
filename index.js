@@ -194,6 +194,7 @@ function resetAnimations() {
 }
 
 // === Simple, robust slideshow JS ===
+  // === Simple, robust slideshow JS ===
   (function () {
     const container = document.getElementById('teamSlideshow');
     const slides = Array.from(container.querySelectorAll('.team-slide'));
@@ -259,7 +260,7 @@ function resetAnimations() {
       if (e.key === 'ArrowRight') { next(); resetTimer(); }
     });
   })();
-
+  
 function hidePreloaderElements() {
   document.getElementById('preloader').style.display = 'none';
   document.querySelector('.loader').style.display = 'none';
