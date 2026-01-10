@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Cell Blogs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #ff69b4;
+      --secondary-color: #9f52ff;
+      --glow-color: rgba(238, 130, 238, 0.6);
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: #f0f0f0;
+    }
+    header {
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(to bottom, rgba(10, 10, 10, .85), rgba(10, 10, 10, .55));
+    }
+    .nav-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, #f3f4f6, #8a2be2);
+      transition: width .25s ease
+    }
+    .nav-text:hover::after { width: 100% }
+    .drawer {
+      transition: right 0.3s ease;
+    }
+    .drawer.open { right: 0; }
+    .prose-invert {
+      --tw-prose-body: #d1d5db;
+      --tw-prose-headings: #ffffff;
+      --tw-prose-lead: #a1a1aa;
+      --tw-prose-links: #ffffff;
+      --tw-prose-bold: #ffffff;
+      --tw-prose-counters: #a1a1aa;
+      --tw-prose-bullets: #52525b;
+      --tw-prose-hr: #3f3f46;
+      --tw-prose-quotes: #f5f5f5;
+      --tw-prose-quote-borders: #3f3f46;
+      --tw-prose-captions: #a1a1aa;
+      --tw-prose-code: #ffffff;
+      --tw-prose-pre-code: #d1d5db;
+      --tw-prose-pre-bg: #1e293b;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1050;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .modal-content {
+        margin: 5% auto;
+        background: #1a1a1a;
+        padding: 2rem;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 1000px;
+        position: relative;
+        border: 1px solid #333;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .modal-close:hover {
+        color: var(--primary-color);
+      }
+  </style>
+</head>
+
+<body >
+  <div id="root">
+    <!-- Navbar -->
+    <header role="banner" class="sticky top-0 z-50">
+      <nav class="h-[72px] flex items-center justify-between px-4 max-w-7xl mx-auto">
+        <a class="flex items-center gap-3 text-white" href="index.html">
+          <img src="logo.jpeg" alt="E-Cell IGDTUW logo" class="h-10 w-10 rounded-lg" />
+          <div>
+            <div class="font-extrabold">E-Cell IGDTUW</div>
+            <div class="text-sm text-gray-400">Innovate • Create • Grow</div>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="index.html" class="nav-text relative font-semibold text-white">About</a>
+          <a href="events.html" class="nav-text relative font-semibold text-white">Events</a>
+          <a href="blogs.html" class="nav-text relative font-semibold text-white">Blogs</a>
+          <a href="gallery.html" class="nav-text relative font-semibold text-white">Gallery</a>
+          <a href="updates.html" class="nav-text relative font-semibold text-white">Updates</a>
+          <a href="our-team.html" class="nav-text relative font-semibold text-white">Team</a>
+          <a class="px-4 py-2.5 rounded-full border border-white/20 bg-gradient-to-b from-white/10 to-white/5 font-bold text-white cursor-pointer" href="contact.html">Contact Us</a>
+        </div>
+        <button class="md:hidden flex flex-col gap-1.5 bg-none border-none cursor-pointer" id="menuBtn" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-white rounded-sm"></span>
+          <span class="block w-6 h-0.5 bg-white rounded-sm"></span>
+          <span class="block w-6 h-0.5 bg-white rounded-sm"></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Drawer -->
+    <div class="drawer fixed top-0 -right-full w-64 h-full bg-[#111] shadow-xl z-50 p-5" id="drawer" aria-hidden="true">
+      <span class="close absolute top-5 right-5 text-2xl cursor-pointer text-gray-400 hover:text-white" id="closeDrawer">&times;</span>
+      <a href="index.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">About</a>
+      <a href="events.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">Events</a>
+      <a href="blogs.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">Blogs</a>
+      <a href="gallery.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">Gallery</a>
+      <a href="updates.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">Updates</a>
+      <a href="our-team.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">Team</a>
+      <a href="contact.html" class="block my-4 text-lg font-semibold text-white hover:text-purple-400">Contact Us</a>
+    </div>
+
+    <!-- Blog Section -->
+    <main class="max-w-5xl mx-auto px-6 py-16">
+      <h1 class="text-4xl font-bold mb-6 text-center text-white">Our Blogs</h1>
+      
+      <!-- Search Bar -->
+      <div class="mb-12 max-w-lg mx-auto">
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <i class="fas fa-search text-gray-500"></i>
+          </span>
+          <input type="search" id="search-bar" placeholder="Search for blogs by title or description..." class="w-full pl-10 pr-4 py-2.5 rounded-full bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300">
+        </div>
+      </div>
+
+      <div id="blog-list" class="space-y-12">
+        <article class="flex flex-col md:flex-row bg-gray-900/80 rounded-2xl shadow-lg border border-gray-700 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer" onclick="openBlog(this)">
+          <div class="w-full md:w-2/5 h-64 md:h-auto">
+            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202507/gst-changes-165144217-16x9_0.jpg?VersionId=dUGjD21qIBKWHLBDRp8TSpiveuI5acL9" alt="Blog Thumbnail" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full md:w-3/5 p-6 flex flex-col justify-between">
+            <div>
+              <h2 class="text-2xl font-semibold text-white mb-1">GST 2.0: The Game-Changer India Needed</h2>
+              <p class="text-gray-400 mb-1">What this reform means for startups, entrepreneurs, and India’s economy.</p>
+              <p class="text-gray-500 text-sm mb-3">By <strong>E-Cell IGDTUW R&D Team</strong></p>
+            </div>
+            <div class="flex items-center justify-between text-sm text-gray-400 mt-4">
+              <span>22 Sep 2025 · 12 min read</span>
+              <div class="flex items-center space-x-5 text-lg">
+                <button onclick="event.stopPropagation(); likePost(this)" class="hover:text-pink-400 transition" aria-label="Like post"><i class="fas fa-heart"></i> <span class="text-sm ml-1">0</span></button>
+                <button onclick="event.stopPropagation(); toggleComments(this)" class="hover:text-pink-400 transition" aria-label="Toggle comments"><i class="fas fa-comment"></i> <span class="text-sm ml-1">0</span></button>
+                <button onclick="event.stopPropagation(); sharePost(this)" class="hover:text-pink-400 transition" aria-label="Share post"><i class="fas fa-share-alt"></i></button>
+              </div>
+            </div>
+            <div class="comments hidden mt-4 space-y-3" onclick="event.stopPropagation();">
+              <div class="space-y-2 comment-list max-h-48 overflow-y-auto pr-2"></div>
+              <div class="flex space-x-2 pt-2 border-t border-gray-700">
+                <input type="text" placeholder="Write a comment..." class="comment-box flex-1 px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button onclick="addComment(this)" class="px-4 py-2 bg-pink-600 hover:bg-pink-500 rounded-lg text-white font-semibold">Post</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div id="no-results" class="hidden text-center text-gray-400 mt-12">
+          <h3 class="text-2xl font-semibold">No blogs found</h3>
+          <p>Try searching for something else.</p>
+      </div>
+    </main>
+
+    <!-- Blog Modal -->
+    <div id="blog-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div id="modal-content-area" class="prose prose-invert max-w-none text-gray-300"></div>
+        <p id="modal-author" class="text-gray-400 text-sm text-right italic mt-8"></p>
+      </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 translate-y-10 transition-all duration-300">Link copied to clipboard!</div>
+
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-500 py-12 relative">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">Location</h3>
+          <div class="flex flex-col space-y-4">
+            <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">ECell IGDTUW</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="hover:text-pink-400 transition">About Us</a></li>
+            <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
+            <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
+            <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+            <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-gray-300">Follow Us</h3>
+          <!-- <div class="flex space-x-4 mb-4 text-xl">
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-pink-400"><i class="fab fa-twitter"></i></a>
+          </div> -->
+          <div class="mt-4">
+            <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
+            <p class="mt-2">+919810823235</p>
+            <p class="mt-2">Ecell.igdtu@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        © 2025 ECell IGDTUW. All rights reserved.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // --- GLOBAL SCOPE ---
+    const fullBlogContent = `
+        <h2 class="text-3xl font-bold mb-6 text-white">GST 2.0: The Game-Changer India Needed (If You're an Entrepreneur, or on your way to becoming one, Pay Attention)</h2>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">The Backstory: Why This Reform Matters</h3>
+        <p class="text-gray-300 leading-relaxed">Imagine paying ~ 12-28% more just because your product was “classified” on the wrong tax slab. Or having to chase refunds for months, just to keep your cash flow alive. That was the old GST regime. Confusing slabs, big spread of rates, glitches in refunds, inverted duty problems for manufacturers; you name it.</p>
+        <p class="text-gray-300 leading-relaxed mt-4">Then came GST 2.0, announced in September 2025, effective from 22 September. The government slashed the number of slabs, reworked many rates, and introduced a steep 40% rate for "luxury and sin” goods, while shifting most everyday items and many inputs into lower tax brackets.</p>
+        <p class="text-gray-300 leading-relaxed mt-4 font-semibold">Here's what changed:</p>
+        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-300">
+            <li>Most items moved down: from 12-18-28% slabs → 5% or 18%.</li>
+            <li>Essentials like insurance (life & health), medicine, daily personal care goods became more affordable.</li>
+            <li>Some sectors (luxury cars, sin goods, like tobacco) now taxed at 40%.</li>
+        </ul>
+        <img src="images/blogs/img1.png" alt="GST Timeline" class="my-8 rounded-lg shadow-lg w-full">
+
+        <p class="text-gray-300 leading-relaxed mt-4">So reason #1 for entrepreneurs: fewer hair-splitting classification headaches. Less risk of being stuck in the wrong slab.</p>
+        <p class="text-gray-300 leading-relaxed mt-2">Reason #2: lower tax burden for many, especially ones supplying everyday goods or consumer services.</p>
+        
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">GST 2.0 Reforms: What It Means in Simple Terms</h3>
+        <img src="images/blogs/img2.png" alt="GST 2.0 Reforms Charts" class="my-8 rounded-lg shadow-lg w-full">
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">What the Numbers Tell Us : The data analysis:)</h3>
+        <p class="text-gray-300 leading-relaxed">Numbers turn good intentions into real stories. A few highlights:</p>
+        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-300">
+            <li>Gross GST collections in FY25 hit ₹22.08 lakh crore, averaging ~₹1.84 lakh crore per month. That's almost double what was being collected five years ago.</li>
+            <li>The government projects this reform will inject ~₹2 lakh crore into the economy via rate cuts and increased consumer purchasing power.</li>
+            <li>While revenue loss is real, it's estimated at around ₹48,000 crore (₹480 billion) which the government expects to offset through higher consumption, formalization, and greater tax compliance.</li>
+            <li>Crisil anticipates that India Inc. may see 6-7% growth in revenues in FY 2025-26 because of these reforms.</li>
+        </ul>
+        <p class="text-gray-300 leading-relaxed mt-4">These are meaningful shifts: not just for large firms but for MSMEs and startups whose margins are often razor thin.</p>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">Who Wins Big, Who Pain Points Remain</h3>
+        <p class="text-gray-300 leading-relaxed mb-6">Let's play matchmakers between sectors and impacts.</p>
+        <div class="space-y-6">
+            <div>
+                <p class="font-semibold text-lg text-gray-200">Big Winners</p>
+                <p class="font-semibold text-md text-gray-300 mt-2">Consumer Goods / FMCG</p>
+                <p class="text-gray-400">Toothpaste, soaps, biscuits shifting from 12-18% → 5% means lower retail prices; more sales volume, especially in Tier 2/3 markets.</p>
+            </div>
+            <div>
+                <p class="font-semibold text-md text-gray-300">Automobiles & Two-Wheelers</p>
+                <p class="text-gray-400">Two-wheelers under 350cc & small cars get tax relief. Consumers get cost relief; companies get a refreshed demand pull.</p>
+            </div>
+            <div>
+                <p class="font-semibold text-md text-gray-300">Construction / Cement / Durables</p>
+                <p class="text-gray-400">GST on cement drops 28% → 18%. ACs, TVs, dishwashers also cheaper. This helps end-users and pushes construction & housing costs down.</p>
+            </div>
+            <div>
+                <p class="font-semibold text-md text-gray-300">MSMEs & Startups supplying inputs or selling consumer goods</p>
+                <p class="text-gray-400">Lower input GST, easier classification, fewer legal/filing complexities.</p>
+            </div>
+        </div>
+        
+        <img src="images/blogs/img3.png" alt="GST 2.0 Impact Analysis Chart" class="my-8 rounded-lg shadow-lg w-full">
+        <div class="mt-8">
+            <h4 class="text-xl font-bold text-red-400 mb-4">And here are the tougher spots:</h4>
+            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-300">
+                <li>Premium / Luxury Apparel (branded clothing above ₹2,500) now faces 18% vs earlier 12%. That's a dent for aspirational brands.</li>
+                <li>Sin goods & Tobacco: taxes higher or kept high. If you're in that business, tougher margins or less discretionary demand.</li>
+                <li>Oil & Gas upstream: some exploration sectors see GST raised. Increased cost of production may squeeze margins.</li>
+            </ul>
+        </div>
+        
+        <img src="images/blogs/img4.png" alt="Sector-wise Compliance Costs & Penalty Burden" class="my-8 rounded-lg shadow-lg w-full">
+        <img src="images/blogs/img5.png" alt="Sectoral Export Growth: Pre vs Post GST 2.0" class="my-8 rounded-lg shadow-lg w-full">
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">Startups: Opportunity Knocks (But Don't Ignore the Alarm Bells)</h3>
+        <p class="text-gray-300 leading-relaxed mb-4">For entrepreneurs, here's what the reform means for you:</p>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h4 class="text-xl font-bold text-green-400 mb-4">What improves:</h4>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-gray-300">
+                    <li>Working capital relief: Lower taxes on inputs, faster refunds ; cash isn't tied up for long.</li>
+                    <li>Simpler compliance: Fewer slabs, less legal ambiguity. Saves time and accounting/legal cost.</li>
+                    <li>Wider market reach: Lower prices mean products become affordable in smaller cities, expanding your potential customer base.</li>
+                    <li>Better environment for product-led growth: For example, in sectors like consumer electronics, appliances, health & insurance, startups can innovate with lower sticker-price hurdles.</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold text-yellow-400 mb-4">What still demands careful planning:</h4>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-gray-300">
+                    <li>Even after rate cuts, input tax credit mismatches may persist in mixed inputs. Safeguard accounting.</li>
+                    <li>Cash flow can still be tight during transitions retooling, reclassifying inventory, updating pricing & margins.</li>
+                    <li>Premium brands might need to rethink positioning or offers. Just because GST is higher doesn't always drop consumer demand linearly.</li>
+                    <li>States lose out in revenue due to cuts: they may push for excises or indirect taxes elsewhere. Be alert to state-level compliance changes. (DANGER!!)</li>
+                </ul>
+            </div>
+        </div>
+
+        <img src="images/blogs/img6.png" alt="India Startup Ecosystem Growth Chart" class="my-8 rounded-lg shadow-lg w-full">
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">The Macro View: What India Gets (and Risks)</h3>
+        <p class="text-gray-300 leading-relaxed">At scale, GST 2.0 is more than a tax-tweak. It might be one of the biggest economic nudges in years.</p>
+        <ul class="list-disc list-inside space-y-2 mt-4 text-gray-300">
+            <li>Helps revive consumption: household spending is the backbone of Indian growth; cuts on essentials, cars, durables will feed into that.</li>
+            <li>Promotes formalization: more firms will stay in the GST net, more transactions are tracked, boosting transparency.</li>
+            <li>Inflation may ease: Experts project inflation could come down by ~ 0.8-1.1 percentage points because of reduced consumption taxes on daily goods.</li>
+            <li>However, risk to fiscal deficit: Estimates suggest that unless offset by revenue from other sources (tariffs, excise, divestments), spending discipline bodies etc., the government's fiscal targets may get stressed.</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">The Donald Trump Tariff Shock & GST: How They're Intertwined</h3>
+        <p class="text-gray-300 leading-relaxed">While GST 2.0 is an internal reform, it doesn't happen in a vacuum. External trade pressures — especially recent U.S. tariffs under President Donald Trump — are testing India's economic resilience. Here's how the two connect:</p>
+        <div class="mt-4">
+            <h4 class="text-xl font-semibold text-gray-200 mb-2">What's Happening with Trump's Tariffs</h4>
+            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                <li>In late August 2025, the U.S. raised duties on many Indian exports, in some cases up to 50%. The move followed charges tied to India's continued purchase of Russian oil.</li>
+                <li>Key sectors hit: textiles, gems & jewellery, seafood (shrimp), leather — all labour-intensive and export-driven industries.</li>
+                <li>As exports to the U.S. tumbled (for example, shipments dropped from about USD 8.01 Bn in July to USD 6.86 Bn in August) the immediate revenue losses began to accumulate.</li>
+            </ul>
+        </div>
+        <div class="mt-6">
+            <h4 class="text-xl font-semibold text-gray-200 mb-2">How GST-2.0 Helps Mitigate the Damage</h4>
+            <p class="text-gray-300 leading-relaxed">GST reforms come in as a kind of internal stabiliser in this situation. Here are the mechanisms:</p>
+            <ol class="list-decimal list-inside space-y-3 mt-4 text-gray-300">
+                <li><strong>Boosting Domestic Consumption</strong><br>With exports under pressure, domestic demand becomes more crucial. Lower GST on daily goods, essentials, smaller motor vehicles etc., helps put more purchasing power in consumers' hands. This shifts economic reliance slightly away from export markets toward internal demand, partially offsetting export losses.</li>
+                <li><strong>Offsetting Growth Drag</strong><br>Analysts including India's Chief Economic Adviser estimate that while U.S. tariffs may shave something off GDP growth (projections around 0.2–0.5% depending on sector exposure), the rate cuts in GST help limit this loss. The combined impact, factoring both exports loss AND consumption stimulus, is likely to reduce growth by ~0.2-0.3% rather than something far worse.</li>
+                <li><strong>Keeps Inflation in Check</strong><br>External shocks (like high tariffs) tend to push input costs up — which can feed into inflation. But by reducing GST on many consumer goods and essentials, the reform provides some downward pressure on retail inflation. That helps maintain consumer demand when export sectors are weak.</li>
+                <li><strong>Signal Effect for Business & Markets</strong><br>The GST changes send a message: government is aware of external trade shocks and is proactively deploying policy levers. Market participants seem to be responding — stock market indices have held up relatively well despite tariff uncertainty.</li>
+            </ol>
+        </div>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">The Risks and Gaps</h3>
+        <p class="text-gray-300 leading-relaxed">Of course, the rescue is partial, not full. Some risks remain:</p>
+        <ul class="list-disc list-inside space-y-2 mt-4 text-gray-300">
+            <li><strong>Permanent Loss of Export Market Share:</strong> If Indian exporters can't compete under high U.S. tariffs, buyers may permanently shift to cheaper producers elsewhere. Even when tariffs ease, demand chains may not return.</li>
+            <li><strong>Vulnerability of Labour-Intensive Sectors:</strong> Sectors with thinner margins and high reliance on exports are less helped by GST relief that primarily aids domestic consumption. Their pain is real and immediate.</li>
+            <li><strong>Lag Effects:</strong> GST cuts take time to fully filter through supply chains, inventories, pricing decisions. Export decline may be swift; internal demand bounce may lag.</li>
+            <li><strong>Currency Risk & Input Costs:</strong> Higher input costs due to global supply chain disruptions, currency weakening could offset gains from reduced GST. Also, GST doesn't touch import tariffs or duties — those remain external pressures.</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mt-8 mb-4 text-gray-200">What an Astute Startup / Entrepreneur Should Do Now: SOME E-CELL INSIGHTS</h3>
+        <p class="text-gray-300 leading-relaxed">Here are tactical moves to ride this wave:</p>
+        <ol class="list-decimal list-inside space-y-3 mt-4 text-gray-300">
+            <li><strong>Audit your product mapping:</strong> check which of your SKUs (stock-keeping units) have moved to lower GST slabs; reprice accordingly to take advantage.</li>
+            <li><strong>Revamp pricing & promotions :</strong>cheaper cost gives room for discounts, loyalty deals, or wider reach in lower affordability regions.</li>
+            <li><strong>Optimize supply chain & inventory:</strong> revise procurement contracts, ensure inputs fall in lower taxed categories to avoid hidden costs.</li>
+            <li><strong>Sharpen cash flow forecasting:</strong> the benefit comes over time; some costs upfront (relabeling, systems) may remain. Buffer for that.</li>
+            <li><strong>Keep an eye on state changes:</strong> GST is central, but states may shift their own charges, fees, or policies in reaction to revenue losses.</li>
+        </ol>
+
+        <img src="images/blogs/img7.png" alt="GST Rate Comparison: Old vs New" class="my-8 rounded-lg shadow-lg w-full">
+    `;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- DRAWER LOGIC ---
+      const drawer = document.getElementById('drawer');
+      const menuBtn = document.getElementById('menuBtn');
+      const closeDrawer = document.getElementById('closeDrawer');
+      const openDrawer = () => { drawer.classList.add('open'); document.body.style.overflow = 'hidden'; };
+      const hideDrawer = () => { drawer.classList.remove('open'); document.body.style.overflow = ''; };
+      menuBtn.addEventListener('click', openDrawer);
+      closeDrawer.addEventListener('click', hideDrawer);
+      drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', hideDrawer));
+      
+      // --- SEARCH LOGIC ---
+      const searchBar = document.getElementById('search-bar');
+      searchBar.addEventListener('input', handleSearch);
+
+      // --- INITIALIZE STATE ---
+      restoreAllArticlesState();
+    });
+
+    // --- SEARCH FUNCTION ---
+    const handleSearch = () => {
+        const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+        const articles = document.querySelectorAll('#blog-list article');
+        const noResultsMessage = document.getElementById('no-results');
+        let visibleCount = 0;
+
+        articles.forEach(article => {
+            const title = article.querySelector('h2').textContent.toLowerCase();
+            const description = article.querySelector('p').textContent.toLowerCase();
+
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                article.style.display = 'flex';
+                visibleCount++;
+            } else {
+                article.style.display = 'none';
+            }
+        });
+
+        noResultsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+    };
+
+    // --- UTILITY FUNCTIONS ---
+    const getArticleKey = (element, type) => {
+      const article = element.closest('article');
+      const title = article.querySelector('h2').textContent.trim();
+      return `${type}-${title}`;
+    };
+
+    const showToast = (message) => {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-10');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-10');
+      }, 3000);
+    };
+
+    // --- MODAL LOGIC ---
+    const openBlog = (articleElement) => {
+      const modal = document.getElementById('blog-modal');
+      const author = articleElement.querySelector('strong').textContent.trim();
+      document.getElementById('modal-content-area').innerHTML = fullBlogContent;
+      document.getElementById('modal-author').textContent = `By ${author}`;
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      const modal = document.getElementById('blog-modal');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+
+    window.addEventListener('click', (e) => {
+      if (e.target === document.getElementById('blog-modal')) closeModal();
+    });
+
+    // --- INTERACTIVITY LOGIC ---
+    const likePost = (btn) => {
+      const key = getArticleKey(btn, 'likes');
+      let count = (parseInt(localStorage.getItem(key)) || 0) + 1;
+      localStorage.setItem(key, count);
+      btn.querySelector("span").textContent = count;
+    };
+
+    const sharePost = (btn) => {
+      const article = btn.closest('article');
+      const title = article.querySelector('h2').textContent.trim();
+      const url = window.location.href;
+
+      if (navigator.share) {
+        navigator.share({ title: title, text: `Check out this blog: ${title}`, url }).catch(console.error);
+      } else {
+        navigator.clipboard.writeText(url).then(() => showToast('Link copied to clipboard!'));
+      }
+    };
+
+    const toggleComments = (btn) => {
+      btn.closest("article").querySelector(".comments").classList.toggle("hidden");
+    };
+
+    const addComment = (btn) => {
+      const article = btn.closest('article');
+      const input = article.querySelector('.comment-box');
+      const commentText = input.value.trim();
+      if (!commentText) return;
+
+      const key = getArticleKey(btn, 'comments');
+      const comments = JSON.parse(localStorage.getItem(key) || "[]");
+      const newComment = { id: Date.now(), text: commentText };
+      comments.push(newComment);
+      localStorage.setItem(key, JSON.stringify(comments));
+
+      renderComments(article, comments);
+      input.value = "";
+    };
+
+    const deleteComment = (btn, commentId) => {
+      const article = btn.closest('article');
+      const key = getArticleKey(btn, 'comments');
+      let comments = JSON.parse(localStorage.getItem(key) || "[]");
+      comments = comments.filter(c => c.id != commentId);
+      localStorage.setItem(key, JSON.stringify(comments));
+      renderComments(article, comments);
+    };
+    
+    const startEditComment = (btn, commentId) => {
+        const commentItem = btn.closest('.comment-item');
+        const p = commentItem.querySelector('p');
+        const currentText = p.textContent;
+        
+        commentItem.innerHTML = `
+            <input type="text" value="${currentText}" class="flex-1 px-2 py-1 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-1 focus:ring-purple-500">
+            <div class="flex items-center space-x-2">
+                <button onclick="saveEditComment(this, '${commentId}')" class="text-green-400 hover:text-green-300" aria-label="Save comment"><i class="fas fa-check"></i></button>
+                <button onclick="cancelEditComment(this, '${commentId}')" class="text-red-400 hover:text-red-300" aria-label="Cancel edit"><i class="fas fa-times"></i></button>
+            </div>
+        `;
+        commentItem.querySelector('input').focus();
+    };
+
+    const saveEditComment = (btn, commentId) => {
+        const article = btn.closest('article');
+        const input = btn.closest('.comment-item').querySelector('input');
+        const newText = input.value.trim();
+        if (!newText) return;
+        
+        const key = getArticleKey(btn, 'comments');
+        let comments = JSON.parse(localStorage.getItem(key) || "[]");
+        const commentIndex = comments.findIndex(c => c.id == commentId);
+        if (commentIndex > -1) {
+            comments[commentIndex].text = newText;
+        }
+        localStorage.setItem(key, JSON.stringify(comments));
+        renderComments(article, comments);
+    };
+
+    const cancelEditComment = (btn) => {
+        const article = btn.closest('article');
+        const key = getArticleKey(btn, 'comments');
+        const comments = JSON.parse(localStorage.getItem(key) || "[]");
+        renderComments(article, comments);
+    };
+
+    const renderComments = (article, comments) => {
+      const list = article.querySelector(".comment-list");
+      list.innerHTML = '';
+      comments.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "comment-item flex items-center justify-between p-2 rounded-lg bg-gray-800";
+        div.innerHTML = `
+          <p class="text-gray-300 text-sm flex-1 break-words pr-2">${c.text}</p>
+          <div class="flex items-center space-x-3 text-gray-400">
+            <button onclick="startEditComment(this, '${c.id}')" class="hover:text-white" aria-label="Edit comment"><i class="fas fa-edit"></i></button>
+            <button onclick="deleteComment(this, '${c.id}')" class="hover:text-white" aria-label="Delete comment"><i class="fas fa-trash"></i></button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+      article.querySelector("button[aria-label='Toggle comments'] span").textContent = comments.length;
+    };
+    
+    // --- INITIALIZATION ---
+    const restoreAllArticlesState = () => {
+      document.querySelectorAll("article").forEach(article => {
+        const likeKey = getArticleKey(article, 'likes');
+        const commentKey = getArticleKey(article, 'comments');
+        
+        const savedLikes = localStorage.getItem(likeKey);
+        if (savedLikes) {
+          article.querySelector("button[aria-label='Like post'] span").textContent = savedLikes;
+        }
+
+        const savedComments = JSON.parse(localStorage.getItem(commentKey) || "[]");
+        if (savedComments.length > 0) {
+          renderComments(article, savedComments);
+        }
+      });
+    };
+    
+    // Make functions globally available for inline HTML onclick attributes
+    window.openBlog = openBlog;
+    window.closeModal = closeModal;
+    window.likePost = likePost;
+    window.sharePost = sharePost;
+    window.toggleComments = toggleComments;
+    window.addComment = addComment;
+    window.deleteComment = deleteComment;
+    window.startEditComment = startEditComment;
+    window.saveEditComment = saveEditComment;
+    window.cancelEditComment = cancelEditComment;
+
+  </script>
+</body>
+</html>

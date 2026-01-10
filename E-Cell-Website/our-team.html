@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- <title>Our Team • E-Cell IGDTUW</title> -->
+     <link rel="icon" type="image/png" href="logo.jpeg">
+
+  <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Fredericka+the+Great&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rye&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --bg: #0b0b0b;
+        --panel: #111214;
+        --muted: #b8b8b8;
+        --text: #ffffff;
+        --accent: #ffd166; /* warm, cute accent */
+        --accent-2: #66d9ff; /* soft blue accent */
+        --ring: rgba(255, 209, 102, 0.25);
+      }
+
+    :root{
+      --bg:#0b0b0b;
+      --panel:#111214;
+      --muted:#b8b8b8;
+      --text:#ffffff;
+      --accent:#ffd166;          /* warm, cute accent */
+      --accent-2:#66d9ff;        /* soft blue accent */
+      --ring:rgba(255,209,102,.25);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+body {
+  font-family: 'Crimson Text', 'Libre Baskerville', serif;
+}
+
+h1, h2, h3, .pill {
+  font-family: 'Libre Baskerville', 'Crimson Text', serif;
+  font-weight: 400; /* avoid bold if too abrupt */
+}
+
+nav a, .role, .name {
+  font-family: 'Crimson Text', 'Libre Baskerville', serif;
+  font-weight: 400; /* smooth, not heavy */
+}
+
+
+      margin:0;
+      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #1a1a1a 0%, transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, #0f1820 0%, transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    
+.back-arrow-circle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  background: var(--panel);  /* or any subtle background */
+  border-radius: 50%;        /* makes it a perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  padding-bottom: 4px;
+}
+
+.back-arrow-circle:hover {
+  transform: translateX(-3px);
+  background: var(--accent);      /* optional hover background */
+  color: #111;                     /* contrast on hover */
+}
+
+
+
+    /* Meet the Team heading font */
+.team-heading {
+  font-family: 'Crimson Text', serif; /* bold, classic font */
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin: 0 0 8px;
+}
+
+/* Subtext font */
+.team-subtext {
+  font-family: 'Libre Baskerville', serif; /* clean, readable */
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #bbb;
+  margin: 0 0 12px;
+}
+
+/* Nav button Our Team */
+.navhead.our-team {
+  font-family: 'Libre Baskerville', serif; /* same as rest of site */
+  font-weight: 600;
+  color: #f5f5f5; /* off-white */
+  text-decoration: none;
+  border-radius: 12px; /* rounded corners */
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.navhead.our-team:hover {
+  background: #ffd166; /* warm accent on hover */
+  color: #111;
+}
+
+
+    .nav-wrap{
+      max-width:1100px; margin:0 auto; padding:10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.3px;
+    }
+    .brand img{width:70px; height:70px; border-radius:8px; margin-top:6px; object-fit:cover}
+    .brand span{font-size:1.05rem}
+    nav a{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text); text-decoration:none; font-weight:600;
+      margin-left:18px; padding:8px 12px; border-radius:12px;
+      transition:transform .15s ease, background .15s ease, color .15s ease;
+    }
+    nav a:hover{background:rgba(255,255,255,.06);border-radius: 20px; transform:translateY(-1px)}
+    nav a.active{font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f5f5f5;border-radius: 20px; color:#111;padding: 8px 16px; }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        max-width: 1100px;
+        margin: 42px auto 8px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        line-height: 1.15;
+      }
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .pill {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background: rgba(255, 209, 102, 0.1);
+        border: 1px solid var(--ring);
+        color: var(--accent);
+      }
+
+      /* ---------- Grid ---------- */
+      .grid-wrap {
+        max-width: 1100px;
+        margin: 26px auto 80px;
+        padding: 0 16px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 22px;
+      }
+
+      /* ---------- Card ---------- */
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        padding: 18px 16px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: auto -30% 55% -30%;
+        height: 120px;
+        z-index: 0;
+        background: radial-gradient(
+          closest-side at 50% 50%,
+          rgba(255, 209, 102, 0.25),
+          transparent 70%
+        );
+        filter: blur(20px);
+        transform: rotate(-2deg);
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 255, 255, 0.14);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+      }
+      .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent);
+        display: block;
+        margin: 4px auto 10px;
+        position: relative;
+        z-index: 1;
+        transition: transform 0.2s ease;
+        background: #0f0f0f;
+      }
+      .card:hover .avatar {
+        transform: scale(1.03);
+      }
+      .name {
+        font-weight: 700;
+        margin: 4px 0 2px;
+        z-index: 1;
+        position: relative;
+      }
+      .role {
+        font-size: 0.92rem;
+        color: var(--muted);
+        margin: 0;
+        z-index: 1;
+        position: relative;
+      }
+
+      /* tiny social row (optional) */
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .socials a {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--text);
+        /* background-color:#0a66c2 ; */
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: background 0.15s ease, transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .socials a:hover {
+        background-color:#0a66c2 ;
+        color: white;
+        border-color: transparent;
+        transform: translateY(-1px);
+      }
+
+      /* ---------- Footer (light) ---------- */
+      footer {
+        padding: 26px 16px;
+        text-align: center;
+        color: var(--muted);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(10, 10, 10, 0.6);
+      }
+
+    /* ---------- Small helper ---------- */
+    .srch{
+      width:100%; max-width:380px; margin-top:12px;
+      background:#0f0f10; border:1px solid rgba(255,255,255,.12);
+      color:var(--text); padding:10px 12px; border-radius:12px;
+      outline:none;
+    }
+    .tools{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .clear-btn{
+      background:transparent; border:1px solid rgba(255,255,255,.14);
+      color:var(--muted); padding:8px 12px; border-radius:12px; cursor:pointer;
+      transition:all .15s ease;
+    }
+    .clear-btn:hover{border-color:var(--ring); color:var(--text)}
+
+    .top-close {
+  position: fixed;   /* fixed so it stays on top */
+  top: 10px;         /* distance from top of viewport */
+  right: 20px;       /* distance from right */
+  font-size: 2rem;   /* adjust size as needed */
+  font-weight: bold;
+  color: #fff;       /* off-white color */
+  cursor: pointer;
+  z-index: 10000;    /* very high to stay above everything */
+  transition: color 0.2s ease;
+  padding-right: 5px;
+}
+
+.top-close:hover {
+  color: #ffd166;    /* hover accent color */
+}
+
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="back-arrow-circle" onclick="location.href='index.html'">
+  &#8592;
+</div>
+
+  <div class="top-close" onclick="location.href='index.html'">&times;</div>
+ 
+
+  <header>
+    <div class="nav-wrap">
+      <!-- <a href="" class="brand">
+        <img src="logo.jpeg" alt="E-Cell logo" />
+        <span></span>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="our-team.html" class="active">Our Team</a>
+        <a href="contact.html">Contact Us</a> -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1 class="team-heading">Meet the Team </h1>
+      <p class="team-subtext">Creative, kind, and a little unstoppable.</p>
+      <span class="pill">2025-26 Council</span>
+    </div>
+    <div class="tools">
+      <input id="search" class="srch" type="search" placeholder="Search name or role…" />
+      <button id="clear" class="clear-btn">Clear</button>
+    </div>
+  </section>
+
+    <!-- Grid -->
+    <section class="grid-wrap">
+      <div id="teamGrid" class="grid"></div>
+    </section>
+
+    <footer>© E-Cell IGDTUW. All rights reserved.</footer>
+
+    <script>
+      /* ====== DATA: add/edit members here ======
+       Put member photos in /team/ (e.g., team/deepasha.jpg).
+       Tip: use square images for best results. */
+    const teamMembers = [
+
+      { name: "Sanika Khanduja", role: "President", img: "team-photos/SANIKA KHANDUJA.png", linkedin: "https://www.linkedin.com/in/sanika-khanduja-8432a5280/" },
+      { name: "Prisha Jain", role: "Vice President", img: "team-photos/prisha jain.png", linkedin: "https://www.linkedin.com/in/prishajain/" },
+      
+      { name: "Pearl Vashistha", role: "Executive Director", img: "team-photos/PEARL VASHISTHA.png", linkedin: "https://www.linkedin.com/in/pearlvashistha2006/" },
+      { name: "Lavanya Gupta", role: "Treasurer", img: "team-photos/LAVANYA GUPTA.png", linkedin: "https://www.linkedin.com/in/lavanya-gupta-455185280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+      { name: "Harshita Tanwar", role: "Joint Secretary", img: "team-photos/HARSHITA TANWAR.png" , linkedin: "https://www.linkedin.com/in/harshita-tanwar-ab3569288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+      { name: "Riya Mahajan", role: "Joint Secretary", img: "team-photos/RIYA MAHAJAN.png" , linkedin: "https://www.linkedin.com/in/riyamahajann/" },       
+      { name: "Harshita Aggarwal", role: "Joint Secretary", img: "team-photos/HARSHITA-AGGARWAL.png" , linkedin: "https://www.linkedin.com/in/dehttps://www.linkedin.com/company/ecelligdtuw/epasha-dahiya-7b59b1239/" },
+      { name: "Ananya Dhawan", role: "Operations Lead", img: "team-photos/ANANYA DHAWAN.png", linkedin: "https://www.linkedin.com/in/ananya-dhawan28?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" },
+      { name: "Deepasha Dahiya", role: "Web-Dev Lead", img: "team-photos/DEEPASHA DAHIYA.png", linkedin: "https://www.linkedin.com/company/ecelligdtuw/" },
+      { name: "Manishika Gupta ", role: "Media Lead", img: "team-photos/MANISHIKA-GUPTA.png", linkedin: "https://www.linkedin.com/in/manishika-gupta30/" },
+      { name: "Sharanya Gupta", role: "Creative Lead", img: "team-photos/SHARANYA  GUPTA.png" , linkedin: "https://www.linkedin.com/in/sharanya-gupta-520033350/"},
+      { name: "Manya Gupta", role: "Content Lead", img: "team-photos/MANYA-GUPTA.png", linkedin: "https://www.linkedin.com/in/manya-gupta-02ab63288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+      { name: "Enakshi Pardhe", role: "Sponsorship Lead", img: "team-photos/ENAKSHI PARDHE.png", linkedin: "https://www.linkedin.com/company/ecelligdtuw/posts/?feedView=all" },
+      { name: "Keva Mirg", role: "R&D Lead", img: "team-photos/KEVA MIRG.png", linkedin: "https://www.linkedin.com/in/keva-mirg-1b6401290/?originalSubdomain=in" },
+      { name: "Sejal", role: "Marketing Lead", img: "team-photos/SEJAL.png", linkedin: "https://www.linkedin.com/in/sejal-pal-200b6b292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+      // add more if needed
+    ];
+
+      const grid = document.getElementById("teamGrid");
+
+function cardTemplate({name, role, img, linkedin}) {
+  const safeImg = img || "logo.jpeg";
+  const linkedInLink = linkedin ? `<a href="${linkedin}" target="_blank" class="linkedin-link">in</a>` : "";
+  
+  return `
+    <article class="card">
+      <img class="avatar" src="${safeImg}" alt="${name}" onerror="this.src='logo.jpeg'">
+      <h3 class="name">${name}</h3>
+      <p class="role">${role}</p>
+      <div class="socials">
+        ${linkedInLink}
+      </div>
+    </article>
+  `;
+}
+
+
+
+      function render(list) {
+        grid.innerHTML = list.map(cardTemplate).join("");
+      }
+
+      // initial render
+      render(teamMembers);
+
+      // simple search (name or role)
+      const search = document.getElementById("search");
+      const clearBtn = document.getElementById("clear");
+      search.addEventListener("input", () => {
+        const q = search.value.trim().toLowerCase();
+        if (!q) return render(teamMembers);
+        const filtered = teamMembers.filter(
+          (m) =>
+            m.name.toLowerCase().includes(q) || m.role.toLowerCase().includes(q)
+        );
+        render(filtered);
+      });
+      clearBtn.addEventListener("click", () => {
+        search.value = "";
+        render(teamMembers);
+        search.focus();
+      });
+    </script>
+
+     <!-- Footer Section -->
+<footer class="bg-gray-900 text-gray-500 py-12 relative">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- Location with Map -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Location</h3>
+      <div class="flex flex-col space-y-4">
+        <!-- Map Embed -->
+        <div class="w-full h-40 rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.3386164064586!2d77.229433!3d28.6655361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683919c3b%3A0xf5fc331b74c2b9e2!2sIndira%20Gandhi%20Delhi%20Technical%20University%20for%20Women!5e0!3m2!1sen!2sin!4v1694000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Address + Contact -->
+        <div>
+          <p>Indira Gandhi Delhi Technical University For Women, Kashmere Gate, New Delhi, India</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Company -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">ECell IGDTUW</h3>
+      <ul class="space-y-2">
+       <li><a href="index.html" class="hover:text-pink-400 transition">About Us</a></li>
+     <li><a href="updates.html" class="hover:text-pink-400 transition">Updates</a></li>
+    <li><a href="blogs.html" class="hover:text-pink-400 transition">Blog</a></li>
+    <li><a href="contact.html" class="hover:text-pink-400 transition">Contact</a></li>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Services</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-pink-400 transition">Hackathons</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Insightful Sessions</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Events</a></li>
+        <li><a href="#" class="hover:text-pink-400 transition">Funding Ideas</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+      <div class="flex space-x-4 mb-4">
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-pink-400"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="mt-4">
+          <a href="https://www.instagram.com/ecell.igdtuw/" class="hover:text-pink-400 transition">Instagram</a>
+          <br>
+          <br>
+        <p>+919810823235</p>
+          <br>
+          <p><span class="gmail com">Ecell.igdtu@gmail.com</span></p>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    © 2025 ECell IGDTUW. All rights reserved.
+  </div>
+</footer>
+  </body>
+</html>

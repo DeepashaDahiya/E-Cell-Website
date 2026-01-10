@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>E-Cell IGDTUW — polished homepage</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Crimson+Text:400,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:#000;color:#eee;
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    .container{width:min(1180px,92%);margin:0 auto}
+
+    /* ---------- LOADER (classy) ---------- */
+    #loader {
+      position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;
+      z-index:5000;pointer-events:none;
+    }
+    #loader .brand {
+      font-family:'Cinzel',serif;color:#fff;font-size:2rem;letter-spacing:1px;opacity:1;
+      display:flex;gap:.8rem;align-items:center;
+    }
+    #loader .dot{
+      width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.95);
+      animation: loaderPulse 1s ease-in-out infinite;
+    }
+    @keyframes loaderPulse{0%{transform:scale(.85);opacity:.6}50%{transform:scale(1.2);opacity:1}100%{transform:scale(.85);opacity:.6}}
+    .loader-hide{animation: loaderFade .9s ease forwards}
+    @keyframes loaderFade{to{opacity:0;transform:translateY(-8px);visibility:hidden}}
+
+    /* ---------- NAVBAR (kept structure same) ---------- */
+    header{position:fixed;left:0;top:0;width:100%;z-index:1200;padding:10px 0;transition:all .38s ease}
+    /* inner pill element which becomes glassy when scrolled.
+       this avoids resizing the header itself and prevents visual duplication */
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 14px}
+    .header-inner.centered{max-width:1180px;margin:0 auto;width:100%}
+    /* scrolled glass style applied to the inner wrapper */
+    .header-inner.scrolled {
+      background: rgba(12,12,12,0.62);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 14px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding:10px 18px;
+    }
+
+    .head-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+    .logo{display:flex;align-items:center;gap:.6rem}
+    #logo{width:56px;height:56px;border-radius:8px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+    #logo-text{font-family:"Crimson Text",serif;font-weight:600;font-size:1.05rem;color:#fff}
+
+    .container-nav{display:flex;align-items:center;gap:32px;white-space:nowrap}
+    .navhead{color:#eee;font-weight:500;position:relative;padding-bottom:6px}
+    .navhead::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,#25d366,#ffd700);transition:width .28s ease}
+    .navhead:hover::after{width:100%}
+
+    .button-contact{border-radius:20px;padding:8px 18px;border:none;background:#d9d9d9;color:#111;font-weight:700;cursor:pointer}
+
+    /* mobile hamburger (keeps your original classes available) */
+    .hamburger{display:none;cursor:pointer;gap:6px}
+    .hamburger span{width:28px;height:3px;background:#fff;display:block;border-radius:3px}
+    @media(max-width:900px){.container-nav{display:none}.hamburger{display:flex;flex-direction:column}}
+
+    /* ---------- HERO: welcome card & ambient ---------- */
+    .hero-viewport{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;padding-top:64px;overflow:visible}
+    .hero-ambient{
+      position:absolute;inset:-6% -12% 0 -12%;height:80vh;z-index:5;pointer-events:none;
+      background:
+        radial-gradient(35% 35% at 12% 14%, rgba(37,211,102,0.06), transparent 7%),
+        radial-gradient(30% 30% at 88% 86%, rgba(255,215,0,0.035), transparent 8%);
+      filter:blur(18px);
+    }
+
+    .welcome-card{
+      position:relative;z-index:20;width:min(980px,94%);padding:34px;border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 26px 84px rgba(0,0,0,0.64);
+      transform:translateY(-22px);opacity:0;transition:transform .72s cubic-bezier(.2,.9,.3,1),opacity .6s;
+      text-align:center;
+    }
+    .welcome-card.show{transform:translateY(0);opacity:1}
+
+    .welcome-card h1{font-family:"Cinzel",serif;font-size:clamp(1.6rem,4.2vw,2.4rem);margin-bottom:8px}
+    .welcome-card p{color:#d5d5d5;font-size:1rem;max-width:76ch;margin:0 auto 12px auto}
+    .welcome-cta{display:flex;gap:12px;justify-content:center}
+    .cta-btn{padding:10px 18px;border-radius:999px;border:2px solid rgba(255,255,255,0.06);background:transparent;color:#fff;font-weight:600;cursor:pointer;transition:transform .18s,box-shadow .18s}
+    .cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(37,211,102,0.06)}
+
+    /* ---------- PHOTO PANEL (unfold) ---------- */
+    .photo-panel{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 0;background:#000;z-index:10;overflow:hidden}
+    .photo-mask{
+      width:78%;max-width:1200px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+      box-shadow:0 40px 90px rgba(0,0,0,0.7);
+      transition:clip-path 1s cubic-bezier(.2,.9,.25,1),transform 1s cubic-bezier(.2,.9,.25,1),opacity .8s;
+      /* start as a central horizontal band (hidden) */
+      clip-path: polygon(0 42%,100% 42%,100% 58%,0 58%);
+      opacity:0; transform:scale(.98) translateY(18px);
+    }
+    .photo-mask.open{clip-path:polygon(0 0,100% 0,100% 100%,0 100%);opacity:1;transform:scale(1) translateY(0)}
+    .photo-mask img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.4s ease}
+
+    .photo-caption{margin-top:18px;color:#cfcfcf;opacity:0;transform:translateY(8px);transition:all .7s}
+    .photo-caption.show{opacity:1;transform:translateY(0)}
+
+    /* ---------- EVENTS (interactive) ---------- */
+    section.events{padding:72px 0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.02))}
+    .events .section-header{text-align:center;margin-bottom:28px}
+    .events h2{font-family:"Cinzel",serif;font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:6px}
+    .events p.lead{color:#bdbdbd;margin-bottom:18px}
+
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:26px;width:min(1000px,96%);margin:0 auto}
+    .card{
+      position:relative;border-radius:14px;overflow:hidden;min-height:320px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 18px 60px rgba(0,0,0,0.7);
+      transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .3s,filter .25s;cursor:pointer;will-change:transform;transform:translateY(18px);opacity:0;
+    }
+    .card .card-media{position:absolute;inset:0;z-index:0}
+    .card .card-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.6);transform:scale(1.04);transition:transform .7s}
+    .card .card-body{position:relative;z-index:2;color:#fff}
+    .card h3{font-family:"Crimson Text",serif;margin-bottom:8px}
+    .card p{color:#ddd;margin-bottom:10px}
+
+    .card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 34px 80px rgba(0,0,0,0.75);filter:saturate(1.06)}
+    .card:hover .card-media img{transform:scale(1.12) translateY(-6px);filter:brightness(.92)}
+
+    .card .spark{position:absolute;width:120px;height:120px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,0.14),rgba(255,255,255,0.02));transform:translate(-50%,-50%) scale(.4);opacity:0;mix-blend-mode:screen;z-index:3;transition:opacity .12s,transform .18s}
+
+    /* reveal helper */
+    .reveal-in{opacity:1!important;transform:translateY(0)!important}
+
+    /* ---------- SPONSORS (circular placeholders) ---------- */
+    .sponsors{padding:44px 0 92px 0;text-align:center}
+    .sponsors .grid{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;align-items:center}
+    .sponsor{
+      width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;color:#ddd;font-weight:600;
+      box-shadow:inset 0 0 8px rgba(255,255,255,0.02);transition:transform .22s ease,box-shadow .22s;
+      overflow:hidden;
+    }
+    .sponsor img{width:80%;height:80%;object-fit:contain;display:block}
+    .sponsor:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 16px 40px rgba(0,0,0,0.6)}
+
+    /* ---------- FOOTER ---------- */
+    footer{padding:36px 0;border-top:1px solid rgba(255,255,255,0.03);color:#bdbdbd;text-align:center}
+
+    /* ---------- PARTICLES (ambient canvas) ---------- */
+    #ambientParticles{position:fixed;left:0;top:0;width:100%;height:100%;z-index:2;pointer-events:none}
+
+    /* ---------- accessibility ---------- */
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+      .photo-mask{clip-path:inset(0 0 0 0 round 16px)!important;transform:none!important}
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width:980px){
+      .cards{grid-template-columns:1fr;width:94%}
+      .photo-mask{width:94%;aspect-ratio:16/9}
+      .container-nav{gap:14px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- LOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="brand">
+      <span>E-Cell</span>
+      <div class="dot" style="animation-delay:.05s"></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR (kept structure identical to your original index.html) -->
+  <header id="siteHeader" role="banner">
+    <div class="header-inner centered" id="headerInner">
+      <div class="head-nav container" style="padding:0">
+        <div class="logo">
+          <img id="logo" src="logo.jpeg" alt="E-Cell logo">
+          <div id="logo-text">E-Cell</div>
+        </div>
+
+        <nav>
+          <span id="navbar-overlay">
+            <div class="container-nav">
+              <a class="navhead about-us" href="index.html">About Us</a>
+              <a class="navhead our-team" href="our-team.html">Our Team</a>
+              <a class="navhead past-events" href="events.html">Our Events</a>
+              <a class="navhead blogs" href="blogs.html">Blogs</a>
+              <a class="navhead gallery" href="gallery.html">Gallery</a>
+              <a class="navhead updates" href="updates.html">Updates</a>
+
+              <div class="contact-us">
+                <button class="button-contact" onclick="location.href='contact.html'">Contact Us</button>
+              </div>
+            </div>
+          </span>
+        </nav>
+
+        <!-- hamburger (mobile) -->
+        <div class="hamburger" onclick="toggleMenu()" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true" style="position:fixed;top:0;right:-320px;width:320px;height:100vh;background:#0b0b0b;padding:84px 20px;transition:right .36s;z-index:1300">
+      <a href="index.html" class="back-to-home">Home</a>
+      <a class="navhead" href="index.html">About Us</a>
+      <a class="navhead" href="our-team.html">Our Team</a>
+      <a class="navhead" href="events.html">Our Events</a>
+      <a class="navhead" href="blogs.html">Blogs</a>
+      <a class="navhead" href="gallery.html">Gallery</a>
+      <a class="navhead" href="contact.html">Contact Us</a>
+      <a class="navhead" href="updates.html">Updates</a>
+    </div>
+  </header>
+
+  <!-- HERO: welcome (pop/slide in) -->
+  <main>
+    <section class="hero-viewport" id="hero">
+      <div class="hero-ambient" aria-hidden="true"></div>
+
+      <div class="welcome-card" id="welcomeCard" role="region" aria-label="Welcome">
+        <h1>Welcome to E-Cell IGDTUW</h1>
+        <p>We empower student entrepreneurs — workshops, ideathons, mentorship and real-world launch support.</p>
+        <div class="welcome-cta">
+          <button class="cta-btn" id="btnExplore">Explore</button>
+          <button class="cta-btn" id="btnJoin">Join for Updates</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO PANEL: unfolds as you scroll -->
+    <section class="photo-panel" id="photoPanel" aria-label="Team photo">
+      <div class="photo-mask" id="photoMask">
+        <!-- Replace 'aboutpic.jpg' with your girls photo -->
+        <img src="aboutpic.jpg" alt="E-Cell Team Photo" id="teamImg">
+      </div>
+      <div class="photo-caption" id="photoCaption">The E-Cell team — building, mentoring and leading.</div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="events" id="eventsSection">
+      <div class="container">
+        <div class="section-header">
+          <h2>Moment of Glimpses</h2>
+          <p class="lead">Past events we ran — click to read more.</p>
+        </div>
+
+        <div class="cards" id="cardsGrid">
+          <div class="card" data-index="0" tabindex="0">
+            <div class="card-media"><img src="case-conq.png" alt="Code Conqueror"></div>
+            <div class="spark"></div>
+            <div class="card-body">
+              <h3>Code Conqueror 2025</h3>
+              <p>Case-study competition — strategy & execution.</p>
+            </div>
+          </div>
+
+          <div class="card" data-index="1" tabindex="0">
+            <div class="card-media"><img src="ideastorm.png" alt="Ideastorm"></div>
+            <div class="spark"></div>
+            <div class="card-body">
+              <h3>Ideastorm</h3>
+              <p>Rapid ideation & collaboration event.</p>
+            </div>
+          </div>
+
+          <div class="card" data-index="2" tabindex="0">
+            <div class="card-media"><img src="drishti.png" alt="Drishti Voyage"></div>
+            <div class="spark"></div>
+            <div class="card-body">
+              <h3>Drishti Voyage</h3>
+              <p>Inspiring speaker session & mentorship.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPONSORS (circular placeholders; replace inner with <img src="..."> later) -->
+    <section class="sponsors" aria-label="Our Sponsors">
+      <div class="container">
+        <h3 style="font-family:'Cinzel',serif;margin-bottom:12px">Our Sponsors</h3>
+        <div class="grid">
+          <div class="sponsor"><!-- insert <img src="sponsor1.png"> later --><span>Sponsor 1</span></div>
+          <div class="sponsor"><span>Sponsor 2</span></div>
+          <div class="sponsor"><span>Sponsor 3</span></div>
+          <div class="sponsor"><span>Sponsor 4</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-contact">
+      <span>Email: <a href="mailto:Ecell.igdtu@gmail.com">Ecell.igdtu@gmail.com</a></span> |
+      <span>Phone: <a href="tel:+919811911639">+91-98119 11639</a></span>
+      <div style="margin-top:10px"><a href="https://www.instagram.com/ecell.igdtuw/" target="_blank">Instagram</a> • <a href="https://www.linkedin.com/company/ecelligdtuw/?originalSubdomain=in" target="_blank">LinkedIn</a></div>
+    </div>
+    <p style="margin-top:14px;color:#999">&copy; 2025 E-Cell IGDTUW. All rights reserved.</p>
+  </footer>
+
+  <!-- AMBIENT PARTICLES CANVAS (separate element to keep z-index organized) -->
+  <canvas id="ambientParticles" aria-hidden="true"></canvas>
+
+  <script>
+    /* ------------- LOADER ------------- */
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.classList.add('loader-hide');
+        setTimeout(()=> loader.style.display='none', 900);
+        // show welcome card after loader fades
+        setTimeout(()=> document.getElementById('welcomeCard').classList.add('show'), 160);
+      }, 650);
+    });
+
+    /* ------------- NAVBAR scrolled effect ------------- */
+    const headerInner = document.getElementById('headerInner');
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      // show glassy inner pill when user scrolls down slightly
+      if (window.scrollY > 40) headerInner.classList.add('scrolled'); else headerInner.classList.remove('scrolled');
+    });
+
+    /* ------------- MOBILE MENU ------------- */
+    function toggleMenu(){
+      const mobile = document.getElementById('mobileMenu');
+      if (!mobile) return;
+      if (mobile.classList.contains('active')) { mobile.classList.remove('active'); mobile.style.right='-320px'; }
+      else { mobile.classList.add('active'); mobile.style.right='0'; }
+    }
+    window.toggleMenu = toggleMenu;
+
+    /* ------------- PHOTO UNFOLD ON SCROLL ------------- */
+    const photoMask = document.getElementById('photoMask');
+    const photoPanel = document.getElementById('photoPanel');
+    const photoCaption = document.getElementById('photoCaption');
+    let opened = false;
+    if (photoPanel && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !opened) {
+            opened = true;
+            photoMask.classList.add('open'); // triggers clip-path -> full image
+            photoCaption.classList.add('show');
+            // slightly relax image scale for effect
+            const img = photoMask.querySelector('img');
+            if (img) img.style.transform = 'scale(1)';
+          }
+        });
+      }, { threshold: 0.28 });
+      obs.observe(photoPanel);
+    } else {
+      // fallback for ancient browsers
+      photoMask.classList.add('open'); photoCaption.classList.add('show');
+    }
+
+    /* ------------- EVENTS: reveal + tilt + spark ------------- */
+    const cards = document.querySelectorAll('.card');
+    // intersection reveal
+    const io = new IntersectionObserver((entries, ob) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          setTimeout(()=> {
+            el.classList.add('reveal-in');
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, (parseInt(el.dataset.index) || 0) * 70 + 120);
+          ob.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach((c, i) => { c.dataset.index = i; io.observe(c); });
+
+    // interactive tilt + spark
+    cards.forEach(card => {
+      const spark = card.querySelector('.spark');
+      card.addEventListener('mousemove', (ev)=> {
+        const r = card.getBoundingClientRect();
+        const px = ev.clientX - r.left;
+        const py = ev.clientY - r.top;
+        const cx = (px / r.width) - 0.5;
+        const cy = (py / r.height) - 0.5;
+        const rx = (-cy) * 6; const ry = (cx) * 6;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+        if (spark) {
+          spark.style.left = px + 'px';
+          spark.style.top = py + 'px';
+          spark.style.opacity = 1;
+          spark.style.transform = 'translate(-50%,-50%) scale(1)';
+        }
+      });
+      card.addEventListener('mouseleave', ()=> {
+        card.style.transform = '';
+        if (spark) { spark.style.opacity = 0; spark.style.transform = 'translate(-50%,-50%) scale(.4)'; }
+      });
+      // keyboard accessible click
+      card.addEventListener('click', ()=> {
+        const t = card.querySelector('h3')?.innerText || 'Event';
+        // placeholder behaviour — replace with modal / navigation
+        alert(t + "\\n\\nAdd full event page or modal here.");
+      });
+    });
+
+    /* ------------- SPONSOR logos: images later ------------- */
+    // just interactive subtle hover handled by CSS
+
+    /* ------------- AMBIENT PARTICLES (lightweight) ------------- */
+    (function() {
+      const canvas = document.getElementById('ambientParticles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = innerWidth, h = canvas.height = innerHeight;
+      const N = Math.max(18, Math.floor((w*h)/150000));
+      const ps = [];
+      for (let i=0;i<N;i++) ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+0.5,vx:(Math.random()-0.5)*0.12,vy:(Math.random()-0.5)*0.06,a:Math.random()*0.18+0.06});
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        for (const p of ps) {
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(180,230,200,${p.a})`;
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+          p.x+=p.vx; p.y+=p.vy;
+          if (p.x<-30) p.x=w+30; if (p.x>w+30) p.x=-30;
+          if (p.y<-30) p.y=h+30; if (p.y>h+30) p.y=-30;
+        }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', ()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; });
+      draw();
+    })();
+
+    /* ------------- CTA Buttons ------------- */
+    document.getElementById('btnJoin').addEventListener('click', ()=> {
+      window.open('https://chat.whatsapp.com/LyUgaqkkSHT0hbmRVMJwcg','_blank');
+    });
+    document.getElementById('btnExplore').addEventListener('click', ()=> {
+      document.getElementById('photoPanel').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    /* ------------- Respect reduced motion ------------- */
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(n => n.style.transition='none');
+    }
+  </script>
+</body>
+</html>
