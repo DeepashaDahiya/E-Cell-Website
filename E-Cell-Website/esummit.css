@@ -1133,6 +1133,7 @@ section {
     grid-template-columns: repeat(3, 1fr);
     gap: 35px;
     padding: 0 60px;
+    align-items: center;
 }
 .comp-card-link {
     text-decoration: none;
