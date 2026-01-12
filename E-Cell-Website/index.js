@@ -392,3 +392,57 @@ function runHeroAnimations() {
     ease: "power2.out"
   });
 }
+
+window.addEventListener("load", () => {
+  const popup = document.getElementById("esummitPopup");
+  const card = document.getElementById("popupCard");
+
+  if (!popup || !card) return;
+
+  // Show popup every time page loads
+  setTimeout(() => {
+    popup.classList.remove("hidden");
+    popup.classList.add("flex");
+
+    // Fade in popup background
+    gsap.fromTo(popup,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.6, ease: "power2.out" }
+    );
+
+    // Animate popup card
+    gsap.fromTo(card,
+      { scale: 0.85, opacity: 0, y: 40, filter: "blur(10px)" },
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.8,
+        ease: "power3.out"
+      }
+    );
+
+    // Animate text elements
+    gsap.from(".popup-sub", { y: 10, opacity: 0, duration: 0.6, delay: 0.5 });
+    gsap.from(".popup-title span", { y: 20, opacity: 0, duration: 0.6, delay: 0.7 });
+    gsap.from(".popup-desc", { y: 20, opacity: 0, duration: 0.6, delay: 0.9 });
+  }, 7000); // Delay before showing popup
+
+  // Close animation
+  document.getElementById("closePopup")?.addEventListener("click", () => {
+    gsap.to(card, {
+      scale: 0.9,
+      opacity: 0,
+      y: 30,
+      duration: 0.4,
+      ease: "power2.in",
+      onComplete: () => popup.classList.add("hidden")
+    });
+  });
+
+  // Enter eSummit button
+  document.getElementById("enterEsummit")?.addEventListener("click", () => {
+    window.open("esummit.html", "_blank");
+  });
+});
