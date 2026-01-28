@@ -873,7 +873,9 @@ section {
 .sponsors-section {
   padding: 40px;
 }
-
+#sponsors{
+  padding-top: 200px;
+}
 .left-column .sponsor-column-inner,
 .right-column .sponsor-column-inner {
   animation: scrollUp 10s linear infinite;
@@ -1280,7 +1282,7 @@ section {
 /* ---------------- SPEAKERS SECTION ---------------- */
 
 .speakers-section {
-    padding: 100px 0;
+    /* padding: 100px 0; */
     /* background: #09070f; */
 }
 
@@ -1450,13 +1452,14 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
 }
-
+#speakers{
+  padding-top: 100px;
+}
 .speaker-card {
   background: #111;
   border-radius: 15px;
   overflow: hidden;
   color: #fff;
-  margin-bottom: 100px;
 }
 
 .speaker-image img {
